@@ -1,16 +1,34 @@
 @charset "UTF-8";
 
-#wrap{
+#wrap {
 	width:1200px;
 	height:800px;
 	margin:auto;
 }
 
-header > #logo{
+header > #logo {
 	height:100px;
 }
 
-#box{
+header > #login-logo {
+	height:200px;
+}
+
+#box {
 	width:400px;
+	margin:auto;
+}
+
+#content {
+	width:300px;
+	margin:auto;
+}
+
+#img {
+	display:block;
+}
+
+#login-box{
+	width:800px;
 	margin:auto;
 }

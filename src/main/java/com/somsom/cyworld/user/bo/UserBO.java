@@ -19,7 +19,11 @@ public class UserBO {
 		if(userDAO.selectDuplicateId(loginId) == 0) {//중복이 아님
 			return false;
 		}else {//중복임
-		return true;
+			return true;
 		}
+	}
+	
+	public int loginUser(String loginId, String password) {
+		return userDAO.selectUser(loginId, password);
 	}
 }

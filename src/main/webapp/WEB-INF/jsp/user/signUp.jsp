@@ -20,7 +20,7 @@
 	<div id="wrap">
 		<header>
 			<div id="logo" class="text-center"><img height="200" width="400" src="http://www.earlyadopter.co.kr/wp-content/uploads/2021/02/%E1%84%8A%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%83%E1%85%B3-%E1%84%87%E1%85%AE%E1%84%92%E1%85%AA%E1%86%AF_001-1024x683.jpg"></div>
-			<div class="text-center text-secondary mt-5"><h3>welcome to cyworld!</h3></div>
+			<div class="text-center text-secondary mt-2"><h3>welcome to cyworld!</h3></div>
 		</header>
 		
 		<form id="signUpForm">
@@ -52,12 +52,12 @@
 			
 			$("#loginIdInput").on("input", function(){
 				
+				var loginId = $("#loginIdInput").val();
+
 				var isIdCheck = false;
 				var isDuplicateId = true;
 				
-				var loginId = $("#loginIdInput").val();
-				
-				if(loginId == "" | loginId == null){
+				if(loginId == null || loginId == ""){
 					alert("사용자 이름을 입력하세요.");
 					return;
 				}
@@ -66,10 +66,26 @@
 					type:"get",
 					url:"/user/is_duplicate_id",
 					data:{"loginId":loginId},
-					success:function(data) {
+					success:function(data){
+						isIdCheck = true;
 						
+						if(data.is_duplicate){					
+							isDuplicateId = true;
+							$("#duplicateId").removeClass("d-none");
+							$("#noneDuplicateId").addClass("d-none");
+						}else{
+							isDuplicate = false;
+							$("#noneDuplicateId").removeClass("d-none");
+							$("#duplicateId").addClass("d-none");
+							
+						}
+					},
+					error:function() {
+						alert("에러 발생");
 					}
+					
 				});
+				
 			});
 			
 			$("#signUpForm").on("submit", function(){

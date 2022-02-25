@@ -50,4 +50,21 @@ public class UserRestController {
 		}
 		return result;
 	}
+	
+	@PostMapping("/sign_in")
+	public Map<String, String> signIn(
+			@RequestParam("loginId") String loginId,
+			@RequestParam("password") String password) {
+		
+		int count = userBO.loginUser(loginId, password);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		return result;
+	}
 }
