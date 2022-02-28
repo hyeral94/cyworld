@@ -12,5 +12,14 @@ public class PostController {
 	public String miniHomeView() {
 		return "post/miniHome";
 	}
-
+	
+	@GetMapping("/guest_book_view")
+	public String guestBookView() {
+		return "post/guestBook";
+	}
+	
+	@GetMapping("/set_up_view")
+	public String editView() {
+		return "post/setUp";
+	}
 }

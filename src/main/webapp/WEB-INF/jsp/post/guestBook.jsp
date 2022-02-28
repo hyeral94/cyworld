@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +18,7 @@
 
 </head>
 <body>
-
-	<div id="wrap" class="home-bg">	
+	<div id="wrap" class="home-bg">
 	
 		<header id="header-box" class="d-flex">
 			<div id="left-header"></div>
@@ -30,7 +29,7 @@
 				<a href="#">로그아웃</a>
 			</div>
 		</header>
-		
+
 		<section class="d-flex">
 			<div id="left-box" class="box-border pt-3">
 				<!-- 방문자 수 -->
@@ -51,48 +50,53 @@
 				</div>
 			</div>
 			
+			<!-- 방명록 -->
 			<div id="center-box" class="box-border">
-				<!-- 최근 게시물 노출 -->
-				<div id="uploadNews">
-					<div class="text-primary">upload news</div>
-					<hr>
-					<div>
-					<small>
-						-제주도 여행 갔다 왔어요!<br>
-						-코로나 언제 끝나냐...<br>
-						-피부과 다녀온 후기</small>
+				
+				<!-- 방명록 쓰기 -->
+				<i class="bi bi-pencil-square" style="font-size: 30px;"></i>
+				
+				<!--  작성자 -->
+				<div id="center-box-guest" class="d-flex mt-3 justify-content-between">
+					<div class="ml-3">
+						No1. 박일촌 <i class="bi bi-house-door-fill text-warning" style="font-size: 20px;"></i>
+						(2022.02.28 21:20)
 					</div>
+					<div class="mt-1 text-dark mr-3"><a href="#" style="text-decoration:none">삭제</a></div>
 				</div>
 				
-				<!-- 미니룸 -->
-				<div class="text-primary mt-3">mini room</div>
-				<hr>
-				<div id="mini-room" class="mini-room mt-3">
-				<img width="700" height="200" src="https://post-phinf.pstatic.net/MjAyMDA5MjNfMiAg/MDAxNjAwNzk1NzYyNDE1.6BRm3eV7dWSVqf8sANtOWbHbTY058eRWJkhbXcqTIecg.cZWbwCf3geMLG-DuP5od_MyEVq5ZeSUL1Ys0A7InRZUg.JPEG/attachImage_3201238540.jpeg?type=w1200">
+				<!--방명록 -->
+				<div id="guestbook-box" class="mt-2">
+					우리 언제 만나ㅠㅠㅠㅠㅠ
 				</div>
 				
-				<!-- 일촌평 -->
-				<div class="text-primary mt-3">what friends say~</div>
-				<hr>
-			 	박기석 치킨치킨치킨치ㅣㄴ치킨<br>
-			 	박솜탱 와오아오아아아ㅗ왈왕로앙랄!!<br>
-			 	박혜경 집에 가고싶다....
-			 	<div class="d-flex mt-3">
-			 	<input type="text" class="form-control" style="width:700px; height:30px;">
-			 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:30px;">확인</button>
+				<!--  작성자 -->
+				<div id="center-box-guest" class="d-flex mt-3 justify-content-between">
+					<div class="ml-3">
+						No1. 박일촌 <i class="bi bi-house-door-fill text-warning" style="font-size: 20px;"></i>
+						(2022.02.28 21:20)
+					</div>
+					<div class="mt-1 text-dark mr-3"><a href="#" style="text-decoration:none">삭제</a></div>
 				</div>
+				
+				<!--방명록 -->
+				<div id="guestbook-box" class="mt-2">
+					우리 언제 만나ㅠㅠㅠㅠㅠ
+				</div>
+				
 			</div>
-		
+			
 			<!-- 카테고리 -->
 			<div id="right-box">
 				<button type="button" id="homeCategory" class="category btn" style="width:65px;">홈</button>
 				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;">방명록</button>
 				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;">설정</button>
 			</div>
-
-		</section>
 			
+			
+		</section>
 	</div>
+	
 	<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
 
 </body>
@@ -117,4 +121,5 @@
 			
 		});
 	</script>
+	
 </html>

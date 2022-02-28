@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +31,7 @@
 			<input type="text" class="form-control" placeholder="사용자 이름" id="loginIdInput">
 			<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInpt">
 			
-			<button type="loginBtn" class="form-control btn btn-primary mt-3">로그인</button>
+			<button type="button" id="loginBtn" class="form-control btn btn-primary mt-3">로그인</button>
 			
 			<div class="text-center mt-5"><strong>싸이월드 회원이 아니신가요?</strong>  <a href="/user/signup_view">회원가입</a></div>
 			</div>
@@ -50,23 +50,23 @@
 				var loginId = $("#loginIdInput").val();
 				var password = $("passwordInpt").val();
 				
-				if(loginId == null || loginId == ""){
+				if(loginId == ""){
 					alert("사용자 이름을 입력하세요.");
 					return;
 				}
 				
-				if(password == null || password == ""){
+				if(password == ""){
 					alert("비밀번호를 입력하세요.");
 					return;
 				}
 				
-				ajax({
+				$.ajax({
 					type:"post",
 					url:"/user/sign_in",
 					data:{"loginId":loginId, "password":password},
 					success:function(data) {
 						if(data.result == "success"){
-							alert("로그인 성공");
+							location.href="/post/mini_home_view";
 						}else {
 							alert("로그인 실패");
 						}

@@ -33,6 +33,10 @@ public class UserBO {
 	
 	//로그인
 	public int loginUser(String loginId, String password) {
-		return userDAO.selectUser(loginId, password);
+		
+		//비밀번호 암호화
+		String encPassword = EncryptUtils.mb5(password);
+				
+		return userDAO.selectUser(loginId, encPassword);
 	}
 }

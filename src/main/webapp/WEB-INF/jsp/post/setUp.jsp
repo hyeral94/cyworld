@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +15,11 @@
   	
 	<link rel="stylesheet" href="/static/css/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
+	
 </head>
 <body>
 
-	<div id="wrap" class="home-bg">	
+	<div id="wrap" class="home-bg">
 	
 		<header id="header-box" class="d-flex">
 			<div id="left-header"></div>
@@ -32,54 +32,23 @@
 		</header>
 		
 		<section class="d-flex">
+		
+			<!-- 편집 목록 -->
 			<div id="left-box" class="box-border pt-3">
-				<!-- 방문자 수 -->
-				<div id="visitor" class="d-flex justify-content-center">
-					<div class="text-danger">TODAY 999</div>
-					<div>&nbsp; | TOTAL 99,999</div>
-				</div>
-				
-				<!-- 프로필 이미지 -->
-				<div id="profileImage" class="text-center mt-4">
-					<img height="200" width="250" src="https://i.pinimg.com/564x/c9/cf/b7/c9cfb77eb604e3b3d95eca2b4faa7a2e.jpg">
-				</div>
-				
-				<!-- 프로필 아래 글쓰기 -->
-				<div id="profileContent" class="text-center mt-5">
-					<strong>today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-brightness-high" style="font-size: 20px;"></i>&nbsp;기분좋음
-					<div id="content" class="mt-5">노는게 제일 좋아~~</div>
-				</div>
+				<div class="text-primary mt-3"><h4>MY HOME SET UP</h4></div>
+				<hr>
+				<div class="mt-3"><a href="#">홈 화면 상단 소개말 바꾸기</a></div>
+				<div class="mt-3"><a href="#">프로필 사진 바꾸기</a></div>
+				<div class="mt-3"><a href="#">프로필 인사말 바꾸기</a></div>
 			</div>
 			
+			
 			<div id="center-box" class="box-border">
-				<!-- 최근 게시물 노출 -->
-				<div id="uploadNews">
-					<div class="text-primary">upload news</div>
-					<hr>
-					<div>
-					<small>
-						-제주도 여행 갔다 왔어요!<br>
-						-코로나 언제 끝나냐...<br>
-						-피부과 다녀온 후기</small>
-					</div>
-				</div>
-				
-				<!-- 미니룸 -->
-				<div class="text-primary mt-3">mini room</div>
-				<hr>
-				<div id="mini-room" class="mini-room mt-3">
-				<img width="700" height="200" src="https://post-phinf.pstatic.net/MjAyMDA5MjNfMiAg/MDAxNjAwNzk1NzYyNDE1.6BRm3eV7dWSVqf8sANtOWbHbTY058eRWJkhbXcqTIecg.cZWbwCf3geMLG-DuP5od_MyEVq5ZeSUL1Ys0A7InRZUg.JPEG/attachImage_3201238540.jpeg?type=w1200">
-				</div>
-				
-				<!-- 일촌평 -->
-				<div class="text-primary mt-3">what friends say~</div>
-				<hr>
-			 	박기석 치킨치킨치킨치ㅣㄴ치킨<br>
-			 	박솜탱 와오아오아아아ㅗ왈왕로앙랄!!<br>
-			 	박혜경 집에 가고싶다....
-			 	<div class="d-flex mt-3">
-			 	<input type="text" class="form-control" style="width:700px; height:30px;">
-			 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:30px;">확인</button>
+				<i class="bi bi-gear"  style="width:65px;"></i>
+				홈 화면 상단 소개말 바꾸기
+				<div class="d-flex mt-3">
+				<input type="text" class="form-control" style="width:500px; height:50px;">
+				<button type="button" class="btn btn-primary">확인</button>
 				</div>
 			</div>
 		
@@ -89,10 +58,10 @@
 				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;">방명록</button>
 				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;">설정</button>
 			</div>
-
-		</section>
 			
+		</section>	
 	</div>
+	
 	<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
 
 </body>
@@ -117,4 +86,5 @@
 			
 		});
 	</script>
+	
 </html>
