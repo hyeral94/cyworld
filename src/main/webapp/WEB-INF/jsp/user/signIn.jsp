@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,17 +22,18 @@
 		<header>
 			<div id="login-logo" class="text-center"><img height="200" width="400" src="http://www.earlyadopter.co.kr/wp-content/uploads/2021/02/%E1%84%8A%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%83%E1%85%B3-%E1%84%87%E1%85%AE%E1%84%92%E1%85%AA%E1%86%AF_001-1024x683.jpg"></div>
 		</header>
-		<section class="d-flex">
-			<div id="content">
-				<img id="img" height="400" width="400" src="https://newsimg.hankookilbo.com/cms/articlerelease/2020/06/05/202006051888034625_5.jpg">
+		
+		<section class="d-flex justify-content-center">
+			<div>
+				<img height="400" width="400" src="https://newsimg.hankookilbo.com/cms/articlerelease/2020/06/05/202006051888034625_5.jpg">
 			</div>
-			<div id="content">
+			<div class="mt-5 pt-5">
 			<input type="text" class="form-control" placeholder="사용자 이름" id="loginIdInput">
 			<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInpt">
 			
-			<button type="submit" class="form-control btn btn-primary mt-3">회원가입</button>
+			<button type="loginBtn" class="form-control btn btn-primary mt-3">로그인</button>
 			
-			<div class="text-center mt-5"><strong>싸이월드 회원이 아니신가요?</strong>  <a href="#">회원가입</a></div>
+			<div class="text-center mt-5"><strong>싸이월드 회원이 아니신가요?</strong>  <a href="/user/signup_view">회원가입</a></div>
 			</div>
 		</section>
 		
@@ -40,4 +41,45 @@
 	</div>
 
 </body>
+
+	<script>
+		$(document).ready(function(){
+			
+			$("#loginBtn").on("click", function(){
+				
+				var loginId = $("#loginIdInput").val();
+				var password = $("passwordInpt").val();
+				
+				if(loginId == null || loginId == ""){
+					alert("사용자 이름을 입력하세요.");
+					return;
+				}
+				
+				if(password == null || password == ""){
+					alert("비밀번호를 입력하세요.");
+					return;
+				}
+				
+				ajax({
+					type:"post",
+					url:"/user/sign_in",
+					data:{"loginId":loginId, "password":password},
+					success:function(data) {
+						if(data.result == "success"){
+							alert("로그인 성공");
+						}else {
+							alert("로그인 실패");
+						}
+					},
+					error:function() {
+						alert("로그인 에러발생");
+					}
+					
+					
+				});
+				
+			});
+			
+		});
+	</script>
 </html>

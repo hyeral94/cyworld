@@ -13,14 +13,12 @@
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 <body>
 	<div id="wrap">
 		<header>
 			<div id="logo" class="text-center"><img height="200" width="400" src="http://www.earlyadopter.co.kr/wp-content/uploads/2021/02/%E1%84%8A%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%83%E1%85%B3-%E1%84%87%E1%85%AE%E1%84%92%E1%85%AA%E1%86%AF_001-1024x683.jpg"></div>
-			<div class="text-center text-secondary mt-2"><h3>welcome to cyworld!</h3></div>
+			<div class="text-center text-secondary mt-5"><h3>welcome to cyworld!</h3></div>
 		</header>
 		
 		<form id="signUpForm">
@@ -29,8 +27,8 @@
 				<div id="duplicateId" class="d-none"><small class="text-danger">중복된 ID 입니다.</small></div>
 				<div id="noneDuplicateId" class="d-none"><small class="text-success">사용 가능한 ID 입니다.</small></div>
 						
-				<input type="text" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
-				<input type="text" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordCheckInput">
+				<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInput">
+				<input type="password" class="form-control mt-3" placeholder="비밀번호 확인" id="passwordCheckInput">
 				<small id="errorPassword" class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
 				
 				<input type="text" class="form-control mt-3" placeholder="성명" id="nameInput">
@@ -39,7 +37,7 @@
 				
 				<button type="submit" class="form-control btn btn-primary mt-3">회원가입</button>
 				
-				<div class="text-center mt-5"><strong>이미 싸이월드 회원이신가요?</strong>  <a href="#">로그인</a></div>
+				<div class="text-center mt-5"><strong>이미 싸이월드 회원이신가요?</strong>  <a href="/user/signin_view">로그인</a></div>
 			</section>
 		</form>
 		
@@ -53,7 +51,7 @@
 			$("#loginIdInput").on("input", function(){
 				
 				var loginId = $("#loginIdInput").val();
-
+	
 				var isIdCheck = false;
 				var isDuplicateId = true;
 				
@@ -69,7 +67,7 @@
 					success:function(data){
 						isIdCheck = true;
 						
-						if(data.is_duplicate){					
+						if(data.id_duplicate){					
 							isDuplicateId = true;
 							$("#duplicateId").removeClass("d-none");
 							$("#noneDuplicateId").addClass("d-none");
@@ -127,7 +125,7 @@
 					data:{"loginId":loginId, "password":password, "name":name, "email":email},
 					success:function(data) {	
 						if(data.result == "success"){
-							location.href="/user/sign_in";
+							location.href="/user/signin_view";
 						}else{
 							alert("회원가입 실패");
 						}
@@ -142,6 +140,7 @@
 		
 			});
 		});
+
 	</script>
 
 </body>

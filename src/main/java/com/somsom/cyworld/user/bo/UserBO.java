@@ -3,6 +3,7 @@ package com.somsom.cyworld.user.bo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.somsom.cyworld.common.EncryptUtils;
 import com.somsom.cyworld.user.dao.UserDAO;
 
 @Service
@@ -11,10 +12,17 @@ public class UserBO {
 	@Autowired
 	private UserDAO userDAO;
 	
+	//회원가입
 	public int addUser(String loginId, String password, String name, String email) {
-		return userDAO.insertUser(loginId, password, name, email);
+		
+		//비밀번호 암호화
+		String encPassword = EncryptUtils.mb5(password);
+		
+		return userDAO.insertUser(loginId, encPassword, name, email);
+		
 	}
 	
+	//아이디 중복 확인
 	public boolean isDuplicateId(String loginId) {
 		if(userDAO.selectDuplicateId(loginId) == 0) {//중복이 아님
 			return false;
@@ -23,6 +31,7 @@ public class UserBO {
 		}
 	}
 	
+	//로그인
 	public int loginUser(String loginId, String password) {
 		return userDAO.selectUser(loginId, password);
 	}

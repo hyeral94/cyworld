@@ -6,14 +6,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDAO {
 
+	//회원가입
 	public int insertUser(
 			@Param("loginId") String loginId,
 			@Param("password") String password,
 			@Param("name") String name,
 			@Param("email") String email);
 	
+	//아이디 중복확인
 	public int selectDuplicateId(@Param("loginId") String loginId);
 	
+	//로그인
 	public int selectUser(
 			@Param("loginId") String loginId,
 			@Param("password") String password);
