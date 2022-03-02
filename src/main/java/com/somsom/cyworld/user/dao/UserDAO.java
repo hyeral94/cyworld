@@ -3,6 +3,8 @@ package com.somsom.cyworld.user.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.somsom.cyworld.user.model.User;
+
 @Repository
 public interface UserDAO {
 
@@ -17,7 +19,7 @@ public interface UserDAO {
 	public int selectDuplicateId(@Param("loginId") String loginId);
 	
 	//로그인
-	public int selectUser(
+	public User selectUser(
 			@Param("loginId") String loginId,
 			@Param("password") String password);
 }

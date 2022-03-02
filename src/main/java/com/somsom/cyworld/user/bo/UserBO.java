@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.somsom.cyworld.common.EncryptUtils;
 import com.somsom.cyworld.user.dao.UserDAO;
+import com.somsom.cyworld.user.model.User;
 
 @Service
 public class UserBO {
@@ -32,7 +33,7 @@ public class UserBO {
 	}
 	
 	//로그인
-	public int loginUser(String loginId, String password) {
+	public User loginUser(String loginId, String password) {
 		
 		//비밀번호 암호화
 		String encPassword = EncryptUtils.mb5(password);

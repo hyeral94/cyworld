@@ -23,11 +23,20 @@
 	
 		<header id="header-box" class="d-flex">
 			<div id="left-header"></div>
+			
 			<div id="center-header">
 				<h4 class="mt-5">박혜경님의 미니홈피</h4>
 			</div>
+			
 			<div id="right-header" class="mt-5 pl-4">
-				<a href="#">로그아웃</a>
+				<c:choose>
+					<c:when test="${not empty userId }"> 
+						<a href="/user/sign_out">로그아웃</a>
+					</c:when>
+					<c:otherwise>
+						<a href="/user/signin_view">로그인</a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</header>
 		
@@ -78,8 +87,10 @@
 			 	박솜탱 와오아오아아아ㅗ왈왕로앙랄!!<br>
 			 	박혜경 집에 가고싶다....
 			 	<div class="d-flex mt-3">
-			 	<input type="text" class="form-control" style="width:700px; height:30px;">
-			 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:30px;">확인</button>
+			 	
+			 	<!-- 일촌평 입력 -->
+			 	<input type="text" class="form-control" style="width:700px; height:40px;" id="commentInput">
+			 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;">확인</button>
 				</div>
 			</div>
 		

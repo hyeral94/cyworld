@@ -3,6 +3,9 @@ package com.somsom.cyworld.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.somsom.cyworld.user.bo.UserBO;
+import com.somsom.cyworld.user.model.User;
 
 
 @RequestMapping("/user")
@@ -20,6 +24,7 @@ public class UserRestController {
 	@Autowired
 	private UserBO userBO;
 	
+	//회원가입
 	@PostMapping("/sign_up")
 	public Map<String, String> signUp(
 			@RequestParam("loginId") String loginId,
@@ -36,9 +41,11 @@ public class UserRestController {
 		}else {
 			result.put("result", "fail");
 		}
+		
 		return result;
 	}
 	
+	//아이디 중복확인
 	@GetMapping("/is_duplicate_id")
 	public Map<String, Boolean> isDuplicateId(@RequestParam("loginId") String loginId) {
 		
@@ -51,20 +58,30 @@ public class UserRestController {
 		return result;
 	}
 	
+	//로그인
 	@PostMapping("/sign_in")
 	public Map<String, String> signIn(
 			@RequestParam("loginId") String loginId,
-			@RequestParam("password") String password) {
+			@RequestParam("password") String password,
+			HttpServletRequest request) {
 		
-		int count = userBO.loginUser(loginId, password);
+		User user = userBO.loginUser(loginId, password);
 		
 		Map<String, String> result = new HashMap<>();
 		
-		if(count == 1) {
+		if(user != null) {
 			result.put("result", "success");
+			
+			HttpSession session = request.getSession();
+
+			session.setAttribute("userId", user.getId());
+			session.setAttribute("userLoginId", user.getLoginId());
+			session.setAttribute("userName", user.getName());
+			
 		}else {
 			result.put("result", "fail");
 		}
+		
 		return result;
 	}
 }

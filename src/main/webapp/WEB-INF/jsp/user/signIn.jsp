@@ -27,6 +27,7 @@
 			<div>
 				<img height="400" width="400" src="https://newsimg.hankookilbo.com/cms/articlerelease/2020/06/05/202006051888034625_5.jpg">
 			</div>
+			
 			<div class="mt-5 pt-5">
 			<input type="text" class="form-control" placeholder="사용자 이름" id="loginIdInput">
 			<input type="password" class="form-control mt-3" placeholder="비밀번호" id="passwordInpt">
@@ -35,6 +36,7 @@
 			
 			<div class="text-center mt-5"><strong>싸이월드 회원이 아니신가요?</strong>  <a href="/user/signup_view">회원가입</a></div>
 			</div>
+		
 		</section>
 		
 		<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
@@ -48,7 +50,7 @@
 			$("#loginBtn").on("click", function(){
 				
 				var loginId = $("#loginIdInput").val();
-				var password = $("passwordInpt").val();
+				var password = $("#passwordInpt").val();
 				
 				if(loginId == ""){
 					alert("사용자 이름을 입력하세요.");
@@ -68,7 +70,7 @@
 						if(data.result == "success"){
 							location.href="/post/mini_home_view";
 						}else {
-							alert("로그인 실패");
+							alert("아이디 또는 비밀번호가 일치하지 않습니다.");
 						}
 					},
 					error:function() {
