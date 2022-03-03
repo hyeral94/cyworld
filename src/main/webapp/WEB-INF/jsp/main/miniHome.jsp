@@ -83,14 +83,12 @@
 				<!-- 일촌평 -->
 				<div class="text-primary mt-3">what friends say~</div>
 				<hr>
-			 	박기석 치킨치킨치킨치ㅣㄴ치킨<br>
-			 	박솜탱 와오아오아아아ㅗ왈왕로앙랄!!<br>
-			 	박혜경 집에 가고싶다....
+			 
 			 	<div class="d-flex mt-3">
-			 	
+			 				 	
 			 	<!-- 일촌평 입력 -->
-			 	<input type="text" class="form-control" style="width:700px; height:40px;" id="commentInput">
-			 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;">확인</button>
+			 	<input type="text" class="form-control" style="width:700px; height:40px;" id="friendReviewInput">
+			 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" id="friendReviewBtn">확인</button>
 				</div>
 			</div>
 		
@@ -111,9 +109,10 @@
 	<script>
 		$(document).ready(function(){
 			
+			//카테고리 이동
 			$("#homeCategory").on("click", function(){
 				
-				location.href="/post/mini_home_view";
+				location.href="/main/mini_home_view";
 			});
 		
 			$("#guestBookCategory").on("click", function(){
@@ -124,6 +123,18 @@
 			$("#setUpCategory").on("click", function(){
 				
 				location.href="/post/set_up_view";
+			});
+			
+			
+			//댓글 입력
+			$("#friendReviewBtn").on("click", function(){
+				
+				var friendReview = $("#friendReviewInput").val();
+				
+				if(friendReview == null || friendReview == ""){
+					alert("내용을 입력하세요.");
+					return;
+				}
 			});
 			
 		});

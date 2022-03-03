@@ -1,14 +1,15 @@
-package com.somsom.cyworld.post.comment.dao;
+package com.somsom.cyworld.post.friendReview.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CommentDAO {
+public interface FriendReviewDAO {
 
-	public int insertComment(
+	public int insertFriendReview(
 			@Param("postId") int postId,
-			@Param("userId") int userId,
+			@Param("userId") int comment,
 			@Param("userName") String userName,
 			@Param("content") String content);
+	
 }

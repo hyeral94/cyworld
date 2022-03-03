@@ -3,12 +3,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="com.somsom.cyworld.post.comment.dao.CommentDAO">
-
-	<!-- 댓글 입력 -->
-	<insert id="insertComment" parameterType="map">
-	
-		INSERT INTO `comment`
+ <mapper namespace="com.somsom.cyworld.post.friendReview.dao.FriendReviewDAO">
+ 	
+ 	<!-- 일촌평 입력 -->
+ 	<insert id="insertFriendReview" parameterType="map">
+ 	 	INSERT INTO `friendReview`
  		(
  			`postId`
  			, `userId`
@@ -25,7 +24,7 @@
  			, #{content}
  			, now()
  			, now()
- 		)
- 		
-	</insert>
-</mapper>
+ 		) 	
+ 	</insert>
+ 	
+ </mapper>

@@ -1,11 +1,10 @@
-package com.somsom.cyworld.post.comment.model;
+package com.somsom.cyworld.post.guestBook.model;
 
 import java.util.Date;
 
-public class Comment {
+public class GuestBook {
 
 	private int id;
-	private int postId;
 	private int userId;
 	private String userName;
 	private String content;
@@ -17,12 +16,6 @@ public class Comment {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getPostId() {
-		return postId;
-	}
-	public void setPostId(int postId) {
-		this.postId = postId;
 	}
 	public int getUserId() {
 		return userId;

@@ -1,4 +1,4 @@
-package com.somsom.cyworld.post.comment;
+package com.somsom.cyworld.post.guestBook;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,28 +12,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.somsom.cyworld.post.comment.bo.CommentBO;
+import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 
-@RequestMapping("/post")
+@RequestMapping("/post/guest_book")
 @RestController
-public class CommentRestController {
+public class GuestBookRestController {
 
 	@Autowired
-	private CommentBO commentBO;
+	private GuestBookBO guestBookBO;
 	
-	@PostMapping("/comment_create")
-	public Map<String, String> commentCreate(
-			@RequestParam("postId") String postId,
-			@RequestParam("comment") String comment,
+	@PostMapping("/creste")
+	public Map<String, String> guestBookCreate(
+			@RequestParam("content") String content,
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
-		int userId = (Integer)session.getAttribute("userId");
-		String userName = (String)session.getAttribute("userName");
+		int userId = (Integer)request.getAttribute("userId");
 		
-		int count = commentBO.addComment(userId, userId, userName, userName);
-		
+		int count = guestBookBO.addGuestBook(userId, content);
 		Map<String, String> result = new HashMap<>();
 		
 		if(count == 1) {

@@ -71,7 +71,7 @@
 			
 			$("#homeCategory").on("click", function(){
 				
-				location.href="/post/mini_home_view";
+				location.href="/main/mini_home_view";
 			});
 		
 			$("#guestBookCategory").on("click", function(){
