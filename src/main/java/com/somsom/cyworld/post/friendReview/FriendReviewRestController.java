@@ -23,16 +23,16 @@ public class FriendReviewRestController {
 	
 	@PostMapping("/create")
 	public Map<String, String> friendReviewCreate(
-			@RequestParam("postId") int postId,
 			@RequestParam("content") String content,
+			@RequestParam("targetUserId") int targetUserId, //현재 미니홈피가 누구의 미니홈피인지를 구분
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
-		int userId = (Integer)session.getAttribute("userId");
-		String userName = (String)session.getAttribute("userName");
+		int userId = (Integer)session.getAttribute("userId");//일촌평 작성자 Id
+		String userName = (String)session.getAttribute("userName");//일촌평 작성자 name
 		
-		int count = friendReviewBO.addFriendReview(postId, userId, userName, content);
+		int count = friendReviewBO.addFriendReview(userId, userName, targetUserId, content);
 		
 		Map<String, String> result = new HashMap<>();
 		

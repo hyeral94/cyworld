@@ -81,22 +81,27 @@
 				</div>
 				
 				<!-- 일촌평 -->
+				<c:forEach var="friendReview" items="${friendReviewList }" >
 				<div class="text-primary mt-3">what friends say~</div>
 				<hr>
-			 
+			 		<b>${friendReview.userName }</b> ${friendReview.content }
 			 	<div class="d-flex mt-3">
+			 			 	
+			 	<!-- 일촌평 -->
+			 	</c:forEach>
 			 				 	
 			 	<!-- 일촌평 입력 -->
 			 	<input type="text" class="form-control" style="width:700px; height:40px;" id="friendReviewInput">
-			 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" id="friendReviewBtn">확인</button>
+			 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" data-user-id="${userId}" id="friendReviewUploadBtn">확인</button>
 				</div>
 			</div>
+			
 		
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<button type="button" id="homeCategory" class="category btn" style="width:65px;">홈</button>
-				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;">방명록</button>
-				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;">설정</button>
+				<button type="button" id="homeCategory" class="category btn" style="width:65px;"><a href="/main/mini_home_view?userId=${userId }" style="text-decoration-line: none; color: inherit;">홈</a></button>
+				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;"><a href="/post/guest_book_view" style="text-decoration-line: none; color: inherit;">방명록</a></button>
+				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;"><a href="/post/set_up_view" style="text-decoration-line: none; color: inherit;">설정</a></button>
 			</div>
 
 		</section>
@@ -109,32 +114,32 @@
 	<script>
 		$(document).ready(function(){
 			
-			//카테고리 이동
-			$("#homeCategory").on("click", function(){
-				
-				location.href="/main/mini_home_view";
-			});
-		
-			$("#guestBookCategory").on("click", function(){
-				
-				location.href="/post/guest_book_view";
-			});
-			
-			$("#setUpCategory").on("click", function(){
-				
-				location.href="/post/set_up_view";
-			});
-			
-			
 			//댓글 입력
-			$("#friendReviewBtn").on("click", function(){
+			$("#friendReviewUploadBtn").on("click", function(){
 				
-				var friendReview = $("#friendReviewInput").val();
-				
-				if(friendReview == null || friendReview == ""){
+				var content = $("#friendReviewInput").val();
+				var userId = $(this).data("user-id");//현재 로그인한 미니홈피 주인
+		
+				if(content == null || content == ""){
 					alert("내용을 입력하세요.");
 					return;
 				}
+				
+				$.ajax({
+					type:"post",
+					url:"/post/friend_review/create",
+					data:{"content":content, "targetUserId":userId},
+					success:function(data) {
+						if(data.result == "success"){
+							alert("성공");
+						}else {
+							alert("일촌평 등록 실패");
+						}
+					},
+					error:function() {
+						alert("일촌평 등록 에러");
+					}
+				});
 			});
 			
 		});

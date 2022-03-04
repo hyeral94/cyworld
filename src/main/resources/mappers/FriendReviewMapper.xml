@@ -9,18 +9,18 @@
  	<insert id="insertFriendReview" parameterType="map">
  	 	INSERT INTO `friendReview`
  		(
- 			`postId`
- 			, `userId`
+ 			`userId`
  			, `userName`
+ 			, `targetUserId`
  			, `content`
  			, `createdAt`
  			, `updatedAt`
  		)
  		VALUES
  		(
- 			#{postId}
- 			, #{userId}
+ 			#{userId}
  			, #{userName}
+ 			, #{targetUserId}
  			, #{content}
  			, now()
  			, now()

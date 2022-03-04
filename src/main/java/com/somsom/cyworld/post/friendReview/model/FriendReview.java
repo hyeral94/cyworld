@@ -3,7 +3,7 @@ package com.somsom.cyworld.post.friendReview.model;
 import java.util.Date;
 
 public class FriendReview {
-
+	
 	private int id;
 	private int postId;
 	private int userId;
