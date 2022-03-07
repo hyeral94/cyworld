@@ -21,7 +21,7 @@
  		VALUES
  		(
  			#{userId}
- 			, #{대기중}
+ 			, #{userName}
  			, #{introduce}
  			, #{motion}
  			, #{content}

@@ -8,6 +8,8 @@ public interface GuestBookDAO {
 
 	public int insertGuestBook(
 			@Param("usedId") int usedId,
+			@Param("userName") String userName,
+			@Param("targetUserId") int targetUserId,
 			@Param("content") String content);
 		
 	

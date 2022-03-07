@@ -27,7 +27,7 @@
  		) 	
  	</insert>
  	
- 	<select id="selectFriendReview" parameterType="String" resultType="com.somsom.cyworld.post.friendReview.model.FriendReview">
+ 	<select id="selectFriendReview" parameterType="int" resultType="com.somsom.cyworld.post.friendReview.model.FriendReview">
  		SELECT 
 			`id`
 			, `userId`
@@ -39,7 +39,7 @@
 		FROM
 			`friendReview`
 		WHERE
-			`userId` = #{userId}
+			`targetUserId` = #{targetUserId}
  	</select>
  	
  </mapper>

@@ -16,6 +16,6 @@ public interface FriendReviewDAO {
 			@Param("targetUserId") int targetUserId,
 			@Param("content") String content);
 	
-	public List<FriendReview> selectFriendReview();
+	public List<FriendReview> selectFriendReview(@Param("targetUserId") int targetUserId);
 	
 }

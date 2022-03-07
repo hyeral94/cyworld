@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.somsom.cyworld.post.friendReview.bo.FriendReviewBO;
 import com.somsom.cyworld.post.friendReview.model.FriendReview;
@@ -19,20 +20,22 @@ import com.somsom.cyworld.post.friendReview.model.FriendReview;
 public class CyworldController {
 
 	@Autowired
-	private FriendReviewBO friendReivewBO;
+	private FriendReviewBO friendReviewBO;
 	
 	@GetMapping("/mini_home_view") 
-	public String miniHomeView(//@RequestParam("userId") int userId,
-			Model model,//model -> 최종 페이지에 쓰일 데이터를 view에 전달
+	public String miniHomeView(
+			@RequestParam("userId") int targetUserId,
+			Model model,
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
-//		String userName = (String)session.getAttribute("userName");
-//		String content = (String)session.getAttribute("content");
+
+		List<FriendReview> friendReviewList = friendReviewBO.getFriendReview(targetUserId);
 		
-		List<FriendReview> friendReviewList = friendReivewBO.getFriendReview(userId);
+		model.addAttribute("targetUserId", userId);
 		model.addAttribute("friendReviewList", friendReviewList);
+		
 		
 		return "main/miniHome";
 	}

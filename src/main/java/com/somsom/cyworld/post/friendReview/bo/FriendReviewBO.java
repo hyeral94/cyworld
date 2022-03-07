@@ -19,9 +19,9 @@ public class FriendReviewBO {
 		return friendReviewDAO.insertFriendReview(userId, userName, targetUserId, content);
 	}
 	
-	//입력한 일촌평 리스트 userId로 가져오기
-	public List<FriendReview> getFriendReview(int userId){
-		return friendReviewDAO.selectFriendReview();
+	//입력한 일촌평 리스트 targetUserId 로 가져오기
+	public List<FriendReview> getFriendReview(int targetUserId){
+		return friendReviewDAO.selectFriendReview(targetUserId);
 	
 	}
 }

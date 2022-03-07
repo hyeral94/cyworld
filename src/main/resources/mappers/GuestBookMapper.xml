@@ -10,6 +10,8 @@
  		INSERT INTO `user`
  		(
  			`userId`
+ 			, `userName`
+ 			, `targetUserId`
  			, `content`
  			, `createdAt`
  			, `updatedAt`
@@ -17,6 +19,8 @@
  		VALUES
  		(
  			#{userId}
+ 			, #{userName}
+ 			, #{targetUserId}
  			, #{content}
  			, now()
  			, now()

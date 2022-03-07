@@ -95,7 +95,7 @@
 
 	<script>
 		$(document).ready(function(){
-			
+		
 			$("#imgBtn").on("click", function() {
 				// fileInput 클릭 효과
 				$("#fileInput").click();
@@ -125,7 +125,7 @@
 				
 				$.ajax({
 					type:"post",
-					url:"/post/set_up/mini_home_introduce",
+					url:"/post/set_up/mini_home/introduce",
 					data:{"introduce":introduce, "userId":userId},
 					success:function(data) {
 						if(data.result == success){

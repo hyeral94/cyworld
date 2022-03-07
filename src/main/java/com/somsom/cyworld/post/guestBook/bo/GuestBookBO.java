@@ -11,7 +11,10 @@ public class GuestBookBO {
 	@Autowired
 	private GuestBookDAO guestBookDAO;
 
-	public int addGuestBook(int usedId, String content) {
-		return guestBookDAO.insertGuestBook(usedId, content);
+	// 방명록 입력
+	public int addGuestBook(int usedId, String userName, int targetUserId, String content) {
+		return guestBookDAO.insertGuestBook(usedId, userName, targetUserId, content);
 	}
+	
+	// 입력한 방명록 리스트 targetUserId로 가져오기
 }

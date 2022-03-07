@@ -21,16 +21,18 @@ public class GuestBookRestController {
 	@Autowired
 	private GuestBookBO guestBookBO;
 	
-	@PostMapping("/creste")
+	@PostMapping("/create")
 	public Map<String, String> guestBookCreate(
+			@RequestParam("userId") int targetUserId,
 			@RequestParam("content") String content,
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)request.getAttribute("userId");
+		String userName = (String)request.getAttribute("userName");
 		
-		int count = guestBookBO.addGuestBook(userId, content);
+		int count = guestBookBO.addGuestBook(userId, userName, targetUserId, content);
 		Map<String, String> result = new HashMap<>();
 		
 		if(count == 1) {
