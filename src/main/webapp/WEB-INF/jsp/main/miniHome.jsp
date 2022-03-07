@@ -81,25 +81,26 @@
 				</div>
 				
 				<!-- 일촌평 -->
-				<c:forEach var="friendReview" items="${friendReviewList }" >
+			
 				<div class="text-primary mt-3">what friends say~</div>
 				<hr>
-			 		<b>${friendReview.userName }</b> ${friendReview.content }
-			 	<div class="d-flex mt-3">
-			 			 	
+				<c:forEach var="friendReview" items="${friendReviewList }">
+					<b>${friendReview.userName }</b> ${friendReview.content }
+					
+				</c:forEach>			 			 	
 			 	<!-- 일촌평 -->
-			 	</c:forEach>
-			 				 	
-			 	<!-- 일촌평 입력 -->
-			 	<input type="text" class="form-control" style="width:700px; height:40px;" id="friendReviewInput">
-			 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" data-user-id="${userId}" id="friendReviewUploadBtn">확인</button>
+	
+				<!-- 일촌평 입력 -->
+			 	<div class="d-flex mt-3">		 	
+				 	<input type="text" class="form-control" style="width:700px; height:40px;" id="friendReviewInput${friendReview.userId }">
+				 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" data-user-id="${userId}" id="friendReviewUploadBtn${friendReview.userId }">확인</button>
 				</div>
 			</div>
 			
 		
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<button type="button" id="homeCategory" class="category btn" style="width:65px;"><a href="/main/mini_home_view?userId=${userId }" style="text-decoration-line: none; color: inherit;">홈</a></button>
+				<button type="button" id="homeCategory" class="category btn" style="width:65px;"><a href="/main/mini_home_view${friendReview.targetUserId }" style="text-decoration-line: none; color: inherit;">홈</a></button>
 				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;"><a href="/post/guest_book_view" style="text-decoration-line: none; color: inherit;">방명록</a></button>
 				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;"><a href="/post/set_up_view" style="text-decoration-line: none; color: inherit;">설정</a></button>
 			</div>
@@ -131,7 +132,7 @@
 					data:{"content":content, "targetUserId":userId},
 					success:function(data) {
 						if(data.result == "success"){
-							alert("성공");
+							location.reload();
 						}else {
 							alert("일촌평 등록 실패");
 						}

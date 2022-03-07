@@ -26,7 +26,14 @@
 				<h4 class="mt-5">박혜경님의 미니홈피</h4>
 			</div>
 			<div id="right-header" class="mt-5 pl-4">
-				<a href="#">로그아웃</a>
+				<c:choose>
+					<c:when test="${not empty userId }"> 
+						<a href="/user/sign_out">로그아웃</a>
+					</c:when>
+					<c:otherwise>
+						<a href="/user/signin_view">로그인</a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</header>
 
@@ -54,7 +61,9 @@
 			<div id="center-box" class="box-border">
 				
 				<!-- 방명록 쓰기 -->
-				<i class="bi bi-pencil-square" style="font-size: 30px;"></i>
+				<a class="text-dark" href="#" data-toggle="modal" data-target="#exampleModalCenter">
+					<i class="bi bi-pencil-square" style="font-size: 30px;"></i>
+				</a>
 				
 				<!--  작성자 -->
 				<div id="center-box-guest" class="d-flex mt-3 justify-content-between">
@@ -88,9 +97,9 @@
 			
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<button type="button" id="homeCategory" class="category btn" style="width:65px;">홈</button>
-				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;">방명록</button>
-				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;">설정</button>
+				<button type="button" id="homeCategory" class="category btn" style="width:65px;"><a href="/main/mini_home_view${friendReview.targetUserId }" style="text-decoration-line: none; color: inherit;">홈</a></button>
+				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;"><a href="/post/guest_book_view" style="text-decoration-line: none; color: inherit;">방명록</a></button>
+				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;"><a href="/post/set_up_view" style="text-decoration-line: none; color: inherit;">설정</a></button>
 			</div>
 			
 			
@@ -98,26 +107,27 @@
 	</div>
 	
 	<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	    
+	      <div class="modal-body justify-content-end">
+	        <textarea class="form-control" rows="4" cols="3" placeholder="방명록 남기기" id="guestBookInput"></textarea>
+	        <button type="button" class="btn btn-primary" id="guestBookUpload">확인</button>
+	      </div>
+	     	      			
+	    </div>
+	  </div>
+	</div>
 
 </body>
 
 	<script>
 		$(document).ready(function(){
-			
-			$("#homeCategory").on("click", function(){
 				
-				location.href="/main/mini_home_view";
-			});
 		
-			$("#guestBookCategory").on("click", function(){
-				
-				location.href="/post/guest_book_view";
-			});
-			
-			$("#setUpCategory").on("click", function(){
-				
-				location.href="/post/set_up_view";
-			});
 			
 		});
 	</script>

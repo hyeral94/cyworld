@@ -27,4 +27,19 @@
  		) 	
  	</insert>
  	
+ 	<select id="selectFriendReview" parameterType="String" resultType="com.somsom.cyworld.post.friendReview.model.FriendReview">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `targetUserId`
+ 			, `content`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`friendReview`
+		WHERE
+			`userId` = #{userId}
+ 	</select>
+ 	
  </mapper>
