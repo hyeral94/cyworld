@@ -5,9 +5,9 @@
  
  <mapper namespace="com.somsom.cyworld.post.guestBook.dao.GuestBookDAO">
  
- 	<!-- 방명록 쓰기 -->
+ 	<!-- 방명록 입력 -->
  	<insert id="insertGuestBook" parameterType="map">
- 		INSERT INTO `user`
+ 		INSERT INTO `guestBook`
  		(
  			`userId`
  			, `userName`
@@ -26,5 +26,20 @@
  			, now()
  		)
  	</insert>
+ 	
+ 	<select id="selectGuestBook" parameterType="int" resultType="com.somsom.cyworld.post.guestBook.model.GuestBook">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `targetUserId`
+ 			, `content`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`guestBook`
+		WHERE
+			`targetUserId` = #{targetUserId}
+ 	</select>
  	
  </mapper>

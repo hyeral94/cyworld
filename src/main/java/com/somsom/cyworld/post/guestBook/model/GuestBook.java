@@ -7,6 +7,7 @@ public class GuestBook {
 	private int id;
 	private int userId;
 	private String userName;
+	private int targetUserId;
 	private String content;
 	private Date createdAt;
 	private Date updatedAt;
@@ -29,6 +30,12 @@ public class GuestBook {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	public int getTargetUserId() {
+		return targetUserId;
+	}
+	public void setTargetUserId(int targetUserId) {
+		this.targetUserId = targetUserId;
+	}
 	public String getContent() {
 		return content;
 	}
@@ -47,6 +54,5 @@ public class GuestBook {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	
-	
+
 }

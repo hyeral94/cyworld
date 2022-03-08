@@ -81,9 +81,9 @@
 		
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<button type="button" id="homeCategory" class="category btn" style="width:65px;"><a href="/main/mini_home_view${friendReview.targetUserId }" style="text-decoration-line: none; color: inherit;">홈</a></button>
-				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;"><a href="/post/guest_book_view" style="text-decoration-line: none; color: inherit;">방명록</a></button>
-				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;"><a href="/post/set_up_view" style="text-decoration-line: none; color: inherit;">설정</a></button>
+				<div class="text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">홈</a></div>
+				<div class="text-center mt-3"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">방명록</a></div>
+				<div class="text-center mt-3"><a href="/post/set_up_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">설정</a></div>
 			</div>
 			
 		</section>	

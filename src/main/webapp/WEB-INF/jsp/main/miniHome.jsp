@@ -80,13 +80,12 @@
 				<img width="700" height="200" src="https://post-phinf.pstatic.net/MjAyMDA5MjNfMiAg/MDAxNjAwNzk1NzYyNDE1.6BRm3eV7dWSVqf8sANtOWbHbTY058eRWJkhbXcqTIecg.cZWbwCf3geMLG-DuP5od_MyEVq5ZeSUL1Ys0A7InRZUg.JPEG/attachImage_3201238540.jpeg?type=w1200">
 				</div>
 				
-				<!-- 일촌평 -->
-			
+				<!-- 일촌평 -->			
 				<div class="text-primary mt-3">what friends say~</div>
 				<hr>
 				<div id="friendReviewBox" style="overflow:auto; width:750px; height:110px;">
 					<c:forEach var="friendReview" items="${friendReviewList }">
-						<div><b>${friendReview.userName }</b> ${friendReview.content }</div>
+						<div><b><a href="#" style="text-decoration-line: none; color: inherit;"><i class="bi bi-house"></i> ${friendReview.userName }</a></b> &nbsp; ${friendReview.content }</div>
 					</c:forEach>
 	 			</div>	
 			 	<!-- 일촌평 -->
@@ -101,9 +100,9 @@
 		
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<button type="button" id="homeCategory" class="category btn" style="width:65px;"><a href="/main/mini_home_view${targetUserId}" style="text-decoration-line: none; color: inherit;">홈</a></button>
-				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;"><a href="/post/guest_book_view" style="text-decoration-line: none; color: inherit;">방명록</a></button>
-				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;"><a href="/post/set_up_view" style="text-decoration-line: none; color: inherit;">설정</a></button>
+				<div class="text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">홈</a></div>
+				<div class="text-center mt-3"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">방명록</a></div>
+				<div class="text-center mt-3"><a href="/post/set_up_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">설정</a></div>
 			</div>
 
 		</section>
@@ -119,7 +118,7 @@
 			//댓글 입력
 			$("#friendReviewUploadBtn").on("click", function(){
 				
-				var content = $("#friendReviewInput").val();
+				var content = $("#friendReviewInput").val(); // 입력한 일촌평
 				var userId = $(this).data("user-id");//현재 로그인한 미니홈피 주인
 		
 				if(content == null || content == ""){

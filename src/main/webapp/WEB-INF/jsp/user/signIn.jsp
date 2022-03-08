@@ -68,7 +68,7 @@
 					data:{"loginId":loginId, "password":password},
 					success:function(data) {
 						if(data.result == "success"){
-							location.href="/main/mini_home_view";
+							location.href="/main/mini_home_view?userId="+data.userId;
 						}else {
 							alert("아이디 또는 비밀번호가 일치하지 않습니다.");
 						}

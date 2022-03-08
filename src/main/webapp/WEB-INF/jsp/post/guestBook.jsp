@@ -65,41 +65,33 @@
 					<i class="bi bi-pencil-square" style="font-size: 30px;"></i>
 				</a>
 				
-				<!--  작성자 -->
-				<div id="center-box-guest" class="d-flex mt-3 justify-content-between">
-					<div class="ml-3">
-						No1. 박일촌 <i class="bi bi-house-door-fill text-warning" style="font-size: 20px;"></i>
-						(2022.02.28 21:20)
-					</div>
-					<div class="mt-1 text-dark mr-3"><a href="#" style="text-decoration:none">삭제</a></div>
-				</div>
+				<!--  작성자 : 입력 성공 시 d-none remove -->
+				<div class="d-none">
+					<div id="center-box-guest" class="d-flex mt-3 justify-content-between"> 
+						<div class="ml-3">
 				
-				<!--방명록 -->
-				<div id="guestbook-box" class="mt-2">
+			               	<c:forEach var="guestBook" items="${guestBookList }">
+			                  ${guestBook.id } ${guestBookList.userName }<i class="bi bi-house-door-fill text-warning" style="font-size: 20px;"></i>
+			                  ${guestBook.createdAt }
+			               
+			              	</c:forEach>
+		          
+						</div>
+						<div class="mt-1 text-dark mr-3"><a href="#" style="text-decoration:none">삭제</a></div>
+					</div>
+				</div>
+				<!--방명록 내용 입력 성공 시 d-none remove -->
+				<div id="guestbook-box" class="d-none mt-2">
 					우리 언제 만나ㅠㅠㅠㅠㅠ
 				</div>
-				
-				<!--  작성자 -->
-				<div id="center-box-guest" class="d-flex mt-3 justify-content-between">
-					<div class="ml-3">
-						No1. 박일촌 <i class="bi bi-house-door-fill text-warning" style="font-size: 20px;"></i>
-						(2022.02.28 21:20)
-					</div>
-					<div class="mt-1 text-dark mr-3"><a href="#" style="text-decoration:none">삭제</a></div>
-				</div>
-				
-				<!--방명록 -->
-				<div id="guestbook-box" class="mt-2">
-					우리 언제 만나ㅠㅠㅠㅠㅠ
-				</div>
-				
+	
 			</div>
 			
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<button type="button" id="homeCategory" class="category btn" style="width:65px;"><a href="/main/mini_home_view${friendReview.targetUserId }" style="text-decoration-line: none; color: inherit;">홈</a></button>
-				<button type="button" id="guestBookCategory" class="category btn mt-3" style="width:65px;"><a href="/post/guest_book_view" style="text-decoration-line: none; color: inherit;">방명록</a></button>
-				<button type="button" id="setUpCategory" class="category btn mt-3" style="width:65px;"><a href="/post/set_up_view" style="text-decoration-line: none; color: inherit;">설정</a></button>
+				<div class="text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">홈</a></div>
+				<div class="text-center mt-3"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">방명록</a></div>
+				<div class="text-center mt-3"><a href="/post/set_up_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">설정</a></div>
 			</div>
 			
 			
@@ -115,7 +107,7 @@
 	    
 	      <div class="modal-body justify-content-end">
 	        <textarea class="form-control" rows="4" cols="3" placeholder="방명록 남기기" id="guestBookInput"></textarea>
-	        <button type="button" class="btn btn-primary" id="guestBookUpload">확인</button>
+	        <button type="button" class="btn btn-primary" data-user-id="${targetUserId}" id="guestBookUploadBtn">확인</button>
 	      </div>
 	     	      			
 	    </div>
@@ -127,6 +119,32 @@
 	<script>
 		$(document).ready(function(){
 				
+			$("#guestBookUploadBtn").on("click", function(){
+	
+				var content = $("#guestBookInput").val(); //입력한 방명록
+				var userId = $(this).data("user-id"); // 현재 로그인 한 미니홈피 주인
+				
+				if(content == null || content == ""){
+					alert("내용을 입력하세요.");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/post/guest_book/create",
+					data:{"content":content,"targetUserId":userId},
+					success:function(data) {
+						if(data.result == "success"){
+							alert("성공");
+						}else {
+							alert("방명록 쓰기 실패");
+						}
+					},
+					error:function() {
+						alert("방명록 쓰기 에러");
+					}
+				});
+			});
 		
 			
 		});

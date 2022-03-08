@@ -31,7 +31,7 @@ public class FriendReviewRestController {
 		
 		int userId = (Integer)session.getAttribute("userId");//일촌평 작성자 Id
 		String userName = (String)session.getAttribute("userName");//일촌평 작성자 name
-		
+
 		int count = friendReviewBO.addFriendReview(userId, userName, targetUserId, content);
 		
 		Map<String, String> result = new HashMap<>();

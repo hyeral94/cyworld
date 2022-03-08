@@ -5,9 +5,9 @@ import java.util.Date;
 public class FriendReview {
 	
 	private int id;
-	private int postId;
 	private int userId;
 	private String userName;
+	private int targetUserId;
 	private String content;
 	private Date createdAt;
 	private Date updatedAt;
@@ -17,12 +17,6 @@ public class FriendReview {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getPostId() {
-		return postId;
-	}
-	public void setPostId(int postId) {
-		this.postId = postId;
 	}
 	public int getUserId() {
 		return userId;
@@ -35,6 +29,12 @@ public class FriendReview {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public int getTargetUserId() {
+		return targetUserId;
+	}
+	public void setTargetUserId(int targetUserId) {
+		this.targetUserId = targetUserId;
 	}
 	public String getContent() {
 		return content;
@@ -55,5 +55,6 @@ public class FriendReview {
 		this.updatedAt = updatedAt;
 	}
 	
+
 	
 }

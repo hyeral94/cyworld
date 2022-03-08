@@ -60,17 +60,18 @@ public class UserRestController {
 	
 	//로그인
 	@PostMapping("/sign_in")
-	public Map<String, String> signIn(
+	public Map<String, Object> signIn(
 			@RequestParam("loginId") String loginId,
 			@RequestParam("password") String password,
 			HttpServletRequest request) {
 		
 		User user = userBO.loginUser(loginId, password);
 		
-		Map<String, String> result = new HashMap<>();
+		Map<String, Object> result = new HashMap<>();
 		
 		if(user != null) {
 			result.put("result", "success");
+			result.put("userId", user.getId());
 			
 			HttpSession session = request.getSession();
 
