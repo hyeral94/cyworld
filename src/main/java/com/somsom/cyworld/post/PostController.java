@@ -31,6 +31,7 @@ public class PostController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
+		
 		List<GuestBook> guestBookList = guestBookBO.getGuestBookList(targetUserId);
 		
 		model.addAttribute("guestBookList", guestBookList);

@@ -80,15 +80,25 @@
 				<img width="700" height="200" src="https://post-phinf.pstatic.net/MjAyMDA5MjNfMiAg/MDAxNjAwNzk1NzYyNDE1.6BRm3eV7dWSVqf8sANtOWbHbTY058eRWJkhbXcqTIecg.cZWbwCf3geMLG-DuP5od_MyEVq5ZeSUL1Ys0A7InRZUg.JPEG/attachImage_3201238540.jpeg?type=w1200">
 				</div>
 				
-				<!-- 일촌평 -->			
+				<!-- 일촌평 리스트 -->			
 				<div class="text-primary mt-3">what friends say~</div>
 				<hr>
 				<div id="friendReviewBox" style="overflow:auto; width:750px; height:110px;">
 					<c:forEach var="friendReview" items="${friendReviewList }">
-						<div><b><a href="#" style="text-decoration-line: none; color: inherit;"><i class="bi bi-house"></i> ${friendReview.userName }</a></b> &nbsp; ${friendReview.content }</div>
+					
+					<div class="d-flex justify-content-between" id="friendReviewDelete" data-friend-user="${friendReview.userId }">
+						<!-- 일촌평 작성자 정보  -->
+						<div><b><a href="/main/mini_home_view?userId=${friendReview.userId}" style="text-decoration-line:none; color:inherit;"><i class="bi bi-house"></i> ${friendReview.userName }</a></b> &nbsp; ${friendReview.content }</div>
+						<!-- 일촌평 작성자 정보  -->
+						
+						<!-- 일촌평 삭제 -->
+						<div id="friendReviewDeleteBtn"><a href="#" style="text-decoration-line:none; color:inherit;" class="text-white">삭제</a></div>
+						<!-- 일촌평 삭제 -->					
+					</div>
+					
 					</c:forEach>
 	 			</div>	
-			 	<!-- 일촌평 -->
+			 	<!-- 일촌평 리스트 -->
 	
 				<!-- 일촌평 입력 -->
 			 	<div class="d-flex mt-3">		 	
@@ -100,9 +110,9 @@
 		
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<div class="text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">홈</a></div>
-				<div class="text-center mt-3"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">방명록</a></div>
-				<div class="text-center mt-3"><a href="/post/set_up_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">설정</a></div>
+				<div class="side-box-border text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/set_up_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
 			</div>
 
 		</section>
@@ -140,6 +150,29 @@
 					error:function() {
 						alert("일촌평 등록 에러");
 					}
+				});
+			});
+			
+			$("#friendReviewDeleteBtn").on("click", function(){
+				
+				var userId = $(this).data("friend-user"); //일촌평 작성자
+				
+				$.ajax({
+					type:"get",
+					url:"/post/friend_review/delete",
+					data:{"userId":userId},
+					success:function(data) {
+						if(data.result == "success"){
+							location.reload();
+						}else {
+							alert("일촌평 삭제 실패");
+						}
+					},
+					error:function() {
+						alert("일촌평 삭제 에러");
+					}
+						
+					
 				});
 			});
 			

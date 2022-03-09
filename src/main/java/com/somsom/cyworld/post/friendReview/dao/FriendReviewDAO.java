@@ -18,4 +18,5 @@ public interface FriendReviewDAO {
 	
 	public List<FriendReview> selectFriendReview(@Param("targetUserId") int targetUserId);
 	
+	public int deleteFriendReview(@Param("userId") int userId);
 }

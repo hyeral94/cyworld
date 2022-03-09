@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>      
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,40 +60,45 @@
 			
 			<!-- 방명록 -->
 			<div id="center-box" class="box-border">
-				
-				<!-- 방명록 쓰기 -->
-				<a class="text-dark" href="#" data-toggle="modal" data-target="#exampleModalCenter">
-					<i class="bi bi-pencil-square" style="font-size: 30px;"></i>
-				</a>
-				
-				<!--  작성자 : 입력 성공 시 d-none remove -->
-				<div class="d-none">
-					<div id="center-box-guest" class="d-flex mt-3 justify-content-between"> 
-						<div class="ml-3">
-				
-			               	<c:forEach var="guestBook" items="${guestBookList }">
-			                  ${guestBook.id } ${guestBookList.userName }<i class="bi bi-house-door-fill text-warning" style="font-size: 20px;"></i>
-			                  ${guestBook.createdAt }
-			               
-			              	</c:forEach>
-		          
-						</div>
-						<div class="mt-1 text-dark mr-3"><a href="#" style="text-decoration:none">삭제</a></div>
-					</div>
-				</div>
-				<!--방명록 내용 입력 성공 시 d-none remove -->
-				<div id="guestbook-box" class="d-none mt-2">
-					우리 언제 만나ㅠㅠㅠㅠㅠ
-				</div>
 	
+			<!-- 방명록 쓰기 -->
+			<a class="text-dark" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-pencil-square" style="font-size: 30px;"></i></a>
+			
+
+			<!-- 방명록 입력 성공 시 d-none -->
+			<div id="guestListBox" class="mt-3" style="overflow:auto; width:750px; height:550px;">
+				
+				<c:forEach var="guestBook" items="${guestBookList }">
+				<!-- 방명록 작성자 정보 -->
+				<div style="width:750px; height:30px; background-color:#FAECC5;">
+					No. ${guestBook.id } <a href="#" style="text-decoration-line: none; color: inherit;"><b>${guestBook.userName }</b></a> 
+					(<fmt:formatDate value="${guestBook.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" />)
+					
+					<!-- 방명록 삭제 -->
+					<a href="#" style="text-decoration-line: none; color: inherit;" class="text-right">삭제</a>
+				</div>
+
+				<!-- 방명록 작성 내용 -->
+
+				<div id="guestbook-box">
+					${guestBook.content }
+				</div>
+
+				<!-- 방명록 사이 여백 --><div class=mt-3></div><!-- 방명록 사이 여백 -->
+				</c:forEach>
 			</div>
+			
+
+			</div>
+			<!-- 방명록 -->
 			
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<div class="text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">홈</a></div>
-				<div class="text-center mt-3"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">방명록</a></div>
-				<div class="text-center mt-3"><a href="/post/set_up_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">설정</a></div>
+				<div class="side-box-border text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/set_up_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
 			</div>
+			<!-- 카테고리 -->
 			
 			
 		</section>
@@ -135,7 +141,8 @@
 					data:{"content":content,"targetUserId":userId},
 					success:function(data) {
 						if(data.result == "success"){
-							alert("성공");
+							$("#guestList").removeClass("d-none");
+							location.reload();
 						}else {
 							alert("방명록 쓰기 실패");
 						}

@@ -56,7 +56,14 @@ header > #login-logo {
 .box-border {
   background-color: white;
   border: 2px solid #D5D5D5;
-  padding:30px
+  padding:30px;
+}
+
+.side-box-border {
+  background-color: white;
+  border: 2px solid #D5D5D5;
+  width:70px;
+  height:40px;
 }
 
 #left-box {
@@ -69,12 +76,6 @@ header > #login-logo {
 	width:800px;
 	height:650px;
 	margin-left:1%;
-}
-
-#center-box-guest {
-	width:750px;
-	height:30px;
-	background-color:#EAEAEA;
 }
 
 #right-box {
@@ -110,4 +111,13 @@ header > #login-logo {
 #friendReviewBox {
 	height:110px;
 	width:700px;
+}
+
+#friendReviewDelete:hover{
+	background-color:#D5D5D5;
+}
+
+#guestListBox{
+	height:550px;
+	width:750px;
 }

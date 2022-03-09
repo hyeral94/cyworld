@@ -27,6 +27,7 @@
  		)
  	</insert>
  	
+ 	<!-- 방명록 리스트  -->
  	<select id="selectGuestBook" parameterType="int" resultType="com.somsom.cyworld.post.guestBook.model.GuestBook">
  		SELECT 
 			`id`

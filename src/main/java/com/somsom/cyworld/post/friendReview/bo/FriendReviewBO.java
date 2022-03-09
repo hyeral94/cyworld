@@ -24,6 +24,11 @@ public class FriendReviewBO {
 		return friendReviewDAO.selectFriendReview(targetUserId);
 	
 	}
+	
+	//일촌평 삭제
+	public int deleteFriendReview(int userId) {
+		return friendReviewDAO.deleteFriendReview(userId);
+	}
 }
 
 

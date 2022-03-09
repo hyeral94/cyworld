@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ public class FriendReviewRestController {
 	@Autowired
 	private FriendReviewBO friendReviewBO;
 	
+	//일촌평 작성
 	@PostMapping("/create")
 	public Map<String, String> friendReviewCreate(
 			@RequestParam("content") String content,
@@ -44,5 +46,26 @@ public class FriendReviewRestController {
 		
 		return result;
 		
+	}
+	
+	//일촌평 삭제
+	@GetMapping("/delete")
+	public Map<String, String> friendReviewDelete(
+			@RequestParam("userId") int userId,//일촌평 작성자
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int targetUserId = (Integer)session.getAttribute("targetUserId"); //내가 일촌평을 남긴 미니홈피 주인
+		
+		int count = friendReviewBO.deleteFriendReview(targetUserId);
+		
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		return result;
 	}
 }

@@ -27,7 +27,9 @@
  		) 	
  	</insert>
  	
- 	<select id="selectFriendReview" parameterType="int" resultType="com.somsom.cyworld.post.friendReview.model.FriendReview">
+ 	<!-- 작성된 일촌평 리스트 가져오기 -->
+ 	<select id="selectFriendReview" parameterType="int" 
+ 	resultType="com.somsom.cyworld.post.friendReview.model.FriendReview">
  		SELECT 
 			`id`
 			, `userId`
@@ -40,6 +42,14 @@
 			`friendReview`
 		WHERE
 			`targetUserId` = #{targetUserId}
- 	</select>
+ 	</select>				
+ 	
+ 	<!-- 일촌평 삭제 -->
+ 	<delete id="deleteFriendReview" parameterType="int">
+		DELETE FROM
+			`friendReview`
+		WHERE
+			`userId` = #{userId}
+ 	</delete>
  	
  </mapper>
