@@ -70,20 +70,24 @@
 				
 				<c:forEach var="guestBook" items="${guestBookList }">
 				<!-- 방명록 작성자 정보 -->
-				<div style="width:750px; height:30px; background-color:#FAECC5;">
-					No. ${guestBook.id } <a href="#" style="text-decoration-line: none; color: inherit;"><b>${guestBook.userName }</b></a> 
-					(<fmt:formatDate value="${guestBook.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" />)
+				<div style="width:700px; height:30px; background-color:#FAECC5;">
+					<div class="d-flex justify-content-between">				
+						<div> No. ${guestBook.id } <a href="#" style="text-decoration-line: none; color: inherit;"><b>${guestBook.userName }</b></a> 
+	               		(<fmt:formatDate value="${guestBook.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" />)</div>
 					
-					<!-- 방명록 삭제 -->
-					<a href="#" style="text-decoration-line: none; color: inherit;" class="text-right">삭제</a>
+						<!-- 방명록 삭제 -->
+						<div><a href="#" style="text-decoration-line: none; color: inherit;">삭제</a></div>
+						<!-- 방명록 삭제 -->					
+					</div>
 				</div>
-
+				<!-- 방명록 작성자 정보 -->
+		
 				<!-- 방명록 작성 내용 -->
-
 				<div id="guestbook-box">
 					${guestBook.content }
 				</div>
-
+				<!-- 방명록 작성 내용 -->
+				
 				<!-- 방명록 사이 여백 --><div class=mt-3></div><!-- 방명록 사이 여백 -->
 				</c:forEach>
 			</div>

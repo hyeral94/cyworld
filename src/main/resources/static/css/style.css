@@ -85,6 +85,11 @@ header > #login-logo {
 	margin-left:0%;
 }
 
+#uploadNews{
+	height:110px;
+	width:700px;
+}
+
 .mini-room{
 	max-height:190px;
 	overflow:hidden	
@@ -93,19 +98,6 @@ header > #login-logo {
 .mini-room img{
 	max-height:initial;
 	margin-top:-4%;
-}
-
-.category {
-	width:65px;
-	height:50px;
-	border: 2px solid white;
-}
-
-#guestbook-box {
-  background-color: white;
-  border: 2px solid #D5D5D5;
-  padding:30px;
-  width:750px;
 }
 
 #friendReviewBox {
@@ -117,7 +109,20 @@ header > #login-logo {
 	background-color:#D5D5D5;
 }
 
+#guestbook-box {
+  background-color: white;
+  border: 2px solid #D5D5D5;
+  padding:30px;
+  width:700px;
+}
+
 #guestListBox{
 	height:550px;
-	width:750px;
+	width:700px;
+}
+
+.category {
+	width:65px;
+	height:50px;
+	border: 2px solid white;
 }

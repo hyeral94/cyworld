@@ -57,7 +57,7 @@ public class FriendReviewRestController {
 		HttpSession session = request.getSession();
 		int targetUserId = (Integer)session.getAttribute("targetUserId"); //내가 일촌평을 남긴 미니홈피 주인
 		
-		int count = friendReviewBO.deleteFriendReview(targetUserId);
+		int count = friendReviewBO.deleteFriendReview(userId, targetUserId);
 		
 		Map<String, String> result = new HashMap<>();
 		

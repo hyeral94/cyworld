@@ -52,4 +52,21 @@
 			`userId` = #{userId}
  	</delete>
  	
+ 	<!-- 일촌평 삭제 -->	
+	<select id="selectFriendReviewDelete" parameterType="int" 
+	resultType="com.somsom.cyworld.post.friendReview.model.FriendReview">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `targetUserId`
+ 			, `content`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`friendReview`
+		WHERE
+			`userId` = #{userId}
+	</select>
+ 	
  </mapper>

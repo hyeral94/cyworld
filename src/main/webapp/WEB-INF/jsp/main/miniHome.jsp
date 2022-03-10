@@ -65,11 +65,8 @@
 				<div id="uploadNews">
 					<div class="text-primary">upload news</div>
 					<hr>
-					<div>
-					<small>
-						-제주도 여행 갔다 왔어요!<br>
-						-코로나 언제 끝나냐...<br>
-						-피부과 다녀온 후기</small>
+					<div style="overflow:auto; width:750px; height:110px;">
+					<small>z</small>
 					</div>
 				</div>
 				
