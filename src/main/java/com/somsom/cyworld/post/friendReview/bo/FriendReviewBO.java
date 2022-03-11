@@ -26,15 +26,15 @@ public class FriendReviewBO {
 	}
 	
 	//일촌평 삭제
-	public int deleteFriendReview(int userId, int targetUserId) {
+	public int deleteFriendReview(int id, int targetUserId) {
 		
-		FriendReview friendReview = friendReviewDAO.selectFriendReviewDelete(userId);
+		FriendReview friendReview = friendReviewDAO.selectFriendReviewDelete(id);
 		
 		if(friendReview.getTargetUserId() != targetUserId) {
 			return 0;
 		}
 		
-		return friendReviewDAO.deleteFriendReview(userId);
+		return friendReviewDAO.deleteFriendReview(id);
 	}
 	
 }

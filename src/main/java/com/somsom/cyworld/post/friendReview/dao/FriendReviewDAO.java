@@ -19,8 +19,8 @@ public interface FriendReviewDAO {
 	public List<FriendReview> selectFriendReview(@Param("targetUserId") int targetUserId);
 	
 	//일촌평 삭제
-	public int deleteFriendReview(@Param("userId") int userId);
+	public int deleteFriendReview(@Param("id") int id);
 	
-	public FriendReview selectFriendReviewDelete(@Param("userId") int userId);
+	public FriendReview selectFriendReviewDelete(@Param("id") int id);
 
 }

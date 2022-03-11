@@ -83,13 +83,13 @@
 				<div id="friendReviewBox" style="overflow:auto; width:750px; height:110px;">
 					<c:forEach var="friendReview" items="${friendReviewList }">
 					
-					<div class="d-flex justify-content-between" id="friendReviewDelete" data-friend-user="${friendReview.userId }">
+					<div class="d-flex justify-content-between" id="friendReviewDelete">
 						<!-- 일촌평 작성자 정보  -->
 						<div><b><a href="/main/mini_home_view?userId=${friendReview.userId}" style="text-decoration-line:none; color:inherit;"><i class="bi bi-house"></i> ${friendReview.userName }</a></b> &nbsp; ${friendReview.content }</div>
 						<!-- 일촌평 작성자 정보  -->
 						
 						<!-- 일촌평 삭제 -->
-						<div id="friendReviewDeleteBtn"><a href="#" style="text-decoration-line:none; color:inherit;" class="text-white">삭제</a></div>
+						<div id="friendReviewDeleteBtn" data-friend-id="${friendReview.id }"><a href="#" style="text-decoration-line:none; color:inherit;" class="text-white">삭제</a></div>
 						<!-- 일촌평 삭제 -->					
 					</div>
 					
@@ -152,15 +152,15 @@
 			
 			$("#friendReviewDeleteBtn").on("click", function(){
 				
-				var userId = $(this).data("friend-user"); //일촌평 작성자
+				var id = $(this).data("friend-id"); //일촌평 작성자
 				
 				$.ajax({
 					type:"get",
 					url:"/post/friend_review/delete",
-					data:{"userId":userId},
+					data:{"id":id},
 					success:function(data) {
 						if(data.result == "success"){
-							location.reload();
+							alert("삭제성공");
 						}else {
 							alert("일촌평 삭제 실패");
 						}

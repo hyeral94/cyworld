@@ -51,13 +51,13 @@ public class FriendReviewRestController {
 	//일촌평 삭제
 	@GetMapping("/delete")
 	public Map<String, String> friendReviewDelete(
-			@RequestParam("userId") int userId,//일촌평 작성자
+			@RequestParam("id") int id,//작성된 일촌평의 id를 기준으로 삭제
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int targetUserId = (Integer)session.getAttribute("targetUserId"); //내가 일촌평을 남긴 미니홈피 주인
 		
-		int count = friendReviewBO.deleteFriendReview(userId, targetUserId);
+		int count = friendReviewBO.deleteFriendReview(id, targetUserId);
 		
 		Map<String, String> result = new HashMap<>();
 		

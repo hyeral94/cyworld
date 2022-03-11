@@ -19,4 +19,8 @@ public interface GuestBookDAO {
 	
 	public List<GuestBook> selectGuestBook(@Param("targetUserId") int targetUserId);
 	
+	// 방명록 삭제
+	public int deleteGuestBook(@Param("id") int id);
+	
+	public GuestBook selectGuestBookDelete(@Param("id") int id);
 }

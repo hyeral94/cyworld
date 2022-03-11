@@ -45,4 +45,15 @@ public class GuestBookRestController {
 		return result;
 		
 	}
+	
+	//방명록 삭제
+	@PostMapping("/delete")
+	public Map<String, String> guestBookDelete(
+			@RequestParam("id") int id,
+			HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		
+		int targetUserId = (Integer)session.getAttribute(targetUserId);
+	}
 }

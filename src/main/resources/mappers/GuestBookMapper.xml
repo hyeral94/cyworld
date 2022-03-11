@@ -43,4 +43,29 @@
 			`targetUserId` = #{targetUserId}
  	</select>
  	
+ 	<!-- 방명록 삭제 -->
+ 	<delete id="deleteGuestBook" parameterType="int">
+ 		DELETE FROM
+ 			`guestBook`
+ 		WHERE
+ 			`id` = #{id}	
+ 	</delete>
+ 	
+ 	<!-- 방명록 삭제 -->
+ 	<select id="selectGuestBookDelete" parameterType="int"
+ 	resultType="com.somsom.cyworld.post.guestBook.model.GuestBook">
+ 			SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `targetUserId`
+ 			, `content`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`guestBook`
+		WHERE
+			`id` = #{id} 
+ 	</select>
+ 	
  </mapper>

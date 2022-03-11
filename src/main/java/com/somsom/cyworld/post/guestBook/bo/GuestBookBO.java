@@ -23,4 +23,17 @@ public class GuestBookBO {
 	public List<GuestBook> getGuestBookList(int targetUserId){
 		return guestBookDAO.selectGuestBook(targetUserId);
 	}
+	
+	// 방명록 삭제
+	public int deleteGuestBook(int id, int targetUserId) {
+		
+		GuestBook guestBook = guestBookDAO.selectGuestBookDelete(id);
+		
+		if(guestBook.getTargetUserId() != targetUserId) {
+			return 0;
+		}
+		
+		return guestBookDAO.deleteGuestBook(id);
+	}
+	
 }
