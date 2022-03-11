@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.somsom.cyworld.post.friendReview.bo.FriendReviewBO;
+import com.somsom.cyworld.post.friendReview.model.FriendReview;
+import com.somsom.cyworld.user.model.User;
 
 @RequestMapping("/post/friend_review")
 @RestController
@@ -51,21 +53,26 @@ public class FriendReviewRestController {
 	//일촌평 삭제
 	@GetMapping("/delete")
 	public Map<String, String> friendReviewDelete(
-			@RequestParam("id") int id,//작성된 일촌평의 id를 기준으로 삭제
+			@RequestParam("id") int id,
 			HttpServletRequest request) {
-		
+
 		HttpSession session = request.getSession();
-		int targetUserId = (Integer)session.getAttribute("targetUserId"); //내가 일촌평을 남긴 미니홈피 주인
 		
-		int count = friendReviewBO.deleteFriendReview(id, targetUserId);
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = friendReviewBO.deleteFriendReview(id, userId);
 		
 		Map<String, String> result = new HashMap<>();
 		
 		if(count == 1) {
 			result.put("result", "success");
+		
 		}else {
-			result.put("result", "fail");
+			result.put("reuslt", "fail");
 		}
 		return result;
+		
+
+
 	}
 }

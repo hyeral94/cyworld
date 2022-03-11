@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,15 +46,27 @@ public class GuestBookRestController {
 		return result;
 		
 	}
-	
+
 	//방명록 삭제
-	@PostMapping("/delete")
+	@GetMapping("/delete")
 	public Map<String, String> guestBookDelete(
 			@RequestParam("id") int id,
-			HttpServletRequest request){
+			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
-		int targetUserId = (Integer)session.getAttribute(targetUserId);
+		int userId = (Integer)session.getAttribute("userId");//방명록 작성자 userId
+		
+		int count = guestBookBO.deleteGuestBook(id, userId);
+		Map<String, String> result= new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
 	}
+	
 }

@@ -25,11 +25,11 @@ public class GuestBookBO {
 	}
 	
 	// 방명록 삭제
-	public int deleteGuestBook(int id, int targetUserId) {
+	public int deleteGuestBook(int id, int userId) {
 		
 		GuestBook guestBook = guestBookDAO.selectGuestBookDelete(id);
 		
-		if(guestBook.getTargetUserId() != targetUserId) {
+		if(guestBook.getUserId() != userId) {
 			return 0;
 		}
 		

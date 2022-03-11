@@ -160,7 +160,7 @@
 					data:{"id":id},
 					success:function(data) {
 						if(data.result == "success"){
-							alert("삭제성공");
+							location.reload();
 						}else {
 							alert("일촌평 삭제 실패");
 						}

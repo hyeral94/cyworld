@@ -22,5 +22,5 @@ public interface FriendReviewDAO {
 	public int deleteFriendReview(@Param("id") int id);
 	
 	public FriendReview selectFriendReviewDelete(@Param("id") int id);
-
+	
 }

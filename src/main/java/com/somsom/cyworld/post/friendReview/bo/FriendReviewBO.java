@@ -26,11 +26,11 @@ public class FriendReviewBO {
 	}
 	
 	//일촌평 삭제
-	public int deleteFriendReview(int id, int targetUserId) {
+	public int deleteFriendReview(int id, int userId) {
 		
 		FriendReview friendReview = friendReviewDAO.selectFriendReviewDelete(id);
 		
-		if(friendReview.getTargetUserId() != targetUserId) {
+		if(friendReview.getUserId() != userId) {
 			return 0;
 		}
 		

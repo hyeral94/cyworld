@@ -44,19 +44,19 @@
 			`targetUserId` = #{targetUserId}
  	</select>				
  	
- 	<!-- 일촌평 삭제 -->
+	<!-- 일촌평 삭제 -->
  	<delete id="deleteFriendReview" parameterType="int">
-		DELETE FROM
-			`friendReview`
-		WHERE
-			`id` = #{id}
+ 		DELETE FROM
+ 			`friendReview`
+ 		WHERE
+ 			`id` = #{id}
  	</delete>
  	
- 	<!-- 일촌평 삭제 -->	
-	<select id="selectFriendReviewDelete" parameterType="int" 
-	resultType="com.somsom.cyworld.post.friendReview.model.FriendReview">
+ 	<!-- 일촌평 삭제 -->
+ 	<select id="selectFriendReviewDelete" parameterType="int"
+ 	resultType="com.somsom.cyworld.post.friendReview.model.FriendReview">
  		SELECT 
-			`id`
+ 			`id`
 			, `userId`
  			, `userName`
  			, `targetUserId`
@@ -67,6 +67,5 @@
 			`friendReview`
 		WHERE
 			`id` = #{id}
-	</select>
- 	
+ 	</select>
  </mapper>
