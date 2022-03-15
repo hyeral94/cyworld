@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
+import com.somsom.cyworld.post.setting.bo.SettingBO;
+import com.somsom.cyworld.post.setting.model.Setting;
 
 @RequestMapping("/post")
 @Controller
@@ -21,6 +23,9 @@ public class PostController {
 	
 	@Autowired
 	private GuestBookBO guestBookBO;
+	
+	@Autowired
+	private SettingBO settingBO;
 
 	@GetMapping("/guest_book_view")
 	public String guestBookView(
@@ -38,6 +43,21 @@ public class PostController {
 		model.addAttribute("targetUserId", userId);
 		
 		return "post/guestBook";
+		
+	}
+	
+	@GetMapping("/setting_view")
+	public String settingView(
+			@RequestParam("userId") int userId,
+			Model model,
+			HttpServletRequest request) {
+		
+		List<Setting> settingList = settingBO.getSettingList(userId);
+		
+		model.addAttribute("userId", userId);
+		model.addAttribute("settingList", settingList);
+		
+		return "post/setting";
 		
 	}
 	

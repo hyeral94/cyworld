@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.somsom.cyworld.post.setting.dao.SettingDAO">
+ 
+ 	<!-- 자기소개, 프로필 사진, 오늘의 기분, 인사말 등록 -->
+ 	<insert id="insertSetting" parameterType="map">
+ 		INSERT INTO `setting`
+ 		(
+ 			`userId`
+ 			, `introduce`
+ 			, `motion`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{userId}
+ 			, #{introduce}
+ 			, #{motion}
+ 			, #{content}
+ 			, #{imagePath}
+ 			, now()
+ 			, now()
+ 		)
+ 	</insert>
+ 	
+ 	<!-- 설정한 값 리스트로 가져옥 -->
+ 	<select id="selectSetting" parameterType="int" resultType="com.somsom.cyworld.post.setting.model.Setting">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `introduce`
+ 			, `motion`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`setting`
+		WHERE
+			`userId` = #{userId}
+ 	</select>
+ 	
+ </mapper>
