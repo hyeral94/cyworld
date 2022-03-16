@@ -109,7 +109,7 @@
 			<div id="right-box">
 				<div class="side-box-border text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
 				<div class="side-box-border text-center mt-1"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
-				<div class="side-box-border text-center mt-1"><a href="/post/set_up_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/setting_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
 			</div>
 
 		</section>

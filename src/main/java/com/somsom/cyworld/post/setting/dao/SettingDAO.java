@@ -11,11 +11,17 @@ import com.somsom.cyworld.post.setting.model.Setting;
 public interface SettingDAO {
 
 	public int insertSetting(
+			@Param("targetUserId") int targetUserId,
 			@Param("userId") int userId,
 			@Param("introduce") String introduce,
 			@Param("motion") String motion,
 			@Param("content") String content,
 			@Param("imagePath") String imagePath);
 	
-	public List<Setting> selectSetting(@Param("userId") int userId);
+	public int insertIntroduceSetting(
+			@Param("targetUserId") int targetUserId,
+			@Param("userId") int userId,
+			@Param("introduce") String introduce);
+	
+	public List<Setting> selectSetting(@Param("targetUserId") int targetUserId);
 }

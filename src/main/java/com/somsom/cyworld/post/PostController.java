@@ -48,13 +48,16 @@ public class PostController {
 	
 	@GetMapping("/setting_view")
 	public String settingView(
-			@RequestParam("userId") int userId,
+			@RequestParam("userId") int targetUserId,
 			Model model,
 			HttpServletRequest request) {
 		
-		List<Setting> settingList = settingBO.getSettingList(userId);
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
 		
-		model.addAttribute("userId", userId);
+		List<Setting> settingList = settingBO.getSettingList(targetUserId);
+		
+		model.addAttribute("targetUserId", userId);
 		model.addAttribute("settingList", settingList);
 		
 		return "post/setting";

@@ -21,19 +21,42 @@ public class SettingRestController {
 	@Autowired
 	private SettingBO settingBO;
 	
-	@PostMapping
-	public Map<String, String> settingUpload(
+	@PostMapping("/up_load")
+	public Map<String, String> setting(
+			@RequestParam("targetUserId") int targetUserId,
 			@RequestParam("introduce") String introduce,
 			@RequestParam("motion") String motion,
 			@RequestParam("content") String content,
-			@RequestParam(value="file", required=false) MultipartFile file,
+			@RequestParam("imagePath") String imagePath,
 			HttpServletRequest request){
 			
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = settingBO.addSetting(userId, introduce, motion, content, content);
+		int count = settingBO.addSetting(targetUserId, userId, introduce, motion, content, imagePath);
+		Map<String, String> result = new HashMap<>();
+	
+		if(count == 1) {
+			result.put("result", "success");
+		}else{
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
+	
+	@PostMapping("/introduce/up_load")
+	public Map<String, String> introduceSetting(
+			@RequestParam("targetUserId") int targetUserId,
+			@RequestParam("introduce") String introduce,
+			HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		
+		int userId = (Integer)session.getAttribute("userId");
+		
+		int count = settingBO.addIntroduceSetting(targetUserId, userId, introduce);
 		Map<String, String> result = new HashMap<>();
 	
 		if(count == 1) {

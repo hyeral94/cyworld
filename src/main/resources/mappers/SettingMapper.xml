@@ -9,7 +9,8 @@
  	<insert id="insertSetting" parameterType="map">
  		INSERT INTO `setting`
  		(
- 			`userId`
+ 			targetUserId
+ 			, `userId`
  			, `introduce`
  			, `motion`
  			, `content`
@@ -19,7 +20,8 @@
  		)
  		VALUES
  		(
- 			#{userId}
+ 			targetUserId
+ 			, #{userId}
  			, #{introduce}
  			, #{motion}
  			, #{content}
@@ -29,21 +31,44 @@
  		)
  	</insert>
  	
- 	<!-- 설정한 값 리스트로 가져옥 -->
- 	<select id="selectSetting" parameterType="int" resultType="com.somsom.cyworld.post.setting.model.Setting">
- 		SELECT 
-			`id`
-			, `userId`
+ 	
+ 	<!-- 자기소개, 프로필 사진, 오늘의 기분, 인사말 등록 -->
+ 	<insert id="insertIntroduceSetting" parameterType="map">
+ 		INSERT INTO `setting`
+ 		(
+ 			targetUserId
+ 			, `userId`
+ 			, `introduce`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			targetUserId
+ 			, #{userId}
+ 			, #{introduce}
+ 			, now()
+ 			, now()
+ 		)
+ 	</insert>
+ 	
+ 	<select id="selectSetting" parameterType="int" 
+ 	resultType="com.somsom.cyworld.post.setting.model.Setting">
+ 		SELECT
+ 			`id`
+ 			, targetUserId
+ 			, `userId`
  			, `introduce`
  			, `motion`
  			, `content`
  			, `imagePath`
  			, `createdAt`
  			, `updatedAt`
-		FROM
-			`setting`
-		WHERE
-			`userId` = #{userId}
+ 		FROM 
+ 			`setting`	
+ 		WHERE 
+ 			`targetUserId` = #{targetUserId}
  	</select>
  	
+
  </mapper>

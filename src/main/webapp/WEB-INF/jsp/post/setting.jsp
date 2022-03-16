@@ -42,14 +42,14 @@
 		
 			<!-- 편집 목록 -->
 			<div id="left-box" class="box-border pt-3">
-				<div class="text-primary mt-3"><h4>MY HOME SET UP</h4></div>
+				<div class="text-primary mt-3"><h4>MY HOME SETTING</h4></div>
 				<hr>
 				<div class="mt-3" id="introduceBtn"><button type="button" class="btn btn-link">미니홈피 상단 소개말 등록</button></div>
 				<div id="profilePhotoChangeBtn"><button type="button" class="btn btn-link">프로필 사진 바꾸기</button></div>
 				<div id="profileIntroduceBtn"><button type="button" class="btn btn-link">프로필 인사말 바꾸기</button></div>
 
 			</div>
-			
+			<!-- 편집 목록 -->
 			
 			<div id="center-box" class="box-border">
 			
@@ -77,14 +77,46 @@
 					</div>
 				</div>
 				<!-- 프로필 사진 바꾸기 -->
+				
+				<!-- 프로필 소개 바꾸기 -->
+				<div id="profileIntroduceBox" class="mt-3 d-none">
+					<i class="bi bi-gear mt-5"  style="width:100px;"></i>
+					오늘의 기분 <br>
+					
+					<!-- 기분 설정 -->
+					<div class="mt-3">today is...
+						<select>
+						<option><i class="bi bi-brightness-high"></i> 기분좋음</option>
+						<option><i class="bi bi-brightness-high"></i> 외로움</option>
+						<option><i class="bi bi-brightness-high"></i> 슬픔</option>
+						<option><i class="bi bi-brightness-high"></i> 화남</option>
+						<option><i class="bi bi-brightness-high"></i> 선택안함</option>
+						</select>
+					</div>
+					<!-- 기분 설정 -->
+					
+					<!-- 프로필 소개 -->
+					<br>
+					<i class="bi bi-gear mt-5"  style="width:100px;"></i>
+					프로필 소개
+					
+					<div class="d-flex mt-3">
+						<input type="text" class="form-control" style="width:500px; height:50px;" id="introduceInput">
+						<button type="button" class="btn btn-primary" data-user-id="${userId}" id="introduceInputBtn">확인</button>
+					</div>
+					<!-- 프로필 소개 -->
+					
+				</div>
+				<!-- 프로필 소개 바꾸기 -->
 			</div>
 		
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<div class="text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">홈</a></div>
-				<div class="text-center mt-3"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">방명록</a></div>
-				<div class="text-center mt-3"><a href="/post/set_up_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;">설정</a></div>
+				<div class="side-box-border text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/setting_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
 			</div>
+			<!-- 카테고리 -->
 			
 		</section>	
 	</div>
@@ -95,51 +127,64 @@
 
 	<script>
 		$(document).ready(function(){
-		
-			$("#imgBtn").on("click", function() {
-				// fileInput 클릭 효과
-				$("#fileInput").click();
-				
-			});
 			
+			//페이지 이동
 			$("#introduceBtn").on("click", function(){
+				
 				$("#introduceBox").removeClass("d-none");
 				$("#profilePhotoBox").addClass("d-none");
+				$("#profileIntroduceBox").addClass("d-none");
 			});
-	
+			
+			//페이지 이동
 			$("#profilePhotoChangeBtn").on("click", function(){
-				$("#profilePhotoBox").removeClass("d-none");
-				$("#introduceBox").addClass("d-none");
+				
+				$("#profilePhotoBox").removeClass("d-none");	
+				$("#introduceBox").addClass("d-none");	
+				$("#profileIntroduceBox").addClass("d-none");	
 			});
 			
-			
+			//페이지 이동
+			$("#profileIntroduceBtn").on("click", function(){
+				
+				$("#profileIntroduceBox").removeClass("d-none");
+				$("#introduceBox").addClass("d-none");
+				$("#profilePhotoBox").addClass("d-none");
+			});
+
+			//상단 인사말 등록 이벤트
 			$("#introduceInputBtn").on("click", function(){
 				
-				var introduce= $("#introduceInput").val();
-				var userId = $(this).data("user-id");//현재 로그인한 미니홈피 주인
+				var introduce = $("#introduceInput").val();
+				var userId = $(this).data("user-id");
 				
-				if(introduce == null || introduce == ""){
-					alert("내용을 입력하세요.");
+				if(introduce == ""){
+					alert("소개말을 입력 하세요.");
 					return;
 				}
 				
 				$.ajax({
 					type:"post",
-					url:"/post/set_up/mini_home/introduce",
-					data:{"introduce":introduce, "userId":userId},
+					url:"/post/setting/introduce/up_load,
+					data:{"introduce":introduce, "targetUserId":userId},
 					success:function(data) {
 						if(data.result == success){
 							alert("성공");
 						}else {
-							alert("소개말 등록 실패");
+							alert("실패");
 						}
 					},
 					error:function() {
-						alert("소개말 등록 에러");
+						alert("상단 인사말 등록 에러");
 					}
+					
 				});
+				
+				
 			});
+			
 		});
+
 	</script>
 	
 </html>
