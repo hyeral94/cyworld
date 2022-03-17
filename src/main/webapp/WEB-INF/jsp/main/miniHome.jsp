@@ -25,7 +25,7 @@
 			<div id="left-header"></div>
 			
 			<div id="center-header">
-				<h4 class="mt-5">박혜경님의 미니홈피</h4>
+				<h4 class="mt-5">?</h4>
 			</div>
 			
 			<div id="right-header" class="mt-5 pl-4">
@@ -50,13 +50,14 @@
 				
 				<!-- 프로필 이미지 -->
 				<div id="profileImage" class="text-center mt-4">
+				
 					<img height="200" width="250" src="https://i.pinimg.com/564x/c9/cf/b7/c9cfb77eb604e3b3d95eca2b4faa7a2e.jpg">
 				</div>
 				
 				<!-- 프로필 아래 글쓰기 -->
 				<div id="profileContent" class="text-center mt-5">
 					<strong>today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-brightness-high" style="font-size: 20px;"></i>&nbsp;기분좋음
-					<div id="content" class="mt-5">노는게 제일 좋아~~</div>
+					<div id="content" class="mt-5">노는게 제일 좋아~~</div>	
 				</div>
 			</div>
 			

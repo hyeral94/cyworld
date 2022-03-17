@@ -45,8 +45,8 @@
 				<div class="text-primary mt-3"><h4>MY HOME SETTING</h4></div>
 				<hr>
 				<div class="mt-3" id="introduceBtn"><button type="button" class="btn btn-link">미니홈피 상단 소개말 등록</button></div>
-				<div id="profilePhotoChangeBtn"><button type="button" class="btn btn-link">프로필 사진 바꾸기</button></div>
-				<div id="profileIntroduceBtn"><button type="button" class="btn btn-link">프로필 인사말 바꾸기</button></div>
+				<div id="profileImageChangeBtn"><button type="button" class="btn btn-link">프로필 사진 바꾸기</button></div>
+				<div id="profileContentChangeBtn"><button type="button" class="btn btn-link">프로필 인사말 바꾸기</button></div>
 
 			</div>
 			<!-- 편집 목록 -->
@@ -71,40 +71,38 @@
 						프로필 사진 바꾸기
 					
 					<div class="d-flex mt-3">
-						<span class="img-icon"> <i class="bi bi-image" id="imgBtn"  style="font-size: 25px;"></i>파일선택&nbsp;&nbsp;&nbsp;</span>
-						<input type="file" id="profileInput" class="d-none">
-						<button type="button" class="btn btn-small btn-primary" id="uploadBtn">확인</button>					
+						<input type="file" id="profileImageInput">&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-small btn-primary" data-user-id="${userId}" id="profileImageBtn">확인</button>					
 					</div>
 				</div>
 				<!-- 프로필 사진 바꾸기 -->
 				
 				<!-- 프로필 소개 바꾸기 -->
-				<div id="profileIntroduceBox" class="mt-3 d-none">
-					<i class="bi bi-gear mt-5"  style="width:100px;"></i>
-					오늘의 기분 <br>
+				<div id="profileContentBox" class="mt-3 d-none">
+					<i class="bi bi-gear mt-5"  style="width:100px;"></i>오늘의 기분 <br>
 					
 					<!-- 기분 설정 -->
 					<div class="mt-3">today is...
-						<select>
+						<select id="motionSelect">
 						<option><i class="bi bi-brightness-high"></i> 기분좋음</option>
 						<option><i class="bi bi-brightness-high"></i> 외로움</option>
 						<option><i class="bi bi-brightness-high"></i> 슬픔</option>
 						<option><i class="bi bi-brightness-high"></i> 화남</option>
 						<option><i class="bi bi-brightness-high"></i> 선택안함</option>
 						</select>
+						<button type="button" class="btn btn-small btn-primary" data-user-id="${userId}" id="motionBtn">확인</button>					
 					</div>
 					<!-- 기분 설정 -->
 					
-					<!-- 프로필 소개 -->
+					<!-- 프로필 컨텐츠 -->
 					<br>
-					<i class="bi bi-gear mt-5"  style="width:100px;"></i>
-					프로필 소개
+					<i class="bi bi-gear mt-5"  style="width:100px;"></i>프로필 소개
 					
 					<div class="d-flex mt-3">
-						<input type="text" class="form-control" style="width:500px; height:50px;" id="introduceInput">
-						<button type="button" class="btn btn-primary" data-user-id="${userId}" id="introduceInputBtn">확인</button>
+						<input type="text" class="form-control" style="width:500px; height:50px;" id="profileContentInput">
+						<button type="button" class="btn btn-primary" data-user-id="${userId}" id="profileContentBtn">확인</button>
 					</div>
-					<!-- 프로필 소개 -->
+					<!-- 프로필 컨텐츠 -->
 					
 				</div>
 				<!-- 프로필 소개 바꾸기 -->
@@ -133,56 +131,132 @@
 				
 				$("#introduceBox").removeClass("d-none");
 				$("#profilePhotoBox").addClass("d-none");
-				$("#profileIntroduceBox").addClass("d-none");
+				$("#profileContentBox").addClass("d-none");
 			});
 			
 			//페이지 이동
-			$("#profilePhotoChangeBtn").on("click", function(){
+			$("#profileImageChangeBtn").on("click", function(){
 				
 				$("#profilePhotoBox").removeClass("d-none");	
 				$("#introduceBox").addClass("d-none");	
-				$("#profileIntroduceBox").addClass("d-none");	
+				$("#profileContentBox").addClass("d-none");	
 			});
 			
 			//페이지 이동
-			$("#profileIntroduceBtn").on("click", function(){
+			$("#profileContentChangeBtn").on("click", function(){
 				
-				$("#profileIntroduceBox").removeClass("d-none");
+				$("#profileContentBox").removeClass("d-none");
 				$("#introduceBox").addClass("d-none");
 				$("#profilePhotoBox").addClass("d-none");
 			});
-
-			//상단 인사말 등록 이벤트
+			
+			//상단 소개말 등록
+			
 			$("#introduceInputBtn").on("click", function(){
-				
+
 				var introduce = $("#introduceInput").val();
 				var userId = $(this).data("user-id");
 				
 				if(introduce == ""){
-					alert("소개말을 입력 하세요.");
+					alert("소개말을 입력하세요.");
 					return;
 				}
 				
 				$.ajax({
 					type:"post",
-					url:"/post/setting/introduce/up_load,
+					url:"/post/setting/introduce/up_load",
 					data:{"introduce":introduce, "targetUserId":userId},
 					success:function(data) {
-						if(data.result == success){
-							alert("성공");
+						if(data.result == "success"){
+							alert("소개말 등록 성공");
 						}else {
-							alert("실패");
+							alert("소개말 등록 실패");
 						}
 					},
 					error:function() {
-						alert("상단 인사말 등록 에러");
+						alert("에러 발생");
+					}
+				});
+			});
+		
+			// 프로필 이지 등록
+			$("#profileImageBtn").on("click", function(){
+				
+				var userId = $(this).data("user-id");
+				
+				// 파일 유효성 검사
+				if($("#profileImageInput")[0].files.length == 0) {
+					alert("파일을 선택하세요.");
+					return;
+				}
+			
+				var formData = new FormData();
+				formData.append("targetUserId", userId);
+				formData.append("profileImage", $("#profileImageInput")[0].files[0]);
+				
+				
+				$.ajax({
+					type:"post",
+					url:"/post/setting/profile_image/up_load",
+					data:formData,
+					enctype:"multipart/form-data", 
+					processData:false, 
+					contentType:false, 
+					success:function(data) {
+						if(data.result == "success") {
+							alert("프로필 이미지 등록 성공");
+						}else {
+							alert("프로필 이미지 등록 실패");
+						}
+					},
+					error:function() {
+						alert("에러 발생");
 					}
 					
 				});
 				
-				
 			});
 			
+			// 프로필 기분 선택
+			$("#motionBtn").on("click", function(){
+				
+				var motion = $("#motionSelect").val();
+				
+				if(motion == ""){
+					alert("오늘의 기분을 선택하세요.");
+					return;
+				}
+			});
+			
+			// 프로필 컨텐츠 등록
+			$("#profileContentBtn").on("click", function(){
+				
+				var content = $("#profileContentInput").val();
+				var userId = $(this).data("user-id");
+				
+				if(content == ""){
+					alert("인사말을 입력하세요.");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/post/setting/profile_content/up_load",
+					data:{"content":content, "targetUserId":userId},
+					success:function(data) {
+						if(data.result == "success"){
+							alert("프로필 컨텐츠 등록 성공");
+						}else {
+							alert("프로필 컨텐츠 등록 실패");
+						}
+					},
+					error:function() {
+						alert("에러 발생");
+					}
+				});
+				
+			});
+
 		});
 
 	</script>

@@ -32,7 +32,7 @@
  	</insert>
  	
  	
- 	<!-- 자기소개, 프로필 사진, 오늘의 기분, 인사말 등록 -->
+ 	<!-- 상단 소개말 등록 -->
  	<insert id="insertIntroduceSetting" parameterType="map">
  		INSERT INTO `setting`
  		(
@@ -52,6 +52,52 @@
  		)
  	</insert>
  	
+ 	<!-- 프로필 이미지 등록 -->
+ 	<insert id="insertProfileImageSetting" parameterType="map">
+ 	 	INSERT INTO `setting`
+ 		(
+ 			targetUserId
+ 			, `userId`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			targetUserId
+ 			, #{userId}
+ 			, #{imagePath}
+ 			, now()
+ 			, now()
+ 		)
+ 	</insert>
+ 	
+ 	<!-- 프로필 컨텐츠 등록 -->
+ 	<insert id="insertProfileIntroduceSetting" parameterType="map">
+ 	 	INSERT INTO `setting`
+ 		(
+ 			targetUserId
+ 			, `userId`
+ 			, `content`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			targetUserId
+ 			, #{userId}
+ 			, #{content}
+ 			, now()
+ 			, now()
+ 		)
+ 	</insert>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	<!-- 설정 리스트  -->
  	<select id="selectSetting" parameterType="int" 
  	resultType="com.somsom.cyworld.post.setting.model.Setting">
  		SELECT
@@ -70,5 +116,4 @@
  			`targetUserId` = #{targetUserId}
  	</select>
  	
-
  </mapper>
