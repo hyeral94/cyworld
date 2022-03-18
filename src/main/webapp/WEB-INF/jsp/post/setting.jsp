@@ -24,7 +24,9 @@
 		<header id="header-box" class="d-flex">
 			<div id="left-header"></div>
 			<div id="center-header">
-				<h4 class="mt-5">박혜경님의 미니홈피</h4>
+			<c:forEach var="setting" items="${settingList}">
+				<h4 class="mt-5">${setting.introduce }</h4>
+			</c:forEach>	
 			</div>
 			<div id="right-header" class="mt-5 pl-4">
 				<c:choose>
@@ -59,8 +61,8 @@
 						미니홈피 상단 소개말 등록
 				
 					<div class="d-flex mt-3">
-						<input type="text" class="form-control" style="width:500px; height:50px;" id="introduceInput">
-						<button type="button" class="btn btn-primary" data-user-id="${userId}" id="introduceInputBtn">확인</button>
+						<input type="text" class="form-control" style="width:500px; height:50px;" id="introduceInput${setting.userId }">
+						<button type="button" class="btn btn-primary" data-user-id="${targetUserId}" id="introduceInputBtn${setting.userId }">확인</button>
 					</div>
 				</div>
 				<!-- 미니홈피 상단 소개말 등록 -->
@@ -72,7 +74,7 @@
 					
 					<div class="d-flex mt-3">
 						<input type="file" id="profileImageInput">&nbsp;&nbsp;&nbsp;
-						<button type="button" class="btn btn-small btn-primary" data-user-id="${userId}" id="profileImageBtn">확인</button>					
+						<button type="button" class="btn btn-small btn-primary" data-user-id="${targetUserId}" id="profileImageBtn${setting.userId }">확인</button>					
 					</div>
 				</div>
 				<!-- 프로필 사진 바꾸기 -->
@@ -90,7 +92,7 @@
 						<option><i class="bi bi-brightness-high"></i> 화남</option>
 						<option><i class="bi bi-brightness-high"></i> 선택안함</option>
 						</select>
-						<button type="button" class="btn btn-small btn-primary" data-user-id="${userId}" id="motionBtn">확인</button>					
+						<button type="button" class="btn btn-small btn-primary" data-user-id="${targetUserId}" id="motionBtn">확인</button>					
 					</div>
 					<!-- 기분 설정 -->
 					
@@ -99,8 +101,8 @@
 					<i class="bi bi-gear mt-5"  style="width:100px;"></i>프로필 소개
 					
 					<div class="d-flex mt-3">
-						<input type="text" class="form-control" style="width:500px; height:50px;" id="profileContentInput">
-						<button type="button" class="btn btn-primary" data-user-id="${userId}" id="profileContentBtn">확인</button>
+						<input type="text" class="form-control" style="width:500px; height:50px;" id="profileContentInput${setting.userId }">
+						<button type="button" class="btn btn-primary" data-user-id="${targetUserId}" id="profileContentBtn${setting.userId }">확인</button>
 					</div>
 					<!-- 프로필 컨텐츠 -->
 					

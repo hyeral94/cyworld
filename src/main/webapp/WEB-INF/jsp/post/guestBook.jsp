@@ -24,7 +24,9 @@
 		<header id="header-box" class="d-flex">
 			<div id="left-header"></div>
 			<div id="center-header">
-				<h4 class="mt-5">박혜경님의 미니홈피</h4>
+			<c:forEach var="setting" items="${settingList }">
+				<h4 class="mt-5">${setting.introduce }</h4>
+			</c:forEach>	
 			</div>
 			<div id="right-header" class="mt-5 pl-4">
 				<c:choose>

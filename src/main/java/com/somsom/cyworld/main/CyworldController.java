@@ -17,7 +17,7 @@ import com.somsom.cyworld.post.friendReview.model.FriendReview;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
 import com.somsom.cyworld.post.setting.model.Setting;
 
-@RequestMapping("/main")
+//@RequestMapping("/main")
 @Controller
 public class CyworldController {
 
@@ -27,7 +27,7 @@ public class CyworldController {
 	@Autowired
 	private SettingBO settingBO;
 	
-	@GetMapping("/mini_home_view") 
+	@GetMapping("/main/mini_home_view") 
 	public String miniHomeView(
 			@RequestParam("userId") int targetUserId,
 			Model model,
@@ -45,7 +45,7 @@ public class CyworldController {
 		return "main/miniHome";
 	}
 	
-	@GetMapping("/setting_view")
+	@GetMapping("/post/setting/setting_view")
 	public String settingView(
 			@RequestParam("userId") int targetUserId,
 			Model model,
