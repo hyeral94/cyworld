@@ -16,6 +16,7 @@ import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
 import com.somsom.cyworld.post.setting.model.Setting;
+import com.somsom.cyworld.post.setting.model.SettingProfileImage;
 
 @RequestMapping("/post")
 @Controller
@@ -26,6 +27,7 @@ public class PostController {
 	
 	@Autowired
 	private SettingBO settingBO;
+	
 
 	@GetMapping("/guest_book_view")
 	public String guestBookView(
@@ -48,17 +50,18 @@ public class PostController {
 	
 	@GetMapping("/setting_view")
 	public String settingView(
-			@RequestParam("userId") int targetUserId,
 			Model model,
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		List<Setting> settingList = settingBO.getSettingList(targetUserId);
+		Setting setting = settingBO.getSetting(userId);
+		Setting settingProfileImage = settingBO.getSettingImage(userId);
 		
-		model.addAttribute("targetUserId", userId);
-		model.addAttribute("settingList", settingList);
+		model.addAttribute("userId", userId);
+		model.addAttribute("setting", setting);
+		model.addAttribute("settingProfileImage", settingProfileImage);
 		
 		return "post/setting";
 		

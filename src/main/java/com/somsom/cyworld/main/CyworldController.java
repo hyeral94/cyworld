@@ -37,29 +37,15 @@ public class CyworldController {
 		int userId = (Integer)session.getAttribute("userId");
 
 		List<FriendReview> friendReviewList = friendReviewBO.getFriendReview(targetUserId);
+//		Setting setting = settingBO.getSetting(userId);
 		
 		model.addAttribute("targetUserId", userId);
 		model.addAttribute("friendReviewList", friendReviewList);
-		
+//		model.addAttribute("setting", setting);
 		
 		return "main/miniHome";
 	}
 	
-	@GetMapping("/post/setting/setting_view")
-	public String settingView(
-			@RequestParam("userId") int targetUserId,
-			Model model,
-			HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
-		
-		List<Setting> settingList = settingBO.getSettingList(targetUserId);
-		
-		model.addAttribute("targetUserId", userId);
-		model.addAttribute("settingList", settingList);
-		
-		return "post/setting";
-		
-	}
+	
+
 }

@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 
 import com.somsom.cyworld.post.guestBook.dao.GuestBookDAO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
+import com.somsom.cyworld.post.setting.dao.SettingDAO;
 
 @Service
 public class GuestBookBO {
 	
 	@Autowired
 	private GuestBookDAO guestBookDAO;
+	
+	@Autowired
+	private SettingDAO settingDAO;
 
 	// 방명록 입력
 	public int addGuestBook(int userId, String userName, int targetUserId, String content) {

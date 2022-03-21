@@ -25,11 +25,8 @@
 			<div id="left-header"></div>
 			
 			<div id="center-header">
-				<c:forEach var="setting" items="${settingList }">
-				<h4 class="mt-5">${setting.introduce }</h4>
-				</c:forEach>
+				<h4 class="mt-5">${settings.introduce }</h4>
 			</div>
-			
 			<div id="right-header" class="mt-5 pl-4">
 				<c:choose>
 					<c:when test="${not empty userId }"> 
@@ -41,7 +38,7 @@
 				</c:choose>
 			</div>
 		</header>
-		
+
 		<section class="d-flex">
 			<div id="left-box" class="box-border pt-3">
 				<!-- 방문자 수 -->
@@ -52,14 +49,13 @@
 				
 				<!-- 프로필 이미지 -->
 				<div id="profileImage" class="text-center mt-4">
-				
-					<img height="200" width="250" src="https://i.pinimg.com/564x/c9/cf/b7/c9cfb77eb604e3b3d95eca2b4faa7a2e.jpg">
+					<img height="200" width="250" src="">
 				</div>
 				
 				<!-- 프로필 아래 글쓰기 -->
 				<div id="profileContent" class="text-center mt-5">
-					<strong>today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-brightness-high" style="font-size: 20px;"></i>&nbsp;기분좋음
-					<div id="content" class="mt-5">${setting.content }</div>	
+					<strong>today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-brightness-high" style="font-size: 20px;"></i>&nbsp;
+					<div id="content" class="mt-5"></div>
 				</div>
 			</div>
 			
@@ -69,7 +65,8 @@
 					<div class="text-primary">upload news</div>
 					<hr>
 					<div style="overflow:auto; width:750px; height:110px;">
-					<small>z</small>
+					<small>- [제주도 여행]3박 4일 제주도 여행 후기~~</small><br>
+					<small>- 코로나 재택치료 후기...ㅠㅠ</small>
 					</div>
 				</div>
 				

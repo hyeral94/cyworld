@@ -5,12 +5,10 @@ import java.util.Date;
 public class Setting {
 
 	private int id;
-	private int targetUserId;
 	private int userId;
 	private String introduce;
 	private String motion;
 	private String content;
-	private String imagePath;
 	private Date createdAt;
 	private Date updatedAt;
 	
@@ -19,12 +17,6 @@ public class Setting {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getTargetUserId() {
-		return targetUserId;
-	}
-	public void setTargetUserId(int targetUserId) {
-		this.targetUserId = targetUserId;
 	}
 	public int getUserId() {
 		return userId;
@@ -50,12 +42,6 @@ public class Setting {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getImagePath() {
-		return imagePath;
-	}
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -68,6 +54,8 @@ public class Setting {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
 	
 	
 }

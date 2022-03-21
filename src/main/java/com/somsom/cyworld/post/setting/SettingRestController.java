@@ -1,4 +1,5 @@
 package com.somsom.cyworld.post.setting;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -6,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,18 +25,17 @@ public class SettingRestController {
 	
 //	@PostMapping("/up_load")
 //	public Map<String, String> setting(
-//			@RequestParam("targetUserId") int targetUserId,
 //			@RequestParam("introduce") String introduce,
 //			@RequestParam("motion") String motion,
 //			@RequestParam("content") String content,
-//			@RequestParam("imagePath") String imagePath,
+//			@RequestParam(value="file", required=false) MultipartFile file,
 //			HttpServletRequest request){
 //			
 //		HttpSession session = request.getSession();
 //		
 //		int userId = (Integer)session.getAttribute("userId");
 //		
-//		int count = settingBO.addSetting(targetUserId, userId, introduce, motion, content, imagePath);
+//		int count = settingBO.addSetting(userId, introduce, motion, content, file);
 //		Map<String, String> result = new HashMap<>();
 //	
 //		if(count == 1) {
@@ -46,19 +47,19 @@ public class SettingRestController {
 //		return result;
 //	}
 	
-	
-	// 상단 소개말 등록
-	@PostMapping("/introduce/up_load")
-	public Map<String, String> introduceSetting(
-			@RequestParam("targetUserId") int targetUserId,
+	// 미니홈피 설정
+	@PostMapping("/up_load")
+	public Map<String, String> setting(
 			@RequestParam("introduce") String introduce,
+			@RequestParam("motion") String motion,
+			@RequestParam("content") String content,
 			HttpServletRequest request){
-		
+			
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = settingBO.addIntroduceSetting(targetUserId, userId, introduce);
+		int count = settingBO.addSetting(userId, introduce, motion, content);
 		Map<String, String> result = new HashMap<>();
 	
 		if(count == 1) {
@@ -70,51 +71,55 @@ public class SettingRestController {
 		return result;
 	}
 	
-	// 프로필 이미지 등록
-	@PostMapping("/profile_image/up_load")
-	public Map<String, String> profileImageSetting(
-			@RequestParam("targetUserId") int targetUserId,
+	// 프로필 이미지 설정
+	@PostMapping("/up_load_image")
+	public Map<String, String> settingImage(
 			@RequestParam(value="file", required=false) MultipartFile file,
 			HttpServletRequest request){
-		
+			
 		HttpSession session = request.getSession();
 		
 		int userId = (Integer)session.getAttribute("userId");
 		
-		int count = settingBO.addProfileImageSetting(targetUserId, userId, file);
+		int count = settingBO.addImageSetting(userId, file);
 		Map<String, String> result = new HashMap<>();
-		
+	
 		if(count == 1) {
 			result.put("result", "success");
-		}else {
+		}else{
 			result.put("result", "fail");
 		}
 		
 		return result;
 	}
 	
-	// 오늘의 기분 등록
 	
-	// 프로필 컨텐츠 등록
-	@PostMapping("/profile_content/up_load")
-	public Map<String, String> profileIntroduceSetting(
-			@RequestParam("targetUserId") int targetUserId,
-			@RequestParam("content") String content,
-			HttpServletRequest request){
-		
-		HttpSession session = request.getSession();
+	// 삭데 대신 업데이트
+//	@GetMapping("/update")
+//	public Map<String, String> updateSetting(
+//			@RequestParam("introduce") String introduce,
+//			@RequestParam("motion") String motion,
+//			@RequestParam("content") String content,
+//			HttpServletRequest request) {
+//		
+//		HttpSession session = request.getSession();
+//		
+//		int userId = (Integer)session.getAttribute("userId");
+//		
+//		int count = settingBO.updateSetting(createdAt, userId);
+//		Map<String, String> result= new HashMap<>();
+//		
+//		if(count == 1) {
+//			result.put("result", "success");
+//		}else {
+//			result.put("result", "fail");
+//		}
+//		
+//		return result;
+//	}
 	
-		int userId = (Integer)session.getAttribute("userId");
-		
-		int count = settingBO.addProfileIntroduceSetting(targetUserId, userId, content);
-		Map<String, String> result = new HashMap<>();
-		
-		if(count == 1) {
-			result.put("result", "success");
-		}else {
-			result.put("result", "fail");
-		}
-		
-		return result;
-	}
+	// 프로필 이미지 삭제 대신 업데이트
+	
+	
+
 }
