@@ -54,7 +54,7 @@
 				
 				<!-- 프로필 아래 글쓰기 -->
 				<div id="profileContent" class="text-center mt-5">
-					<strong>today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-brightness-high" style="font-size: 20px;"></i>&nbsp;${setting.motion }
+					<strong>today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${setting.motion }
 					<div id="content" class="mt-5">${setting.content }</div>
 				</div>
 			</div>

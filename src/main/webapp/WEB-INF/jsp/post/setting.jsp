@@ -69,12 +69,10 @@
 					<br>  
 					<br>          
 					<select id="profileMotionInput">
-						<option>--선택--</option>
 						<option>행복함</option>
 						<option>슬픔</option>
 						<option>외로움</option>
 						<option>화남</option>
-						<option>선택안함</option>
 					</select>
 					<br>
 	
@@ -156,7 +154,8 @@
 					alert("컨텐츠를 입력하세요.");
 					return;
 				}
-				
+		
+			
 				$.ajax({
 					type:"post",
 					url:"/post/setting/up_load",

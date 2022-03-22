@@ -41,11 +41,13 @@ public class PostController {
 		
 		List<GuestBook> guestBookList = guestBookBO.getGuestBookList(targetUserId);
 		Setting setting = settingBO.getSetting(userId);
+		SettingProfileImage settingProfileImage = settingBO.getSettingImage(userId);
 		
 		model.addAttribute("guestBookList", guestBookList);
 		model.addAttribute("targetUserId", userId);
 		model.addAttribute("setting", setting);
-		
+		model.addAttribute("settingProfileImage", settingProfileImage);
+	
 		return "post/guestBook";
 		
 	}
