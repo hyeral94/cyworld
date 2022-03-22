@@ -44,8 +44,8 @@
 			<div id="left-box" class="box-border pt-3">
 				<div class="text-primary mt-3"><h4>MY HOME SETTING</h4></div>
 				<hr>
-				<div class="mt-3" id="settingListBtn"><button type="button" class="btn btn-link">내 미니홈피 설정</button></div>
-				<div class="mt-3" id="settingProfileImageBtn"><button type="button" class="btn btn-link">내 프로필 이미지 설정</button></div>
+				<button type="button" class="btn btn-link mt-3" id="settingListBtn">내 미니홈피 설정</button>
+				<button type="button" class="btn btn-link mt-3" id="settingProfileImageBtn">내 프로필 이미지 설정</button>
 			</div>
 			<!-- 설정 목록 -->
 			
@@ -59,18 +59,18 @@
 				</div>
 				<!-- 로그인 사용자가 현재 미니홈피 주인이아닌경우 -->
 				
-				<!-- 내 미니홈피 설정  -->
-				<div id="settingBox" class="mt-3 d-none">
+				<div id="settingBox" class="mt-3">
 				
 					<i class="bi bi-gear mt-5"  style="width:65px;"></i> 미니홈피 상단 컨텐츠 등록                 
-					<input type="text" class="form-control mt-3" style="width:500px; height:50px;" id="introduceInput${setting.userId }"> 
+					<input type="text" class="form-control mt-3" style="width:500px; height:50px;" id="introduceInput"> 
 					<br>
 					
 					<i class="bi bi-gear mt-5"  style="width:65px;"></i> 오늘의 기분 등록  
 					<br>  
 					<br>          
-					<select id="profileMotionInput${setting.userId }">
-						<option>기분좋음</option>
+					<select id="profileMotionInput">
+						<option>--선택--</option>
+						<option>행복함</option>
 						<option>슬픔</option>
 						<option>외로움</option>
 						<option>화남</option>
@@ -80,19 +80,19 @@
 	
 					<br>
 					<i class="bi bi-gear mt-5"  style="width:65px;"></i> 프로필 컨텐츠 등록              
-					<input type="text" class="form-control mt-3" style="width:500px; height:50px;" id="profileContentInput${setting.userId }"> 
+					<input type="text" class="form-control mt-3" style="width:500px; height:50px;" id="profileContentInput"> 
 					<br>
 					
-					<button type="button" class="btn form-control btn-primary " style="width:80px; height:40px;" data-user-id="${userId}" id="settingBtn${setting.userId }">설정</button>
+					<button type="button" class="btn form-control btn-primary " style="width:80px; height:40px;" data-user-id="${userId}" id="settingBtn">설정</button>
 				</div>
 				
 				<!-- 프로필 이미지 설정 -->	
 				<div id="settingProfileImageBox" class="mt-3 d-none">
 					<i class="bi bi-gear mt-5"  style="width:65px;"></i> 프로필 이미지 등록       
 					<br>         
-					<input type="file" class="mt-3" style="width:500px; height:50px;" id="profileImageInput${settingProfileImage.userId }"> 
+					<input type="file" class="mt-3" style="width:500px; height:50px;" id="profileImageInput"> 
 					<br>
-					<button type="button" class="btn form-control btn-primary " style="width:80px; height:40px;" data-user-id="${userId}" id="settingImageBtn${settingProfileImage.userId }">설정</button>
+					<button type="button" class="btn form-control btn-primary " style="width:80px; height:40px;" data-user-id="${userId}" id="settingImageBtn">설정</button>
 				</div>
 				<!-- 프로필 이미지 설정 -->
 				
@@ -116,12 +116,12 @@
 
 </body>
 
-	<script>
+		<script>
 		$(document).ready(function(){
 			
 			//페이지 이동
 			$("#settingListBtn").on("click", function(){
-				
+		
 				$("#settingBox").removeClass("d-none");
 				$("#warningBox").addClass("d-none");
 				$("#settingProfileImageBox").addClass("d-none");
@@ -134,26 +134,25 @@
 				$("#warningBox").addClass("d-none");
 				$("#settingProfileImageBox").removeClass("d-none");
 			});
-			
-			// 미니홈피 설정 이벤트
+		
 			$("#settingBtn").on("click", function(){
 				
 				var introduce = $("#introduceInput").val();
-				var motion = $("#profileMotionInput").val();
 				var content = $("#profileContentInput").val();
-				var userId = $(this).data("user-id");
+				var motion = $("#profileMotionInput").val();
+				var userId = $(this).data("user-id"); 
 				
 				if(introduce == "" || introduce == null){
 					alert("컨텐츠를 입력하세요.");
 					return;
 				}
-					
-				if(motion == "" || motion == null){
-					alert("오늘의 기분을 선택하세요.");
+				
+				if(content == "" || content == null){
+					alert("오늘의 기분을 선택 하세요.");
 					return;
 				}
 				
-				if(content == "" || content == null){
+				if(motion == "" || motion == null){
 					alert("컨텐츠를 입력하세요.");
 					return;
 				}
@@ -161,26 +160,56 @@
 				$.ajax({
 					type:"post",
 					url:"/post/setting/up_load",
-					data:{"introduce":introduce, "motion":motion, "content":content, "userId":userId},
+					data:{"introduce":introduce, "content":content, "motion":motion, "userId":userId},
 					success:function(data) {
-						if(data.result == "success"){
+						if(data.result == "success") {
 							location.reload();
-						}else{
+						}else {
 							alert("미니홈피 설정 실패");
 						}
 					},
 					error:function() {
 						alert("미니홈피 설정 에러");
 					}
-					
 				});
-			});
 			
-			// 프로필 이미지 등록 이벤트
+			});	
+
 			$("#settingImageBtn").on("click", function(){
-				alert();
-			});
-			
+				
+				var userId = $(this).data("user-id"); 
+				
+				 // 파일 유효성 검사
+	            if($("#profileImageInput")[0].files.length == 0) {
+	               alert("파일을 선택하세요.");
+	               return;
+	            }
+	         
+	            var formData = new FormData();
+	            formData.append("userId", userId);
+	            formData.append("file", $("#profileImageInput")[0].files[0]);
+	   
+	            $.ajax({
+	               type:"post",
+	               url:"/post/setting/up_load_image",
+	               data:formData,
+	               enctype:"multipart/form-data", 
+	               processData:false, 
+	               contentType:false, 
+	               success:function(data) {
+	                  if(data.result == "success") {
+	                     location.reload();                     
+	                  }else {
+	                     alert("프로필 이미지 설정 실패");
+	                  }
+	               },
+	               error:function() {
+	                  alert("프로필 이미지 설정 에러 발생");
+	               }
+	               
+	            });
+	         });
+				
 		});
 			
 	</script>

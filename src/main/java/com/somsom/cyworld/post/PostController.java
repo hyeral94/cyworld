@@ -40,9 +40,11 @@ public class PostController {
 		
 		
 		List<GuestBook> guestBookList = guestBookBO.getGuestBookList(targetUserId);
+		Setting setting = settingBO.getSetting(userId);
 		
 		model.addAttribute("guestBookList", guestBookList);
 		model.addAttribute("targetUserId", userId);
+		model.addAttribute("setting", setting);
 		
 		return "post/guestBook";
 		
@@ -57,7 +59,7 @@ public class PostController {
 		int userId = (Integer)session.getAttribute("userId");
 		
 		Setting setting = settingBO.getSetting(userId);
-		Setting settingProfileImage = settingBO.getSettingImage(userId);
+		SettingProfileImage settingProfileImage = settingBO.getSettingImage(userId);
 		
 		model.addAttribute("userId", userId);
 		model.addAttribute("setting", setting);

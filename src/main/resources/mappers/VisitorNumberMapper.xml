@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.somsom.cyworld.post.visitorNumber.dao.VisitorNumberDAO">
+ 
+ 	<insert id="insertVisitorNumber" parameterType="map">
+ 		INSERT INTO `visitorNumber`
+ 		(
+ 			`userId`
+ 		)
+ 		VALUES
+ 		(
+ 			#{userId}
+ 		)
+ 	</insert>
+ 	
+  	<select id="getTodayVisitorNumber" parameterType="int" resultType="int">
+		SELECT 
+			count(*)
+		FROM 
+			`visitorNumber`
+		WHERE
+			`userId` = #{userId}	
+	</select>
+	
+	  	<select id="getTotalVisitorNumber" parameterType="int" resultType="int">
+		SELECT 
+			count(*)
+		FROM 
+			`visitorNumber`
+		WHERE
+			`userId` = #{userId}	
+	</select>
+ </mapper>

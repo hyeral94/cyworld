@@ -92,34 +92,6 @@ public class SettingRestController {
 		
 		return result;
 	}
-	
-	
-	// 삭데 대신 업데이트
-//	@GetMapping("/update")
-//	public Map<String, String> updateSetting(
-//			@RequestParam("introduce") String introduce,
-//			@RequestParam("motion") String motion,
-//			@RequestParam("content") String content,
-//			HttpServletRequest request) {
-//		
-//		HttpSession session = request.getSession();
-//		
-//		int userId = (Integer)session.getAttribute("userId");
-//		
-//		int count = settingBO.updateSetting(createdAt, userId);
-//		Map<String, String> result= new HashMap<>();
-//		
-//		if(count == 1) {
-//			result.put("result", "success");
-//		}else {
-//			result.put("result", "fail");
-//		}
-//		
-//		return result;
-//	}
-	
-	// 프로필 이미지 삭제 대신 업데이트
-	
-	
+
 
 }

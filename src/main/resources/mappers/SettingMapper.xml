@@ -62,10 +62,9 @@
  			`userId` = #{userId} 
  			ORDER BY `id` DESC LIMIT 1; 
  	</select>
- 	
- 	<!-- 프로필 이미지 설정 값 가져오기 -->
- 	<select id="selectSettingImage"  parameterType="int" 
- 	resultType="com.somsom.cyworld.post.setting.model.SettingProfileImage">>
+ 
+ 	<select id="selectProfileImage" parameterType="int" 
+ 	resultType="com.somsom.cyworld.post.setting.model.SettingProfileImage">
  		SELECT
  			`id`
  			, `userId`
@@ -74,36 +73,9 @@
  			, `updatedAt`
  		FROM 
  			`settingProfileImage`	
- 		WHERE 
- 			`userId` = #{userId} 
- 			ORDER BY `id` DESC LIMIT 1; 
+ 		WHERE
+ 			`userId` = #{userId}
+ 			ORDER BY `id` DESC LIMIT 1;	
  	</select>
 
- 	<!-- 삭제 대신 업데이트 -->
- 	<update id="updateSetting"  parameterType="int">
- 		UPDATE 
- 			`setting`
-		SET 
-			`introduce` = #{introduce}
-		WHERE 
-			`createdAt` = #{createdAt} 
- 	</update>
- 	
- 	<!-- 삭제 대신 업데이트할 자료를 셀렉  -->
- 	<select id="selectSettingUpdate" parameterType="int"
- 	resultType="com.somsom.cyworld.post.setting.model.Setting">
- 		SELECT
- 			`id`
- 			, `userId`
- 			, `introduce`
- 			, `motion`
- 			, `content`
- 			, `imagePath`
- 			, `createdAt`
- 			, `updatedAt`
- 		FROM 
- 			`setting`	
-		WHERE
-			`createdAt` = #{createdAt} 
- 	</select>
  </mapper>

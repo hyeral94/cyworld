@@ -23,10 +23,8 @@
 	
 		<header id="header-box" class="d-flex">
 			<div id="left-header"></div>
-			<div id="center-header">
-			<c:forEach var="setting" items="${settingList }">
-				<h4 class="mt-5">${setting.introduce }</h4>
-			</c:forEach>	
+			<div id="center-header">			
+				<h4 class="mt-5">${setting.introduce }</h4>	
 			</div>
 			<div id="right-header" class="mt-5 pl-4">
 				<c:choose>
@@ -50,7 +48,7 @@
 				
 				<!-- 프로필 이미지 -->
 				<div id="profileImage" class="text-center mt-4">
-					<img height="200" width="250" src="${setting.imagePath }">
+					<img height="200" width="250" src="${selectProfileImage }">
 				</div>
 				
 				<!-- 프로필 아래 글쓰기 -->

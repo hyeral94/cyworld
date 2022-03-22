@@ -25,7 +25,7 @@
 			<div id="left-header"></div>
 			
 			<div id="center-header">
-				<h4 class="mt-5">${settings.introduce }</h4>
+				<h4 class="mt-5">${setting.introduce }</h4>
 			</div>
 			<div id="right-header" class="mt-5 pl-4">
 				<c:choose>
@@ -49,13 +49,13 @@
 				
 				<!-- 프로필 이미지 -->
 				<div id="profileImage" class="text-center mt-4">
-					<img height="200" width="250" src="">
+					<img height="200" width="250" src="${settingProfileImage.imagePath }">
 				</div>
 				
 				<!-- 프로필 아래 글쓰기 -->
 				<div id="profileContent" class="text-center mt-5">
-					<strong>today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-brightness-high" style="font-size: 20px;"></i>&nbsp;
-					<div id="content" class="mt-5"></div>
+					<strong>today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-brightness-high" style="font-size: 20px;"></i>&nbsp;${setting.motion }
+					<div id="content" class="mt-5">${setting.content }</div>
 				</div>
 			</div>
 			
