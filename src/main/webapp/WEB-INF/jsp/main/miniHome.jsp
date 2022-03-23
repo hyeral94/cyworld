@@ -43,8 +43,8 @@
 			<div id="left-box" class="box-border pt-3">
 				<!-- 방문자 수 -->
 				<div id="visitor" class="d-flex justify-content-center">
-					<div class="text-danger">TODAY 999</div>
-					<div>&nbsp; | TOTAL 99,999</div>
+					<div class="text-danger">TODAY ${todayCount}</div>
+					<div>&nbsp; | TOTAL ${totalCount}</div>
 				</div>
 				
 				<!-- 프로필 이미지 -->
@@ -54,7 +54,7 @@
 				
 				<!-- 프로필 아래 글쓰기 -->
 				<div id="profileContent" class="text-center mt-5">
-					<strong>today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${setting.motion }
+					<strong class="" id="todayMotion">today is...</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${setting.motion }
 					<div id="content" class="mt-5">${setting.content }</div>
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 				<div class="text-primary mt-3">mini room</div>
 				<hr>
 				<div id="mini-room" class="mini-room mt-3">
-				<img width="700" height="200" src="https://post-phinf.pstatic.net/MjAyMDA5MjNfMiAg/MDAxNjAwNzk1NzYyNDE1.6BRm3eV7dWSVqf8sANtOWbHbTY058eRWJkhbXcqTIecg.cZWbwCf3geMLG-DuP5od_MyEVq5ZeSUL1Ys0A7InRZUg.JPEG/attachImage_3201238540.jpeg?type=w1200">
+				<img width="700" height="200" src="https://image.edaily.co.kr/images/Photo/files/NP/S/2005/10/PS05101700046.JPG">
 				</div>
 				
 				<!-- 일촌평 리스트 -->			
@@ -172,7 +172,7 @@
 					
 				});
 			});
-			
+		
 		});
 	</script>
 </html>

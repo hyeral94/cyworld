@@ -42,13 +42,13 @@
 			<div id="left-box" class="box-border pt-3">
 				<!-- 방문자 수 -->
 				<div id="visitor" class="d-flex justify-content-center">
-					<div class="text-danger">TODAY 999</div>
-					<div>&nbsp; | TOTAL 99,999</div>
+					<div class="text-danger">TODAY ${todayCount }</div>
+					<div>&nbsp; | TOTAL ${totalCount }</div>
 				</div>
 				
 				<!-- 프로필 이미지 -->
 				<div id="profileImage" class="text-center mt-4">
-					<img height="200" width="250" src="${selectProfileImage }">
+					<img height="200" width="250" src="${settingProfileImage.imagePath }">
 				</div>
 				
 				<!-- 프로필 아래 글쓰기 -->

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.somsom.cyworld.post.setting.bo.SettingBO;
+import com.somsom.cyworld.post.setting.model.Setting;
 
 @RequestMapping("/post/setting")
 @RestController

@@ -1,10 +1,12 @@
 package com.somsom.cyworld.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.somsom.cyworld.common.FileManagerService;
 
+@Configuration
 public class WebMVCConfig implements WebMvcConfigurer {
 
 //	@Autowired

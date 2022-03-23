@@ -17,6 +17,7 @@ import com.somsom.cyworld.post.guestBook.model.GuestBook;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
 import com.somsom.cyworld.post.setting.model.Setting;
 import com.somsom.cyworld.post.setting.model.SettingProfileImage;
+import com.somsom.cyworld.post.visitorNumber.bo.VisitorNumberBO;
 
 @RequestMapping("/post")
 @Controller
@@ -28,7 +29,9 @@ public class PostController {
 	@Autowired
 	private SettingBO settingBO;
 	
-
+	@Autowired
+	private VisitorNumberBO visitorNumberBO;
+	
 	@GetMapping("/guest_book_view")
 	public String guestBookView(
 			@RequestParam("userId") int targetUserId,
@@ -40,13 +43,27 @@ public class PostController {
 		
 		
 		List<GuestBook> guestBookList = guestBookBO.getGuestBookList(targetUserId);
-		Setting setting = settingBO.getSetting(userId);
-		SettingProfileImage settingProfileImage = settingBO.getSettingImage(userId);
+		Setting setting = settingBO.getSetting(targetUserId);
+		SettingProfileImage settingProfileImage = settingBO.getSettingImage(targetUserId);
+		int totalCount = visitorNumberBO.totalVisitorNumber(targetUserId);
+		int todayCount = visitorNumberBO.todayVisitorNumber(targetUserId);
 		
 		model.addAttribute("guestBookList", guestBookList);
-		model.addAttribute("targetUserId", userId);
+		model.addAttribute("targetUserId", targetUserId);
 		model.addAttribute("setting", setting);
 		model.addAttribute("settingProfileImage", settingProfileImage);
+		
+		Boolean isCounting = (Boolean)session.getAttribute("isCounting");
+		if(isCounting == null) { //카운팅 된 정보가 없을 때 1씩 증가
+			
+			int count = visitorNumberBO.addVisitorCount(targetUserId);
+			if(count == 1) {
+				session.setAttribute("isCounting", true);
+			}
+		}
+		
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("todayCount", todayCount);
 	
 		return "post/guestBook";
 		
@@ -62,7 +79,7 @@ public class PostController {
 		
 		Setting setting = settingBO.getSetting(userId);
 		SettingProfileImage settingProfileImage = settingBO.getSettingImage(userId);
-		
+	
 		model.addAttribute("userId", userId);
 		model.addAttribute("setting", setting);
 		model.addAttribute("settingProfileImage", settingProfileImage);

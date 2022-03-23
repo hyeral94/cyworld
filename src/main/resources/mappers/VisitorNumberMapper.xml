@@ -3,34 +3,61 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <mapper namespace="com.somsom.cyworld.post.visitorNumber.dao.VisitorNumberDAO">
- 
- 	<insert id="insertVisitorNumber" parameterType="map">
- 		INSERT INTO `visitorNumber`
- 		(
- 			`userId`
- 		)
- 		VALUES
- 		(
- 			#{userId}
- 		)
- 	</insert>
- 	
-  	<select id="getTodayVisitorNumber" parameterType="int" resultType="int">
+<mapper namespace="com.somsom.cyworld.post.visitorNumber.dao.VisitorNumberDAO">
+
+	<insert id="insertVisitorCount" parameterType="map">
+	
+		INSERT INTO `visitorNumber`
+		(
+			`userId`	
+		)
+		VALUES
+		(
+			#{userId}
+		)			
+	</insert>
+
+	<select id="selectVisitorCount" parameterType="int" resultType="int">
 		SELECT 
 			count(*)
 		FROM 
 			`visitorNumber`
 		WHERE
-			`userId` = #{userId}	
+			`userId` = #{userId}
+	
 	</select>
 	
-	  	<select id="getTotalVisitorNumber" parameterType="int" resultType="int">
+	<select id="selectVisitorNumber" parameterType="int" 
+ 	resultType="com.somsom.cyworld.post.visitorNumber.model.VisitorNumber">
+		SELECT
+ 			`id`
+ 			, `userId`
+ 		FROM 
+ 			`visitorNumber`	
+ 		WHERE 
+ 			`userId` = #{userId} 
+	</select>
+	
+	<!-- today 방문자 수 -->
+	<select id="selectTodayVisitorCount" parameterType="int" resultType="int">
 		SELECT 
 			count(*)
 		FROM 
 			`visitorNumber`
 		WHERE
-			`userId` = #{userId}	
+			`userId` = #{userId} AND
+			date(now()) = date(`createdAt`)
+
 	</select>
- </mapper>
+	
+	<!-- total 방문자 수 -->
+	<select id="selectTotalVisitorCount" parameterType="int" resultType="int">
+		SELECT 
+			count(*)
+		FROM 
+			`visitorNumber`
+		WHERE
+			`userId` = #{userId}
+	
+	</select>
+</mapper>

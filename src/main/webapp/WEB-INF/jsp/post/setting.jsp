@@ -73,6 +73,7 @@
 						<option>슬픔</option>
 						<option>외로움</option>
 						<option>화남</option>
+						<option></option>
 					</select>
 					<br>
 	
@@ -80,7 +81,7 @@
 					<i class="bi bi-gear mt-5"  style="width:65px;"></i> 프로필 컨텐츠 등록              
 					<input type="text" class="form-control mt-3" style="width:500px; height:50px;" id="profileContentInput"> 
 					<br>
-					
+				
 					<button type="button" class="btn form-control btn-primary " style="width:80px; height:40px;" data-user-id="${userId}" id="settingBtn">설정</button>
 				</div>
 				
@@ -119,7 +120,7 @@
 			
 			//페이지 이동
 			$("#settingListBtn").on("click", function(){
-		
+				
 				$("#settingBox").removeClass("d-none");
 				$("#warningBox").addClass("d-none");
 				$("#settingProfileImageBox").addClass("d-none");
@@ -139,23 +140,7 @@
 				var content = $("#profileContentInput").val();
 				var motion = $("#profileMotionInput").val();
 				var userId = $(this).data("user-id"); 
-				
-				if(introduce == "" || introduce == null){
-					alert("컨텐츠를 입력하세요.");
-					return;
-				}
-				
-				if(content == "" || content == null){
-					alert("오늘의 기분을 선택 하세요.");
-					return;
-				}
-				
-				if(motion == "" || motion == null){
-					alert("컨텐츠를 입력하세요.");
-					return;
-				}
 		
-			
 				$.ajax({
 					type:"post",
 					url:"/post/setting/up_load",

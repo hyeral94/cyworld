@@ -63,6 +63,7 @@
  			ORDER BY `id` DESC LIMIT 1; 
  	</select>
  
+	 <!-- 설정 값(프로필 이미지) 가져오기  -->
  	<select id="selectProfileImage" parameterType="int" 
  	resultType="com.somsom.cyworld.post.setting.model.SettingProfileImage">
  		SELECT
@@ -76,6 +77,6 @@
  		WHERE
  			`userId` = #{userId}
  			ORDER BY `id` DESC LIMIT 1;	
- 	</select>
+ 	</select>		
 
  </mapper>
