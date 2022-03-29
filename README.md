@@ -23,13 +23,13 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">포트폴리오</a>
 <br>
 
-<h4>🔨 설계 </h4>
+<h4> 🔨 설계 🔨 </h4>
 ◽ 기획 <br>
 https://ovenapp.io/project/CoxHuVEY47lNecM15zpdqXI0HSJFKABw#B6weK <br>
 ◽ 데이터 베이스, URL 설계 <br>
 https://docs.google.com/spreadsheets/d/1YrDons5yv4TPiurQ6F5QKXJ7l17ZOA7IWNZ6B5XWC1M/edit#gid=2003937629
 <br>
-<h4> ⭐ 주요기능 </h4>
+<h4> ⭐ 주요기능 ⭐ </h4>
 ◽ 회원가입 <br>
 http://13.124.98.7:8080/user/signup_view <br>
 ◽ 로그인 <br> 
@@ -40,6 +40,8 @@ http://13.124.98.7:8080/main/mini_home_view?userId=1 <br>
 http://13.124.98.7:8080/post/guest_book_view?userId=1 <br>
 ◽ 사용자 설정 <br>
 http://13.124.98.7:8080/post/setting_view?userId=1 <br>
+
+<h4> 👾 DEMO 👾 </h4>
 
   
   
