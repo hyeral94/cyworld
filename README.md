@@ -25,7 +25,7 @@
 
 <h4>🔨 설계 </h4>
 ◽ 기획 <br>
-&nbsp;&nbsp;https://ovenapp.io/project/CoxHuVEY47lNecM15zpdqXI0HSJFKABw#B6weK  <br>
+https://ovenapp.io/project/CoxHuVEY47lNecM15zpdqXI0HSJFKABw#B6weK <br>
   
   
   
