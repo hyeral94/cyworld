@@ -12,8 +12,8 @@
   <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=flat-square&logo=Visual Studio Code&logoColor=white"/>
 </div>
 
-<h3>🌈 cyworld<h3>
-<hr>
+<h3>🌈 cyworld </h3>
+
 <h4> 🐨🌿 프로젝트 설명 </h4>
 <br>  
 - 웹 개발 경험을 쌓기 위하여여 cyworld를 복제한 프로젝트<br>
