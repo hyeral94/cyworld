@@ -26,6 +26,8 @@
 <h4>🔨 설계 </h4>
 ◽ 기획 <br>
 https://ovenapp.io/project/CoxHuVEY47lNecM15zpdqXI0HSJFKABw#B6weK <br>
+◽ 데이터 베이스, URL 설계 <br>
+https://docs.google.com/spreadsheets/d/1YrDons5yv4TPiurQ6F5QKXJ7l17ZOA7IWNZ6B5XWC1M/edit#gid=2003937629
   
   
   
