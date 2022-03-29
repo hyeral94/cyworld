@@ -28,25 +28,29 @@ https://ovenapp.io/project/CoxHuVEY47lNecM15zpdqXI0HSJFKABw#B6weK <br>
 https://docs.google.com/spreadsheets/d/1YrDons5yv4TPiurQ6F5QKXJ7l17ZOA7IWNZ6B5XWC1M/edit#gid=2003937629
 <br>
 <h4> ⭐ 주요기능 ⭐ </h4>
-◽ 회원가입 <br>
+📌 회원가입 <br>
 http://13.124.98.7:8080/user/signup_view <br>
-🔹 아이디 중복확인 <br>
-🔹 비밀번호 입력 확인 <br>
-🔹 로그인 <br> 
+▪ 아이디 중복확인 <br>
+▪ 비밀번호 입력 확인 <br>
+<br>
+📌 로그인 <br> 
 http://13.124.98.7:8080/user/signin_view <br>
-🔹 비밀번호 입력 암호화 <br>
-🔹 메인화면 & 일촌평 작성 <br>
+▪ 비밀번호 입력 암호화 <br>
+<br>
+📌 메인화면 & 일촌평 작성 <br>
 http://13.124.98.7:8080/main/mini_home_view?userId=1 <br>
-🔹 방문자 수 증가 <br>
-🔹 오늘의 기분, 프로필 사진, 미니홈피 상단 소개말 노출, 일촌평 입력 및 삭제 <br>
-🔹 일촌평을 입력하 사용자 이름 클릭 시 해당 미니홈피로 이동 <br>
-🔹 방명록 작성 <br>
+▪ 방문자 수 증가 <br>
+▪ 오늘의 기분, 프로필 사진, 미니홈피 상단 소개말 노출, 일촌평 입력 및 삭제 <br>
+▪ 일촌평을 입력하 사용자 이름 클릭 시 해당 미니홈피로 이동 <br>
+<br>
+📌방명록 작성 <br>
 http://13.124.98.7:8080/post/guest_book_view?userId=1 <br>
-🔹 방명록 입력 및 삭제 <br>
-🔹 방명록을 입력한 사용자 이름 클릭 시 해당 미니홈피로 이동 <br>
-🔹 사용자 설정 <br>
+▪ 방명록 입력 및 삭제 <br>
+▪ 방명록을 입력한 사용자 이름 클릭 시 해당 미니홈피로 이동 <br>
+<br>
+📌 사용자 설정 <br>
 http://13.124.98.7:8080/post/setting_view?userId=1 <br>
-🔹 오늘의 기분, 프로필 이미지 업로드, 프로필 컨텐츠 및 미니홈피 상단 컨텐츠 등록 <br>
+▪ 오늘의 기분, 프로필 이미지 업로드, 프로필 컨텐츠 및 미니홈피 상단 컨텐츠 등록 <br>
 
 <h4> 👾 DEMO 👾 </h4>
 
