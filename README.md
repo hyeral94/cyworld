@@ -13,9 +13,9 @@
 <h3>🌈 cyworld </h3>
 <hr>
 <h4> 📢 프로젝트 설명 </h4>  
-- 웹 개발 경험을 쌓기 위하여여 cyworld를 복제한 프로젝트<br>
+- 웹 개발 경험을 쌓기 위하여 cyworld를 복제한 프로젝트<br>
 - 기본적인 로그인을 기반으로 하는 SNS <br>
-- 기존의 cyworld에서 프로필 이미지 등록, 댓글 및 일촌평 작성, 방문자 수 카운트를 구현
+- 기존의 cyworld에서 프로필 이미지 등록, 방문자 수 표시, 댓글 및 일촌평 작성을 구현
 <br>
 <h4>🔍 포트폴리오 </h4>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">포트폴리오</a>
@@ -30,20 +30,29 @@ https://docs.google.com/spreadsheets/d/1YrDons5yv4TPiurQ6F5QKXJ7l17ZOA7IWNZ6B5XW
 <h4> ⭐ 주요기능 ⭐ </h4>
 ◽ 회원가입 <br>
 http://13.124.98.7:8080/user/signup_view <br>
+☑ 아이디 중복확인
+☑ 비밀번호 입력 확인 
 ◽ 로그인 <br> 
 http://13.124.98.7:8080/user/signin_view <br>
+☑ 비밀번호 입력 암호화
 ◽ 메인화면 & 일촌평 작성 <br>
 http://13.124.98.7:8080/main/mini_home_view?userId=1 <br>
+☑ 방문자 수 증가
+☑ 오늘의 기분, 프로필 사진, 미니홈피 상단 소개말 노출, 일촌평 입력 및 삭제
+☑ 일촌평을 입력하 사용자 이름 클릭 시 해당 미니홈피로 이동
 ◽ 방명록 작성 <br>
 http://13.124.98.7:8080/post/guest_book_view?userId=1 <br>
+☑ 방명록 입력 및 삭제
+☑ 방명록을 입력한 사용자 이름 클릭 시 해당 미니홈피로 이동
 ◽ 사용자 설정 <br>
 http://13.124.98.7:8080/post/setting_view?userId=1 <br>
+☑ 오늘의 기분, 프로필 이미지 업로드, 프로필 컨텐츠 및 미니홈피 상단 컨텐츠 등록
 
 <h4> 👾 DEMO 👾 </h4>
 
   
   
-
+<h4> ⛵ 향후 계획 ⛵</h4>
   
   
   
