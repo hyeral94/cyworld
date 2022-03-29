@@ -30,12 +30,12 @@ https://docs.google.com/spreadsheets/d/1YrDons5yv4TPiurQ6F5QKXJ7l17ZOA7IWNZ6B5XW
 <h4> ⭐ 주요기능 ⭐ </h4>
 ◽ 회원가입 <br>
 http://13.124.98.7:8080/user/signup_view <br>
-☑ 아이디 중복확인
-☑ 비밀번호 입력 확인 
-◽ 로그인 <br> 
+➖ 아이디 중복확인 <br>
+➖ 비밀번호 입력 확인 <br>
+➖ 로그인 <br> 
 http://13.124.98.7:8080/user/signin_view <br>
-☑ 비밀번호 입력 암호화
-◽ 메인화면 & 일촌평 작성 <br>
+➖ 비밀번호 입력 암호화 <br>
+➖ 메인화면 & 일촌평 작성 <br>
 http://13.124.98.7:8080/main/mini_home_view?userId=1 <br>
 ☑ 방문자 수 증가
 ☑ 오늘의 기분, 프로필 사진, 미니홈피 상단 소개말 노출, 일촌평 입력 및 삭제
