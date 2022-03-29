@@ -14,17 +14,16 @@
 
 <h3>🌈 cyworld </h3>
 
-<h4> 🐨🌿 프로젝트 설명 </h4>
-<br>  
+<h4> 📢 프로젝트 설명 </h4>  
 - 웹 개발 경험을 쌓기 위하여여 cyworld를 복제한 프로젝트<br>
 - 기본적인 로그인을 기반으로 하는 SNS <br>
 - 기존의 cyworld에서 프로필 이미지 등록, 댓글 및 일촌평 작성, 방문자 수 카운트를 구현 <h4>
 <br>
-🔍 포트폴리오 <br>
+<h4>🔍 포트폴리오 </h4>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">포트폴리오</a>
 <br>
-<br>
-🛠 설계 <br>
+
+<h4>🔨 설계 </h4>
 ◽ 기획 <br>
 &nbsp;&nbsp;https://ovenapp.io/project/CoxHuVEY47lNecM15zpdqXI0HSJFKABw#B6weK  <br>
   
