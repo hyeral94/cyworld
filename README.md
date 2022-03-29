@@ -30,16 +30,16 @@ https://ovenapp.io/project/CoxHuVEY47lNecM15zpdqXI0HSJFKABw#B6weK <br>
 https://docs.google.com/spreadsheets/d/1YrDons5yv4TPiurQ6F5QKXJ7l17ZOA7IWNZ6B5XWC1M/edit#gid=2003937629
 <br>
 <h4> ⭐ 주요기능 </h4>
-&nbsp;&nbsp;회원가입 <br>
-🔹 http://13.124.98.7:8080/user/signup_view <br>
-&nbsp;&nbsp;로그인 <br> 
-🔹 ttp://13.124.98.7:8080/user/signin_view <br>
-&nbsp;&nbsp;메인화면 & 일촌평 작성 <br>
-🔹 http://13.124.98.7:8080/main/mini_home_view?userId=1 <br>
-&nbsp;&nbsp;방명록 작성 <br>
-🔹 http://13.124.98.7:8080/post/guest_book_view?userId=1 <br>
-&nbsp;&nbsp;사용자 설정 <br>
-🔹 http://13.124.98.7:8080/post/setting_view?userId=1 <br>
+◽ 회원가입 <br>
+http://13.124.98.7:8080/user/signup_view <br>
+◽ 로그인 <br> 
+http://13.124.98.7:8080/user/signin_view <br>
+◽ 메인화면 & 일촌평 작성 <br>
+http://13.124.98.7:8080/main/mini_home_view?userId=1 <br>
+◽ 방명록 작성 <br>
+http://13.124.98.7:8080/post/guest_book_view?userId=1 <br>
+◽ 사용자 설정 <br>
+http://13.124.98.7:8080/post/setting_view?userId=1 <br>
 
   
   
