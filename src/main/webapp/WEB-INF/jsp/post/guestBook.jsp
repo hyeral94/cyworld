@@ -76,7 +76,7 @@
 	               		(<fmt:formatDate value="${guestBook.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" />)</div>
 					
 						<!-- 방명록 삭제 -->
-						<div id="guestBookDeleteBtn" data-friend-id="${guestBook.id }"><a href="#" style="text-decoration-line: none; color: inherit;">삭제</a></div>
+						<div class="guestBookDeleteBtn" data-friend-id="${guestBook.id }"><a href="#" style="text-decoration-line: none; color: inherit;">삭제</a></div>
 						<!-- 방명록 삭제 -->					
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 				});
 			});
 			
-			$("#guestBookDeleteBtn").on("click", function(){
+			$(".guestBookDeleteBtn").on("click", function(){
 
 				var id = $(this).data("friend-id");
 				

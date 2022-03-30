@@ -79,4 +79,14 @@
  			ORDER BY `id` DESC LIMIT 1;	
  	</select>		
 
+	<select id="selectConnectUserId" parameterType="int" 
+ 	resultType="com.somsom.cyworld.post.setting.model.Setting">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+ 		FROM 
+ 			`settingConnect`	
+ 		WHERE 
+ 			`userId` = #{userId} 
+ 	</select>
  </mapper>

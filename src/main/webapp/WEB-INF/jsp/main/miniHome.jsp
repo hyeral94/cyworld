@@ -89,7 +89,7 @@
 						<!-- 일촌평 작성자 정보  -->
 						
 						<!-- 일촌평 삭제 -->
-						<div id="friendReviewDeleteBtn" data-friend-id="${friendReview.id }"><a href="#" style="text-decoration-line:none; color:inherit;" class="text-white">삭제</a></div>
+						<div class="friendReviewDeleteBtn" data-friend-id="${friendReview.id }"><a href="#" style="text-decoration-line:none; color:inherit;" class="text-white">삭제</a></div>
 						<!-- 일촌평 삭제 -->					
 					</div>
 					
@@ -150,7 +150,7 @@
 				});
 			});
 			
-			$("#friendReviewDeleteBtn").on("click", function(){
+			$(".friendReviewDeleteBtn").on("click", function(){
 				
 				var id = $(this).data("friend-id"); //일촌평 작성자
 				
