@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.somsom.cyworld.post.diary.dao.DiaryDAO">
+ 	
+ 	<!-- 다이어리 작성 -->
+	<insert id="insertDiary" parameterType="map">
+		INSERT INTO `diary`
+		(
+			`userId`
+			, `subject`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUES
+		(
+			#{userId}
+ 			, #{subject}
+ 			, #{content}
+ 			, now()
+ 			, now()
+		)
+	</insert>
+	
+	<!-- 다이어리 리스트 가져오기 -->
+	<select id="selectDiaryList" parameterType="int" 
+ 	resultType="com.somsom.cyworld.post.diary.model.Diary">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `subject`
+ 			, `content`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`diary`
+		WHERE
+			`userId` = #{userId}
+ 	</select>			
+ </mapper>

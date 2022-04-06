@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.somsom.cyworld.post.diary.bo.DiaryBO;
+import com.somsom.cyworld.post.diary.model.Diary;
 import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
@@ -31,6 +33,9 @@ public class PostController {
 	
 	@Autowired
 	private VisitorNumberBO visitorNumberBO;
+	
+	@Autowired
+	private DiaryBO diaryBO;
 	
 	@GetMapping("/guest_book_view")
 	public String guestBookView(
@@ -86,6 +91,21 @@ public class PostController {
 		
 		return "post/setting";
 		
+	}
+	
+	@GetMapping("/diary_view")
+	public String diaryView(
+			Model model,
+			HttpServletRequest request) {
+
+		// 로그인 사용자의 글만 가져오기
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<Diary> diaryList = diaryBO.getDiaryList(userId);
+		model.addAttribute("diaryList", diaryList);
+		
+		return "post/diary";
 	}
 	
 
