@@ -120,6 +120,12 @@
 		<script>
 		$(document).ready(function(){
 			
+			var userId = $(this).data("user-id");
+			
+			//세션에 저장된 userId와 현재 로그인 한 userId와 일치하는지 확인 후 접근제한 설정
+			if(session.userId != userId)
+			
+			
 			//페이지 이동
 			$("#settingListBtn").on("click", function(){
 				
