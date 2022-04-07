@@ -21,6 +21,7 @@ import com.somsom.cyworld.post.setting.model.Setting;
 import com.somsom.cyworld.post.setting.model.SettingProfileImage;
 import com.somsom.cyworld.post.visitorNumber.bo.VisitorNumberBO;
 
+
 @RequestMapping("/post")
 @Controller
 public class PostController {
@@ -93,8 +94,13 @@ public class PostController {
 		
 	}
 	
-	@GetMapping("/diary_view")
-	public String diaryView(
+	@GetMapping("/diary_create_view")
+	public String diaryCreateView() {
+		return "post/diary";
+	}
+	
+	@GetMapping("/diary_list_view")
+	public String diaryListView(
 			Model model,
 			HttpServletRequest request) {
 
@@ -102,11 +108,15 @@ public class PostController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		List<Diary> diaryList = diaryBO.getDiaryList(userId);
-		model.addAttribute("diaryList", diaryList);
+		Diary diary = diaryBO.getDiaryList(userId);
+		
+		model.addAttribute("userId", userId);
+		model.addAttribute("diary", diary);
 		
 		return "post/diary";
 	}
+	
+
 	
 
 	

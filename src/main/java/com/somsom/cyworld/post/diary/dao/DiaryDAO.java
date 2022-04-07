@@ -1,6 +1,5 @@
 package com.somsom.cyworld.post.diary.dao;
 
-import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -16,6 +15,6 @@ public interface DiaryDAO {
 			@Param("content") String content);
 			//@Param("imagePath") String imagePath);
 	
-	public List<Diary> selectDiaryList(@Param("userId") int userId);
+	public Diary selectDiaryList(@Param("userId") int userId);
 	
 }

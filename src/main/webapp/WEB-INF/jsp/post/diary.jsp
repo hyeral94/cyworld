@@ -43,13 +43,10 @@
 			<div id="left-box" class="box-border pt-3">
 				<div class="text-primary mt-3"><h4>MY DIARY</h4></div>
 				<hr>
-		
-				
-				<!-- 다이어리 작성 날짜  -->
-				<div class="d-none" style="width:735px; height:30px; background-color:#FAECC5;">
-					Today History
-					2022-04-06 14:40
+				<div>
+				<a href="${diary.subject }"></a>
 				</div>
+		
 			</div>
 			<!-- 다이어리 목록 -->
 			
@@ -79,7 +76,8 @@
 			<div id="right-box">
 				<div class="side-box-border text-center"><a href="/main/mini_home_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
 				<div class="side-box-border text-center mt-1"><a href="/post/guest_book_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
-				<div class="side-box-border text-center mt-1"><a href="/post/diary_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">다이어리</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/diary_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">다이어리</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/diary_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">사진첩</div></a></div>
 				<div class="side-box-border text-center mt-1"><a href="/post/setting_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
 			</div>
 			<!-- 카테고리 -->
