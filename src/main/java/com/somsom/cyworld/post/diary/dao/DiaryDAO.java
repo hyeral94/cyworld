@@ -1,6 +1,5 @@
 package com.somsom.cyworld.post.diary.dao;
 
-
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

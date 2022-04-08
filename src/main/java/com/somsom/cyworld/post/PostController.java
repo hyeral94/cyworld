@@ -94,11 +94,13 @@ public class PostController {
 		
 	}
 	
+	// 다이어리 작성
 	@GetMapping("/diary_create_view")
 	public String diaryCreateView() {
 		return "post/diary";
 	}
 	
+	// 다이어리 리스트 가져오기
 	@GetMapping("/diary_list_view")
 	public String diaryListView(
 			Model model,
@@ -113,7 +115,13 @@ public class PostController {
 		model.addAttribute("userId", userId);
 		model.addAttribute("diary", diary);
 		
-		return "post/diary";
+		return "post/diaryList";
+	}
+	
+	// 사진첩 리스트
+	@GetMapping("/photo_album_create_view")
+	public String photoAlbumList() {
+		return "post/photoAlbum";
 	}
 	
 

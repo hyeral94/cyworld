@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 	
 </head>
-<body>
+ <body>
 	<div id="wrap" class="home-bg">
 		<header id="header-box" class="d-flex">
 			<div id="left-header"></div>
@@ -39,48 +39,32 @@
 		
 		<section class="d-flex">
 		
-			<!-- 다이어리 목록 -->
+		
 			<div id="left-box" class="box-border pt-3">
-				<div class="text-primary mt-3"><h4>MY DIARY</h4></div>
+				<div class="text-primary mt-3"><h4>PHOTO ALBUM</h4></div>
 				<hr>
-				<div>
-				<c:forEach var="diary" items="${diary }">
-					<a href="/post/diary_list_view?userId=${userId}">ㅋㅋㅋㅋ</a>
-				</c:forEach>
-			
-				</div>
+				<a href="#" style="text-decoration-line: none; color: inherit;"><i class="bi bi-folder"></i>&nbsp;사진</a>
+		
+	
 		
 			</div>
-			<!-- 다이어리 목록 -->
+	
 			
-			<!-- 다이어리 작성 -->
+		
 			<div id="center-box" class="box-border">
-				<div style="width:735px; height:30px; background-color:#FAECC5;">
-				Today History
-				</div>
-				<!-- 다이어리 입력 상자 -->
-				<div class="d-flex mt-4">제목 : &nbsp;&nbsp;<input type="text" class="form-control col-11" id="subjectInput"></div>
-				<div class="mt-3">
-					<textarea class="form-control" style="border: 1" rows="10" cols="50" placeholder="내용을 입력하세요." id="contentInput"></textarea>
-				</div>
-				<!-- 다이어리 입력상자 -->
-				
-				<!-- 이미지 첨부 및 저장 -->
-				<div class="d-flex mt-4 justify-content-end">				
-					<button type="button" class="btn btn-primary form-control" style="width:80px; height:40px;" data-user-id="${userId}" id="addDiaryBtn">저장</button>
-				</div>
-				<!-- 이미지 첨부 -->
-				
-			</div>	
-			<!-- 다이어리 작성 -->
+			
+				<a href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-camera"></i>&nbsp;사진 올리기</a>
 
+			
+			</div>	
+		
 			
 			<!-- 카테고리 -->
 			<div id="right-box">
 				<div class="side-box-border text-center text-white"><a href="/main/mini_home_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
 				<div class="side-box-border text-center mt-1 text-white"><a href="/post/guest_book_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
-				<div class="side-box-border text-center mt-1"><a href="/post/diary_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">다이어리</div></a></div>
-				<div class="side-box-border text-center mt-1 text-white"><a href="/post/photo_album_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">사진첩</div></a></div>
+				<div class="side-box-border text-center mt-1 text-white"><a href="/post/diary_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">다이어리</div></a></div>
+				<div class="side-box-border text-center mt-1"><a href="/post/photo_album_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">사진첩</div></a></div>
 				<div class="side-box-border text-center mt-1 text-white"><a href="/post/setting_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
 			</div>
 			<!-- 카테고리 -->
@@ -89,48 +73,21 @@
 	</div>
 	
 	<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	    
+	      <div class="modal-body justify-content-end">
+	        <textarea class="form-control" rows="4" cols="3" id=""></textarea>
+	        <button type="button" class="btn btn-primary" data-user-id="${}" id="">확인</button>
+	      </div>
+	     	      			
+	    </div>
+	  </div>
+	</div>
+
 
 </body>
-	<script>
-		$(document).ready(function(){
-			
-			$("#addDiaryBtn").on("click", function(){
-				
-				let subject = $("#subjectInput").val();
-				let content = $("#contentInput").val();
-				let userId = $(this).data("user-id"); 
-				
-				if(subject == "" || subject == null){
-					alert("제목을 입력하세요.");
-					return;
-				}
-				
-				if(content == "" || content == null){
-					alert("내용을 입력하세요.");
-					return;
-				}
-				
-				$.ajax({
-					type:"post",
-					url:"/post/diary/create",
-					data:{"subject":subject, "content":content, "userId":userId},
-					success:function(data) {
-						if(data.result == "success"){
-							location.reload();
-						}else {
-							alert("다이어리 작성 실패");
-						}
-					},
-					error:function() {
-						alert("다이어리 작성 에러");
-					}
-				});
-				
-	
-			
-			});
-		
-		});
-	
-	</script>
 </html>
