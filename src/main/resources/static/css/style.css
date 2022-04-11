@@ -133,3 +133,8 @@ header > #login-logo {
 	height:50px;
 	border: 2px solid white;
 }
+
+.photoUploadBtn {
+	background-color: #D5D5D5;
+	border: 1px solid;
+}

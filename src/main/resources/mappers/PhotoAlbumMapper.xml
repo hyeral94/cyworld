@@ -11,6 +11,7 @@
 		(
 			`userId`
 			, `userName`
+			, `subject`
 			, `content`
 			, `imagePath`
 			, `createdAt`
@@ -20,6 +21,7 @@
 		(
 			#{userId}
  			, #{userName}
+ 			, #{subject}
  			, #{content}
  			, #{imagePath}
  			, now()

@@ -43,21 +43,24 @@
 			<div id="left-box" class="box-border pt-3">
 				<div class="text-primary mt-3"><h4>PHOTO ALBUM</h4></div>
 				<hr>
-				<a href="#" style="text-decoration-line: none; color: inherit;"><i class="bi bi-folder"></i>&nbsp;사진</a>
-		
-	
-		
+				<a href="#" style="text-decoration-line: none; color: inherit;" id="photoList"><i class="bi bi-folder"></i>&nbsp;사진</a>
 			</div>
 	
 			
 		
 			<div id="center-box" class="box-border">
-			
-				<a href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-camera"></i>&nbsp;사진 올리기</a>
-
-			
-			</div>	
+				
+				<!-- 사진 업로드 -->
+				<div id="photoAlbumPage" align="right">
+					<a class="text-dark photoUploadBtn" style="text-decoration-line:none; color:inherit;" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-camera"></i>&nbsp;사진 올리기</a>
+				</div>	
+				
+				<!-- 사진첩 피드 -->
+				<div class="mt-2" style="width:735px; height:30px; background-color:#FAECC5;"></div>
+				
+				
 		
+			</div>
 			
 			<!-- 카테고리 -->
 			<div id="right-box">
@@ -79,14 +82,63 @@
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content">
 	    
-	      <div class="modal-body justify-content-end">
-	        <textarea class="form-control" rows="4" cols="3" id=""></textarea>
-	        <button type="button" class="btn btn-primary" data-user-id="${}" id="">확인</button>
+	      <div class="modal-body">
+	     	제목<input type="text" class="form-control" cols="2" id="subjectInput">
+	        <textarea class="form-control mt-1" rows="5" cols="3" id="contentInput"></textarea>
+	        <div class="d-flex justify-content-between">
+	        	<input type="file" class="mt-2"  id="fileInput">
+	        	<button type="button" class="btn mt-1 btn-primary" data-user-id="${userId}" id="photoAlbumUploadBtn">업로드</button>     
+	      	</div>
 	      </div>
 	     	      			
 	    </div>
 	  </div>
 	</div>
+
+	<script>
+		$(document).ready(function(){
+			
+			// 사진 업로드
+			$("#photoAlbumUploadBtn").on("click", function(){
+			
+				let subject = $("#subjectInput").val();
+				let content = $("#contentInput").val().trim();
+			
+				// 파일 유효성 검사
+				if($("#fileInput")[0].files.length == 0) {
+					alert("파일을 선택하세요.");
+					return;
+				}
+			
+				var formData = new FormData();
+				formData.append("content", content);
+				formData.append("subject", subject);
+				formData.append("file", $("#fileInput")[0].files[0]);
+				
+				$.ajax({
+					type:"post",
+					url:"/post/photo_album/create",
+					data:formData,
+					enctype:"multipart/form-data", 
+					processData:false, 
+					contentType:false, 
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						}else {
+							alert("사진첩 업로드 실패");
+						}
+					},
+					error:function() {
+						alert("사진첩 업로드 에러 발생");
+					}
+					
+				});
+			});
+			
+		});
+
+	</script>
 
 
 </body>
