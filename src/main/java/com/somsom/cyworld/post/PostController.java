@@ -16,11 +16,12 @@ import com.somsom.cyworld.post.diary.bo.DiaryBO;
 import com.somsom.cyworld.post.diary.model.Diary;
 import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
+import com.somsom.cyworld.post.photoAlbum.bo.PhotoAlbumBO;
+import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
 import com.somsom.cyworld.post.setting.model.Setting;
 import com.somsom.cyworld.post.setting.model.SettingProfileImage;
 import com.somsom.cyworld.post.visitorNumber.bo.VisitorNumberBO;
-
 
 @RequestMapping("/post")
 @Controller
@@ -37,6 +38,9 @@ public class PostController {
 	
 	@Autowired
 	private DiaryBO diaryBO;
+	
+	@Autowired
+	private PhotoAlbumBO photoAlbumBO;
 	
 	@GetMapping("/guest_book_view")
 	public String guestBookView(
@@ -96,34 +100,39 @@ public class PostController {
 	
 	// 다이어리 작성
 	@GetMapping("/diary_create_view")
-	public String diaryCreateView() {
-		return "post/diary";
-	}
-	
-	// 다이어리 리스트 가져오기
-	@GetMapping("/diary_list_view")
-	public String diaryListView(
+	public String diaryCreateView(
 			Model model,
 			HttpServletRequest request) {
-
-		// 로그인 사용자의 글만 가져오기
+		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		Diary diary = diaryBO.getDiaryList(userId);
+		List<Diary> diary = diaryBO.getDiaryList(userId);
 		
 		model.addAttribute("userId", userId);
 		model.addAttribute("diary", diary);
 		
-		return "post/diaryList";
+		return "post/diary";
 	}
-	
-	// 사진첩 리스트
+
+	// 사진첩 업로드
 	@GetMapping("/photo_album_create_view")
-	public String photoAlbumList() {
+	public String photoAlbumList(
+			Model model,
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbum(userId);
+		
+		model.addAttribute("userId", userId);
+		model.addAttribute("photoAlbum", photoAlbum);
+				
 		return "post/photoAlbum";
 	}
 	
+
 
 	
 

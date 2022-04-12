@@ -1,14 +1,15 @@
-package com.somsom.cyworld.post.diary.model;
+package com.somsom.cyworld.post.photoAlbum.model;
 
 import java.util.Date;
 
-public class Diary {
-
+public class PhotoAlbum {
+	
 	private int id;
 	private int userId;
 	private String userName;
 	private String subject;
 	private String content;
+	private String imagePath;
 	private Date createdAt;
 	private Date updatedAt;
 	
@@ -42,6 +43,12 @@ public class Diary {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -57,7 +64,4 @@ public class Diary {
 	
 	
 
-
-	
-	
 }

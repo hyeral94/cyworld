@@ -15,15 +15,18 @@ public class DiaryBO {
 	private DiaryDAO diaryDAO;
 	
 	// 다이어리 작성
-	public int addDiary(int userId, String subject, String content) {
+	public int addDiary(int userId, String userName, String subject, String content) {
 		
-//		String filePath = FileManagerService.saveFile(userId, file);
-		
-		return diaryDAO.insertDiary(userId, subject, content);
+		return diaryDAO.insertDiary(userId, userName, subject, content);
 	}
 	
 	// 다이어리 리스트 가져오기
-	public Diary getDiaryList(int userId){
+	public List<Diary> getDiaryList(int userId){
 		return diaryDAO.selectDiaryList(userId);
+	}
+	
+	// 다이어리 삭제
+	public int deleteDiary(int id) {
+		return diaryDAO.deleteDiary(id);
 	}
 }

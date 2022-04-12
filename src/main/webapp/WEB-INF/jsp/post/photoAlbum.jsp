@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,23 +44,44 @@
 			<div id="left-box" class="box-border pt-3">
 				<div class="text-primary mt-3"><h4>PHOTO ALBUM</h4></div>
 				<hr>
-				<a href="#" style="text-decoration-line: none; color: inherit;" id="photoList"><i class="bi bi-folder"></i>&nbsp;사진</a>
+				<div id="photoAlbumBtn"><i class="bi bi-folder"></i>&nbsp;사진</div>
 			</div>
 	
 			
 		
 			<div id="center-box" class="box-border">
 				
+				<div id="photoAlbumList" class="d-none">
 				<!-- 사진 업로드 -->
 				<div id="photoAlbumPage" align="right">
 					<a class="text-dark photoUploadBtn" style="text-decoration-line:none; color:inherit;" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-camera"></i>&nbsp;사진 올리기</a>
 				</div>	
+				<!-- 사진 업로드 -->
 				
 				<!-- 사진첩 피드 -->
-				<div class="mt-2" style="width:735px; height:30px; background-color:#FAECC5;"></div>
+					<div style="overflow:auto; width:735px; height:580px;">
+					<c:forEach var="photoAlbums" items="${photoAlbum }" >
+
+					<div class="mt-2 text-center" style="width:700px; height:30px; background-color:#FAECC5;">${photoAlbums.subject }</div>
+					<div class="d-flex justify-content-between mt-1" style="width:700px;">
+						<div>${photoAlbumList.userName }</div>
+						<div><fmt:formatDate value="${photoAlbums.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+					</div>
+					
+					<!-- 이미지 -->
+					<div>
+						<img class="mt-2" height="300" width="700" src="${photoAlbums.imagePath }">
+					</div>
+					<!-- 이미지 -->
+					
+					<!-- 사진첩 컨텐츠 -->
+					<div class="mt-1">${photoAlbums.content }</div>
+					<hr>
+					</c:forEach>
 				
-				
-		
+					</div>
+					</div>
+				<!-- 사진첩 피드 -->
 			</div>
 			
 			<!-- 카테고리 -->
@@ -98,6 +120,11 @@
 	<script>
 		$(document).ready(function(){
 			
+			$("#photoAlbumBtn").on("click", function(){
+				
+				$("#photoAlbumList").removeClass("d-none");
+			});
+		
 			// 사진 업로드
 			$("#photoAlbumUploadBtn").on("click", function(){
 			
