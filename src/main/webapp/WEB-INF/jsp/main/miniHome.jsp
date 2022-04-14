@@ -64,9 +64,10 @@
 				<div id="uploadNews">
 					<div class="text-primary">upload news</div>
 					<hr>
-					<div style="overflow:auto; width:750px; height:110px;">
-					<small>- [제주도 여행]3박 4일 제주도 여행 후기~~</small><br>
-					<small>- 코로나 재택치료 후기...ㅠㅠ</small>
+					<div style="overflow:auto; width:750px; height:75px;">
+						<c:forEach var="diarys" items="${diary }" >
+						<small><a href="/post/diary_create_view?userId=${diarys.userId }" style="text-decoration-line:none; color:inherit;">${diarys.subject }</a></small><br>
+						</c:forEach>
 					</div>
 				</div>
 				

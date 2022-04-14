@@ -52,21 +52,24 @@
 			<div id="center-box" class="box-border">
 				
 				<div id="photoAlbumList" class="d-none">
-				<!-- 사진 업로드 -->
-				<div id="photoAlbumPage" align="right">
-					<a class="text-dark photoUploadBtn" style="text-decoration-line:none; color:inherit;" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-camera"></i>&nbsp;사진 올리기</a>
-				</div>	
-				<!-- 사진 업로드 -->
+					<!-- 사진 업로드 -->
+					<div id="photoAlbumPage" align="right">
+						<a class="text-dark photoUploadBtn" style="text-decoration-line:none; color:inherit;" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-camera"></i>&nbsp;사진 올리기</a>
+					</div>	
+					<!-- 사진 업로드 -->
 				
-				<!-- 사진첩 피드 -->
+					<!-- 사진첩 피드 -->
 					<div style="overflow:auto; width:735px; height:580px;">
 					<c:forEach var="photoAlbums" items="${photoAlbum }" >
-
-					<div class="mt-2 text-center" style="width:700px; height:30px; background-color:#FAECC5;">${photoAlbums.subject }</div>
-					<div class="d-flex justify-content-between mt-1" style="width:700px;">
-						<div>${photoAlbumList.userName }</div>
-						<div><fmt:formatDate value="${photoAlbums.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
-					</div>
+						<div class="d-flex">
+						<div class="mt-2 text-center" style="width:680px; height:30px; background-color:#FAECC5;">${photoAlbums.subject }</div>
+						<div class="mt-2 text-end" style="width:20px; height:30px; background-color:#FAECC5;"><i class="bi bi-x-circle"></i></div>
+						</div>
+						
+						<div class="d-flex justify-content-between mt-1" style="width:700px;">
+							<div>${photoAlbums.userName }</div>
+							<div><fmt:formatDate value="${photoAlbums.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+						</div>
 					
 					<!-- 이미지 -->
 					<div>
@@ -75,12 +78,22 @@
 					<!-- 이미지 -->
 					
 					<!-- 사진첩 컨텐츠 -->
-					<div class="mt-1">${photoAlbums.content }</div>
+					<div class="d-flex justify-content-between" style="width:700px;">
+						<div class="mt-1">${photoAlbums.content }</div>
+					</div>
 					<hr>
+					<!-- 댓글 -->
+					<div class="d-flex mt-3">		 	
+					 	<input type="text" class="form-control" style="width:620px; height:40px;">
+					 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;">확인</button>
+					</div>
+						<!-- 댓글 -->		
 					</c:forEach>
 				
-					</div>
-					</div>
+					
+				
+						</div>
+				</div>
 				<!-- 사진첩 피드 -->
 			</div>
 			

@@ -114,6 +114,9 @@ public class PostController {
 		
 		return "post/diary";
 	}
+	
+	// 다이어리 삭제
+	
 
 	// 사진첩 업로드
 	@GetMapping("/photo_album_create_view")
