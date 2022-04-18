@@ -127,7 +127,7 @@ public class PostController {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbum(userId);
+		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbumList(userId);
 		
 		model.addAttribute("userId", userId);
 		model.addAttribute("photoAlbum", photoAlbum);

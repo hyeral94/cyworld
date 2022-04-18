@@ -53,7 +53,7 @@
 			
 			
 			<div id="center-box" class="box-border">
-				<!-- 다이어라 작성 -->
+				<!-- 다이어리 작성 -->
 				<div id="diarywriting" class="d-none">
 					<div style="width:735px; height:30px; background-color:#FAECC5;">
 					Today History
@@ -143,15 +143,6 @@
 				$("#diaryList").addClass("d-none");
 			});
 			
-			$("#diarywritingBtn").on("click", function(){
-				
-				let userId = $(this).data("user-id"); 
-				
-				if(session.getAttribute("userId") != userId){
-					$("#warningBox").removeClass("d-none");
-				}
-
-			});
 			
 			$("#diaryListBtn").on("click", function(){
 				
@@ -196,6 +187,7 @@
 			
 			});
 			
+			// 다이어리 삭제
 			$(".diaryDeleteBtn").on("click", function(){
 			
 				var id = $(this).data("diary-id");

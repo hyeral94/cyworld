@@ -30,7 +30,7 @@
 	</insert>
 	
 	<!-- 사진첩 리스트 가져오기 -->
-	<select id="selectPhotoAlbum" parameterType="int" 
+	<select id="selectPhotoAlbumList" parameterType="int" 
  	resultType="com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum">
  		SELECT 
 			`id`
@@ -45,6 +45,28 @@
 			`photoAlbum`
 		WHERE
 			`userId` = #{userId}
- 	</select>				
+ 	</select>			
+ 	
+ 	 <select id="selectPhotoAlbum" parameterType="int" resultType="com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `subject`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`photoAlbum`
+		WHERE
+			`id` = #{id}
+ 	</select>	
 	
+	<delete id="deletePhotoAlbum" parameterType="int">
+		DELETE FROM
+ 			`photoAlbum`
+ 		WHERE
+ 			`id` = #{id}		
+	</delete>
 </mapper>
