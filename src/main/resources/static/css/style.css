@@ -116,6 +116,11 @@ header > #login-logo {
 	background-color:#D5D5D5;
 }
 
+#photoAlbumReviewDelete:hover{
+	background-color:#D5D5D5;
+}
+
+
 #guestbook-box {
   background-color: white;
   border: 2px solid #D5D5D5;

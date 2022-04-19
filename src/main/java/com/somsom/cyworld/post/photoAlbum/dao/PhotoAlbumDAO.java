@@ -20,7 +20,7 @@ public interface PhotoAlbumDAO {
 			@Param("content") String content,
 			@Param("imagePath") String imagePath);
 	
-	public List<PhotoAlbum> selectPhotoAlbumList(@Param("userId") int userId);
+	public List<PhotoAlbum> selectPhotoAlbumList();
 	
 	public PhotoAlbum selectPhotoAlbum(@Param("id") int id);
 	

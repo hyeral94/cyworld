@@ -60,41 +60,61 @@
 				
 					<!-- 사진첩 피드 -->
 					<div style="overflow:auto; width:735px; height:580px;">
-					<c:forEach var="photoAlbums" items="${photoAlbum }" >
+					<c:forEach var="photoAlbumDetail" items="${photoAlbumList }" >
 						<div class="d-flex">
-						<div class="mt-2 text-center" style="width:680px; height:30px; background-color:#FAECC5;">${photoAlbums.subject }</div>
+						<div class="mt-2 text-center" style="width:680px; height:30px; background-color:#FAECC5;">${photoAlbumDetail.photoAlbum.subject }</div>
 						<div class="mt-2 text-end" style="width:20px; height:30px; background-color:#FAECC5;"><i class="deleteBtn bi bi-x-circle"data-photo-id="${photoAlbums.id }"></i></div>
 						</div>
 						
 						<div class="d-flex justify-content-between mt-1" style="width:700px;">
-							<div>${photoAlbums.userName }</div>
-							<div><fmt:formatDate value="${photoAlbums.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+							<div>${photoAlbumDetail.photoAlbum.userName }</div>
+							<div><fmt:formatDate value="${photoAlbumDetail.photoAlbum.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
 						</div>
 					
 					<!-- 이미지 -->
 					<div>
-						<img class="mt-2" height="300" width="700" src="${photoAlbums.imagePath }">
+						<img class="mt-2" height="300" width="700" src="${photoAlbumDetail.photoAlbum.imagePath }">
 					</div>
 					<!-- 이미지 -->
 					
 					<!-- 사진첩 컨텐츠 -->
 					<div class="d-flex justify-content-between" style="width:700px;">
-						<div class="mt-1">${photoAlbums.content }</div>
+						<div class="mt-1">${photoAlbumDetail.photoAlbum.content }</div>
 					</div>
+					</c:forEach>
 					<hr>
-					<!-- 댓글 -->
-					<div class="d-flex mt-3">		 	
-					 	<input type="text" class="form-control" style="width:620px; height:40px;">
-					 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;">확인</button>
+					
+					<!-- 사진첩 리스트 -->
+					<c:forEach var="photoAlbumReivew" items="${photoAlbumDetail.photoAlbumReivewList }">
+					<div class="d-flex justify-content-between" style="width:700px;" id="photoAlbumReviewDelete">
+						
+						<!-- 댓글 -->	
+						<div><b><a href="/main/mini_home_view?userId=${photoAlbumReview.userId}" style="text-decoration-line:none; color:inherit;">${photoAlbumReview.userName }</a></b> &nbsp; ${photoAlbumReview.content }</div>
+						<!-- 댓글 -->
+					
+						<!-- 댓글 삭제 -->
+						<div class="photoAlbumReviewDeleteBtn" data-friend-id="${photoAlbumReview.id }"><a href="#" style="text-decoration-line:none; color:inherit;" class="text-white">삭제</a></div>
+						<!-- 댓글 삭제 -->
+						
 					</div>
-						<!-- 댓글 -->		
+					</c:forEach>
+					
+					
+					<!-- 사진첩 리스트 -->
+					
+					<!-- 사진첩 댓글 -->
+					<div class="d-flex mt-3">		 	
+					 	<input type="text" class="form-control" style="width:620px; height:40px;" id="contentInput">
+					 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" data-user-id="${targetUserId}" id="photoAlbumReviewBtn">확인</button>
+					</div>
+						<!-- 사진첩 댓글 -->		
 					</c:forEach>
 				
 					
 				
 						</div>
-				</div>
-				<!-- 사진첩 피드 -->
+					</div>
+					<!-- 사진첩 피드 -->
 			</div>
 			
 			<!-- 카테고리 -->
@@ -198,8 +218,59 @@
 				});
 			});
 		
+			// 사진첩 댓글
+			$("#photoAlbumReviewBtn").on("click", function(){
+				
+				var content = $("#contentInput").val(); //입력한 방명록
+				var userId = $(this).data("user-id"); // 현재 로그인 한 미니홈피 주인
+				
+				if(content == null || content == ""){
+					alert("댓글 내용을 입력하세요.");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/post/photo_album_review/create",
+					data:{"content":content,"targetUserId":userId},
+					success:function(data) {
+						if(data.result == "success"){
+							location.reload();
+						}else {
+							alert("댓글 쓰기 실패");
+						}
+					},
+					error:function() {
+						alert("댓글 쓰기 에러");
+					}
+				});
+			});
+			
+			// 사진첩 댓글 삭제
+			$(".photoAlbumReviewDeleteBtn").on("click", function(){
+				
+				var id = $(this).data("friend-id"); //일촌평 작성자
+				
+				$.ajax({
+					type:"get",
+					url:"/post/photo_album_review/delete",
+					data:{"id":id},
+					success:function(data) {
+						if(data.result == "success"){
+							location.reload();
+						}else {
+							alert("댓글 삭제 실패");
+						}
+					},
+					error:function() {
+						alert("댓글 삭제 에러");
+					}
+						
+					
+				});
+			});
+		
 		});
-
 	</script>
 
 

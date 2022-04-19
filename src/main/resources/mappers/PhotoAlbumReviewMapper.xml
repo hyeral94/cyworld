@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.somsom.cyworld.post.photoAlbum.photoAlbumReview.dao.PhotoAlbumReviewDAO">
+
+	<insert id="insertPhotoAlbumReview" parameterType="map">
+		INSERT INTO `photoAlbumReview`
+		(
+			`userId`
+			, `userName`
+			, `targetUserId`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUES
+		(
+			#{userId}
+ 			, #{userName}
+ 			, #{targetUserId}
+ 			, #{content}
+ 			, now()
+ 			, now()
+		)
+	</insert>
+	
+	<select id="photoAlbumReviewList" parameterType="int" 
+ 	resultType="com.somsom.cyworld.post.photoAlbum.photoAlbumReview.model.PhotoAlbumReview">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `targetUserId`
+ 			, `content`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`photoAlbumReview`
+		WHERE
+			`targetUserId` = #{targetUserId}
+ 	</select>	
+ 	
+ 	<!-- 사진첩 댓글 삭제 -->
+ 	<delete id="deletePhotoAlbumReview" parameterType="int">
+ 		DELETE FROM
+ 			`photoAlbumReview`
+ 		WHERE
+ 			`targetUserId` = #{targetUserId}
+ 	</delete>
+ 	
+ 	<!-- 사진첩 댓글 삭제 -->
+ 	<select id="selectPhotoAlbumReviewDelete" parameterType="int"
+ 	resultType="com.somsom.cyworld.post.photoAlbum.photoAlbumReview.model.PhotoAlbumReview">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `targetUserId`
+ 			, `content`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`photoAlbumReview`
+		WHERE
+			`targetUserId` = #{targetUserId}
+ 	</select>
+</mapper>

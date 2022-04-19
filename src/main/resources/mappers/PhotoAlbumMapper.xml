@@ -43,11 +43,11 @@
  			, `updatedAt`
 		FROM
 			`photoAlbum`
-		WHERE
-			`userId` = #{userId}
+			
+		ORDER BY `id` DESC;	 
  	</select>			
  	
- 	 <select id="selectPhotoAlbum" parameterType="int" resultType="com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum">
+ 	<select id="selectPhotoAlbum" parameterType="int" resultType="com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum">
  		SELECT 
 			`id`
 			, `userId`
