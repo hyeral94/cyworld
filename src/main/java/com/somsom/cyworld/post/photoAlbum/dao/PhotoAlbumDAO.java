@@ -22,7 +22,7 @@ public interface PhotoAlbumDAO {
 	
 	public List<PhotoAlbum> selectPhotoAlbumList();
 	
-	public PhotoAlbum selectPhotoAlbum(@Param("id") int id);
-	
-	public int deletePhotoAlbum(@Param("id") int id);
+//	public PhotoAlbum selectPhotoAlbum(@Param("id") int id);
+//	
+//	public int deletePhotoAlbum(@Param("id") int id);
 }

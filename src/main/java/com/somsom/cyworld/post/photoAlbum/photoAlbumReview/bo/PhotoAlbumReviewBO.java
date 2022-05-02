@@ -36,9 +36,9 @@ public class PhotoAlbumReviewBO {
 //		return photoAlbumReviewDAO.deletePhotoAlbumReview(userId);
 //	}
 	
-	// 사진첩 댓글 삭제
-	public int deletePhotoAlbumReview(int targetUserId) {
-		return photoAlbumReviewDAO.deletePhotoAlbumReview(targetUserId);
-	}
+//	// 사진첩 댓글 삭제
+//	public int deletePhotoAlbumReview(int targetUserId) {
+//		return photoAlbumReviewDAO.deletePhotoAlbumReview(targetUserId);
+//	}
 	
 }

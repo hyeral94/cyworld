@@ -24,6 +24,6 @@ public interface PhotoAlbumReviewDAO {
 //		
 //	public PhotoAlbumReview selectPhotoAlbumReviewDelete(@Param("id") int id);
 	
-	public int deletePhotoAlbumReview(@Param("targetUserId") int targetUserId);
+//	public int deletePhotoAlbumReview(@Param("targetUserId") int targetUserId);
 	
 }

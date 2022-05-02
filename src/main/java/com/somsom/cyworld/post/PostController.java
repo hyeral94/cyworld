@@ -17,8 +17,9 @@ import com.somsom.cyworld.post.diary.model.Diary;
 import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
 import com.somsom.cyworld.post.photoAlbum.bo.PhotoAlbumBO;
-import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbumDetail;
+import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
 import com.somsom.cyworld.post.photoAlbum.photoAlbumReview.bo.PhotoAlbumReviewBO;
+import com.somsom.cyworld.post.photoAlbum.photoAlbumReview.model.PhotoAlbumReview;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
 import com.somsom.cyworld.post.setting.model.Setting;
 import com.somsom.cyworld.post.setting.model.SettingProfileImage;
@@ -122,20 +123,24 @@ public class PostController {
 
 	// 사진첩
 	@GetMapping("/photo_album_create_view")
-	public String photoAlbumList(
-//			@RequestParam("userId") int targetUserId,
+	public String photoAlbumView(
+			@RequestParam("userId") int targetUserId,
 			Model model,
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		
-		List<PhotoAlbumDetail> photoAlbumList = photoAlbumBO.getPhotoAlbumList(userId);
+		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbum(userId);
+		List<PhotoAlbumReview> photoAlbumReview = photoAlbumReivewBO.getPhotoAlbumReview(targetUserId);
 		
-		model.addAttribute("photoAlbumList", photoAlbumList);
+		model.addAttribute("photoAlbum", photoAlbum);
+		model.addAttribute("photoAlbumReview", photoAlbumReview);
 		
 		return "post/photoAlbum";
 	}
+	
+	
 	
 
 

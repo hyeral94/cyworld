@@ -60,62 +60,67 @@
 				
 					<!-- 사진첩 피드 -->
 					<div style="overflow:auto; width:735px; height:580px;">
-					<c:forEach var="photoAlbumDetail" items="${photoAlbumList }" >
+						
+						<!-- 타이틀 -->
+						<c:forEach var="photoAlbums" items="${photoAlbum }" >
 						<div class="d-flex">
-						<div class="mt-2 text-center" style="width:680px; height:30px; background-color:#FAECC5;">${photoAlbumDetail.photoAlbum.subject }</div>
+						<div class="mt-2 text-center" style="width:680px; height:30px; background-color:#FAECC5;">${photoAlbums.subject }</div>
 						<div class="mt-2 text-end" style="width:20px; height:30px; background-color:#FAECC5;"><i class="deleteBtn bi bi-x-circle"data-photo-id="${photoAlbums.id }"></i></div>
 						</div>
 						
 						<div class="d-flex justify-content-between mt-1" style="width:700px;">
-							<div>${photoAlbumDetail.photoAlbum.userName }</div>
-							<div><fmt:formatDate value="${photoAlbumDetail.photoAlbum.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+							<div>${photoAlbums.userName }</div>
+							<div><fmt:formatDate value="${photoAlbums.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
 						</div>
-					
-					<!-- 이미지 -->
-					<div>
-						<img class="mt-2" height="300" width="700" src="${photoAlbumDetail.photoAlbum.imagePath }">
-					</div>
-					<!-- 이미지 -->
-					
-					<!-- 사진첩 컨텐츠 -->
-					<div class="d-flex justify-content-between" style="width:700px;">
-						<div class="mt-1">${photoAlbumDetail.photoAlbum.content }</div>
-					</div>
-					</c:forEach>
-					<hr>
-					
-					<!-- 사진첩 리스트 -->
-					<c:forEach var="photoAlbumReivew" items="${photoAlbumDetail.photoAlbumReivewList }">
-					<div class="d-flex justify-content-between" style="width:700px;" id="photoAlbumReviewDelete">
+						<!-- 타이틀 -->
 						
-						<!-- 댓글 -->	
-						<div><b><a href="/main/mini_home_view?userId=${photoAlbumReview.userId}" style="text-decoration-line:none; color:inherit;">${photoAlbumReview.userName }</a></b> &nbsp; ${photoAlbumReview.content }</div>
-						<!-- 댓글 -->
-					
-						<!-- 댓글 삭제 -->
-						<div class="photoAlbumReviewDeleteBtn" data-friend-id="${photoAlbumReview.id }"><a href="#" style="text-decoration-line:none; color:inherit;" class="text-white">삭제</a></div>
-						<!-- 댓글 삭제 -->
-						
-					</div>
-					</c:forEach>
-					
-					
-					<!-- 사진첩 리스트 -->
-					
-					<!-- 사진첩 댓글 -->
-					<div class="d-flex mt-3">		 	
-					 	<input type="text" class="form-control" style="width:620px; height:40px;" id="contentInput">
-					 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" data-user-id="${targetUserId}" id="photoAlbumReviewBtn">확인</button>
-					</div>
-						<!-- 사진첩 댓글 -->		
-					</c:forEach>
-				
-					
-				
+						<!-- 이미지 -->
+						<div>
+							<img class="mt-2" height="300" width="700" src="${photoAlbums.imagePath }">
 						</div>
-					</div>
+						<!-- 이미지 -->
+						
+						<!-- 컨텐츠 -->
+						<div class="d-flex justify-content-between" style="width:700px;">
+							<div class="mt-1">${photoAlbums.content }</div>
+						</div>
+						</c:forEach>
+						<hr>
+						<!-- 컨텐츠 -->
+						
+					
+						
+						<!-- 댓글 리스트 -->
+						<div class="d-flex justify-content-between" style="width:700px;" id="photoAlbumReviewDelete">
+						<c:forEach var="photoAlbumReviews" items="${photoAlbumReview }">
+							
+							<!-- 댓글 내용 -->	
+							<div><b><a href="/main/mini_home_view?userId=${photoAlbumReviews.userId}" style="text-decoration-line:none; color:inherit;">${photoAlbumReviews.userName }</a></b> &nbsp; ${photoAlbumReviews.content }</div>
+							<!-- 댓글 내용 -->
+						
+							<!-- 댓글 삭제 -->
+							<div class="photoAlbumReviewDeleteBtn" data-friend-id="${photoAlbumReviews.id }"><a href="#" style="text-decoration-line:none; color:inherit;" class="text-white">삭제</a></div>
+							<!-- 댓글 삭제 -->
+						</c:forEach>
+						</div>
+						<!-- 댓글 리스트 -->
+						
+						
+						<!-- 댓글 입력 -->
+						<div class="d-flex mt-3">
+									 	
+						 	<input type="text" class="form-control" style="width:620px; height:40px;" id="contentInput">
+						 	<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" data-user-id="${targetUserId}" id="photoAlbumReviewBtn">확인</button>
+							
+						</div>
+						<!-- 댓글 입력 -->		
+						
+				
 					<!-- 사진첩 피드 -->
+					</div>
+				</div>
 			</div>
+			
 			
 			<!-- 카테고리 -->
 			<div id="right-box">
