@@ -62,7 +62,7 @@
 			<div id="center-box" class="box-border">
 	
 			<!-- 방명록 쓰기 -->
-			<div align="right">
+			<div align="right" class="mr-4">
 				<a class="text-dark" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-pencil-square" style="font-size: 30px;"></i></a>
 			</div>
 
