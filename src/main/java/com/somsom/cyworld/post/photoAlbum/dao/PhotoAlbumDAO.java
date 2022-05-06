@@ -1,7 +1,11 @@
 package com.somsom.cyworld.post.photoAlbum.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
 
 @Repository
 public interface PhotoAlbumDAO {
@@ -12,4 +16,6 @@ public interface PhotoAlbumDAO {
 			@Param("subject") String subject,
 			@Param("content") String content,
 			@Param("imagePath") String imagePath);
+	
+	public List<PhotoAlbum> selectPhotoAlbum(@Param("userId") int userId);
 }

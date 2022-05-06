@@ -16,6 +16,8 @@ import com.somsom.cyworld.post.diary.bo.DiaryBO;
 import com.somsom.cyworld.post.diary.model.Diary;
 import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
+import com.somsom.cyworld.post.photoAlbum.bo.PhotoAlbumBO;
+import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
 import com.somsom.cyworld.post.setting.model.Setting;
 import com.somsom.cyworld.post.setting.model.SettingProfileImage;
@@ -37,6 +39,8 @@ public class PostController {
 	@Autowired
 	private DiaryBO diaryBO;
 	
+	@Autowired
+	private PhotoAlbumBO photoAlbumBO;
 
 	
 	@GetMapping("/guest_book_view")
@@ -103,22 +107,35 @@ public class PostController {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
+		Setting setting = settingBO.getSetting(userId);
 		
 		List<Diary> diary = diaryBO.getDiaryList(userId);
 		
 		model.addAttribute("userId", userId);
 		model.addAttribute("diary", diary);
+		model.addAttribute("setting", setting);
 		
 		return "post/diary";
 	}
 	
 	// 사진첩
 	@GetMapping("/photo_album_create_view")
-	public String photoAlbumCreateView() {
-//			Model model,
-//			HttpServletRequest request) {
+	public String photoAlbumCreateView( 
+			Model model,
+			HttpServletRequest request) {
 		
-	return "post/photoAlbum";	
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		Setting setting = settingBO.getSetting(userId);
+		
+		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbumList(userId);
+		
+		model.addAttribute("userId", userId);
+		model.addAttribute("photoAlbum", photoAlbum);
+		model.addAttribute("setting", setting);
+		
+				
+		return "post/photoAlbum";	
 		
 	}
 

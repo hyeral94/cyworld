@@ -25,8 +25,7 @@
 		<header id="header-box" class="d-flex">
 			<div id="left-header"></div>
 			<div id="center-header">
-		
-	
+				<h4 class="mt-5">${setting.introduce }</h4>	
 			</div>
 			<div id="right-header" class="mt-5 pl-4">
 				<c:choose>
@@ -53,22 +52,43 @@
 			<div id="center-box" class="box-border">
 				
 				<!-- 사진첩 작성 버튼 -->
-				<div id="photoAlbumUploadBtn" align="right"><button type="button">사진첩 작성</button></div>
+				<div id="photoAlbumBtn" align="right" class="mr-5" href="#" data-toggle="modal" data-target="#exampleModalCenter">
+					<button type="button">사진첩 작성</button>
+				</div>
 				<!-- 사진첩 작성 버튼 -->
-				
-				
 			
-				
-				
+				<!-- 사진첩 리스트 -->
 				<div class="mt-3" style="overflow:auto; width:750px; height:550px;">		
-					<div id="photoAlbumUpload" class="">
-						<div style="width:735px; height:30px; background-color:#FAECC5;">
-						
+					<div id="photoAlbumUpload">
+						<c:forEach var="photoAlbums" items="${photoAlbum }">
+						<div style="width:700px; height:30px; background-color:#FAECC5;">
+							<div class="text-center">${photoAlbums.subject }</div>
 						</div>
-				
+						<div class="d-flex justify-content-between" style="width:700px;">
+							<div>${photoAlbums.userName }&nbsp; (<fmt:formatDate value="${photoAlbums.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" />)</div>
+							<div><i class="bi bi-trash" style="font-size: 18px;"></i></div>
+						</div>
+						
+						<!-- 사진 -->
+						<div style="width:700px; height:400px; background-color:grey;">
+							<img src="${photoAlbums.imagePath }">
+						</div>
+						<!-- 사진 -->
+						
+						<!-- 컨텐츠 -->
+						<div class="mt-2" style="width:700px;">
+							<div>${photoAlbums.content }</div>
+						</div>
+						<!-- 컨텐츠 -->
+						
+						<hr>
+						
+						<!-- 댓글 -->
+						<!-- 댓글 -->
+						</c:forEach>
 					</div>
 				</div>
-			
+				<!-- 사진첩 리스트 -->
 			
 			
 			
@@ -93,13 +113,72 @@
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content">
-	    
-	      <div class="modal-body">
-	     	
-	      </div>
-	     	      			
+	      
+	      	<!-- 사진첩 작성 및 업로드 -->	
+		    <div class="modal-body justify-content-end">
+		   		<textarea class="form-control" rows="1" cols="3" placeholder="제목 작성" id="subjectInput"></textarea>
+			    <textarea class="form-control mt-1" rows="5" cols="3" placeholder="컨텐츠 작성" id="photoAlbumInput"></textarea>
+			    <div class="d-flex justify-content-between mt-2">
+				    <input type="file" id="fileInput">
+				    <button type="button" class="btn btn-primary" data-user-id="${userId}" id="photoAlbumUploadBtn">확인</button>
+			    </div>
+		    </div>
+		    <!-- 사진첩 작성 및 업로드 --> 	
+	      		
 	    </div>
 	  </div>
 	</div>
 	<!-- Modal -->
+</body>	
+	<script>
+	
+		$(document).ready(function(){
+			
+			$("#photoAlbumUploadBtn").on("click", function() {
+				
+				let subject = $("#subjectInput").val();
+				let content = $("#photoAlbumInput").val();
+				
+				if(subject == "" || subject == null){
+					alert("제목을 입력하세요.");
+					return;
+				}
+				
+				// 파일 유효성 검사
+				if($("#fileInput")[0].files.length == 0) {
+					return;
+				}
+			
+				var formData = new FormData();
+				formData.append("content", content);
+				formData.append("subject", subject);
+				formData.append("file", $("#fileInput")[0].files[0]);
+				
+			
+				$.ajax({
+					type:"post",
+					url:"/post/photo_alubm/create",
+					data:formData,
+					enctype:"multipart/form-data", 
+					processData:false, 
+					contentType:false, 
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						}else {
+							alert("사진첩 업로드 실패");
+						}
+					},
+					error:function() {
+						alert("사진첩 업로드 에러 발생");
+					}
+					
+				});
+			});
+			
+		});
+	
+	
+	
+	</script>
 </html>
