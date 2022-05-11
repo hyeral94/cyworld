@@ -17,7 +17,7 @@ import com.somsom.cyworld.post.diary.model.Diary;
 import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
 import com.somsom.cyworld.post.photoAlbum.bo.PhotoAlbumBO;
-import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
+import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbumDetail;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
 import com.somsom.cyworld.post.setting.model.Setting;
 import com.somsom.cyworld.post.setting.model.SettingProfileImage;
@@ -41,8 +41,14 @@ public class PostController {
 	
 	@Autowired
 	private PhotoAlbumBO photoAlbumBO;
-
+//	
+//	@Autowired
+//	private ReviewBO reviewBO;
 	
+	@Autowired
+	private PhotoAlbumDetail photoAlbumDetail;
+
+	// 방명록
 	@GetMapping("/guest_book_view")
 	public String guestBookView(
 			@RequestParam("userId") int targetUserId,
@@ -115,6 +121,7 @@ public class PostController {
 		model.addAttribute("diary", diary);
 		model.addAttribute("setting", setting);
 		
+		
 		return "post/diary";
 	}
 	
@@ -122,24 +129,27 @@ public class PostController {
 	@GetMapping("/photo_album_create_view")
 	public String photoAlbumCreateView( 
 			Model model,
-			HttpServletRequest request) {
+			HttpServletRequest request,
+			@RequestParam("userId") int targetUserId){
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		Setting setting = settingBO.getSetting(userId);
 		
-		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbumList(userId);
+//		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbumList(userId);//사진첩 리스트
+//		List<PhotoAlbumReview> photoAlbumReview = reviewBO.getPhotoAlbumReviewList(targetUserId);//댓글 리스트
+		List<PhotoAlbumDetail> photoAlbumDetail = photoAlbumBO.getPhotoAlbumList(userId);
 		
-		model.addAttribute("userId", userId);
-		model.addAttribute("photoAlbum", photoAlbum);
+		model.addAttribute("photoAlbumDetail", photoAlbumDetail);
+		
+//		model.addAttribute("photoAlbum", photoAlbum);		
 		model.addAttribute("setting", setting);
-		
+//		model.addAttribute("photoAlbumReview", photoAlbumReview);
+
 				
 		return "post/photoAlbum";	
 		
 	}
-
-
 	
-	
+
 }

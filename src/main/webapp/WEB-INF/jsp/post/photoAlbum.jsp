@@ -60,32 +60,37 @@
 				<!-- 사진첩 리스트 -->
 				<div class="mt-3" style="overflow:auto; width:750px; height:550px;">		
 					<div id="photoAlbumUpload">
-						<c:forEach var="photoAlbums" items="${photoAlbum }">
+						<c:forEach var="photoAlbumList" items="${photoAlbumDetail }">
 						<div style="width:700px; height:30px; background-color:#FAECC5;">
-							<div class="text-center">${photoAlbums.subject }</div>
+							<div class="text-center">${photoAlbumList.photoAlbum.subject }</div>
 						</div>
 						<div class="d-flex justify-content-between" style="width:700px;">
-							<div>${photoAlbums.userName }&nbsp; (<fmt:formatDate value="${photoAlbums.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" />)</div>
+							<div>${photoAlbumList.photoAlbum.userName }&nbsp; (<fmt:formatDate value="${photoAlbumList.photoAlbum.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" />)</div>
 							<div><i class="bi bi-trash" style="font-size: 18px;"></i></div>
 						</div>
 						
 						<!-- 사진 -->
 						<div style="width:700px; height:400px; background-color:grey;">
-							<img src="${photoAlbums.imagePath }">
+							<img src="${photoAlbumList.photoAlbum.imagePath }">
 						</div>
 						<!-- 사진 -->
 						
 						<!-- 컨텐츠 -->
 						<div class="mt-2" style="width:700px;">
-							<div>${photoAlbums.content }</div>
+							<div>${photoAlbumList.photoAlbum.content }</div>
 						</div>
 						<!-- 컨텐츠 -->
 						
 						<hr>
+						</c:forEach>
 						
 						<!-- 댓글 -->
+						<div class="d-flex mt-3">		 	
+				 			<input type="text" class="form-control" style="width:620px; height:40px;" id="PhotoReviewInput">
+				 			<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" data-user-id=" " id="PhotoReviewBtn">확인</button>
+						</div>
 						<!-- 댓글 -->
-						</c:forEach>
+						
 					</div>
 				</div>
 				<!-- 사진첩 리스트 -->

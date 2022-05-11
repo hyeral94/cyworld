@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
 
+
 @Repository
 public interface PhotoAlbumDAO {
 
@@ -17,5 +18,8 @@ public interface PhotoAlbumDAO {
 			@Param("content") String content,
 			@Param("imagePath") String imagePath);
 	
-	public List<PhotoAlbum> selectPhotoAlbum(@Param("userId") int userId);
+	public List<PhotoAlbum> selectPhotoAlbum();
+	
+	
+
 }

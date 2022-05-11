@@ -1,4 +1,4 @@
-package com.somsom.cyworld.post.photoAlbum;
+package com.somsom.cyworld.post.photoAlbum.Review;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,29 +11,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.somsom.cyworld.post.photoAlbum.bo.PhotoAlbumBO;
 
-@RequestMapping("/post/photo_alubm")
+import com.somsom.cyworld.post.photoAlbum.Review.bo.ReviewBO;
+
+@RequestMapping("/post/photo_alubm_review")
 @RestController
-public class PhotoAlbumRestController {
-	
-	@Autowired
-	private PhotoAlbumBO photoAlbumBO;
+public class PhotoAlbumReviewRestController {
 
+	@Autowired
+	private ReviewBO reviewBO;
+	
 	@PostMapping("/create")
-	public Map<String, String> photoAlbumCreate(
-			@RequestParam("subject") String subject,
+	public Map<String, String> reviewCreate(
+			@RequestParam("targetUserId") int targetUserId,
 			@RequestParam("content") String content,
-			@RequestParam(value="file", required=false) MultipartFile file,
 			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
 		String userName = (String)session.getAttribute("userName");
 		
-		int count = photoAlbumBO.addPhotoAlbum(userId, userName, subject, content, file);
+		int count = reviewBO.addReview(userId, userName, targetUserId, content);
 		Map<String, String> result = new HashMap<>();
 		
 		if(count == 1) {
