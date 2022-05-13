@@ -20,6 +20,7 @@
 </head>
 
 <body>
+
 	<div id="wrap" class="home-bg">
 	
 		<header id="header-box" class="d-flex">
@@ -37,68 +38,53 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-		 </header>
+		</header>
 		
 		<section class="d-flex">
-			
+		
 			<!-- 사진첩 목록 -->
 			<div id="left-box" class="box-border pt-3">
-				<div class="text-primary mt-3"><h4>PHOTO ALBUM</h4></div>
+				<div class="text-primary mt-3"><h4>MY PHOTOALBUM</h4></div>
 				<hr>
-				<div id="photoAlbumListBtn"><i class="bi bi-journal-text"></i>&nbsp;사진첩</div>
+				<div id="diaryListBtn"><i class="bi bi-journal-album"></i>&nbsp;사진첩</div>
 			</div>
 			<!-- 사진첩 목록 -->
-		
+			
+			<!-- 사진첩 리스트 -->
 			<div id="center-box" class="box-border">
-				
-				<!-- 사진첩 작성 버튼 -->
-				<div id="photoAlbumBtn" align="right" class="mr-5" href="#" data-toggle="modal" data-target="#exampleModalCenter">
+			
+				<!-- 사진 작성 버튼 -->
+				<div align="right" class="mr-5" href="#" data-toggle="modal" data-target="#exampleModalCenter">
 					<button type="button">사진첩 작성</button>
 				</div>
-				<!-- 사진첩 작성 버튼 -->
-			
-				<!-- 사진첩 리스트 -->
-				<div class="mt-3" style="overflow:auto; width:750px; height:550px;">		
-					<div id="photoAlbumUpload">
-						<c:forEach var="photoAlbumList" items="${photoAlbumDetail }">
-						<div style="width:700px; height:30px; background-color:#FAECC5;">
-							<div class="text-center">${photoAlbumList.photoAlbum.subject }</div>
-						</div>
-						<div class="d-flex justify-content-between" style="width:700px;">
-							<div>${photoAlbumList.photoAlbum.userName }&nbsp; (<fmt:formatDate value="${photoAlbumList.photoAlbum.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" />)</div>
-							<div><i class="bi bi-trash" style="font-size: 18px;"></i></div>
-						</div>
-						
-						<!-- 사진 -->
-						<div style="width:700px; height:400px; background-color:grey;">
-							<img src="${photoAlbumList.photoAlbum.imagePath }">
-						</div>
-						<!-- 사진 -->
-						
-						<!-- 컨텐츠 -->
-						<div class="mt-2" style="width:700px;">
-							<div>${photoAlbumList.photoAlbum.content }</div>
-						</div>
-						<!-- 컨텐츠 -->
-						
-						<hr>
-						</c:forEach>
-						
-						<!-- 댓글 -->
-						<div class="d-flex mt-3">		 	
-				 			<input type="text" class="form-control" style="width:620px; height:40px;" id="PhotoReviewInput">
-				 			<button type="button" class="form-control btn btn-secondary" style="width:80px; height:40px;" data-user-id=" " id="PhotoReviewBtn">확인</button>
-						</div>
-						<!-- 댓글 -->
-						
+				<!-- 사진 작성 버튼 -->
+				
+				<!-- 사진 제목, 작성자 이름, 날짜, 컨텐츠 -->
+				<div style="overflow:auto; width:735px; height:580px;">
+				<c:forEach var="photoAlbums" items="${photoAlbum }" >
+					<div class="mt-3" style="width:700px; height:30px; background-color:#FAECC5;">
+						<div class="text-center">${photoAlbums.subject }</div>
 					</div>
-				</div>
-				<!-- 사진첩 리스트 -->
-			
-			
-			
+					
+					<div class="d-flex justify-content-between" style="width:700px; height:30px;">
+						<div>${photoAlbums.userName } &nbsp; <fmt:formatDate value="${photoAlbums.createdAt }" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+						
+						<!-- 사진 삭제 -->
+						<div><i class="bi bi-trash" style="font-size: 18px;" id="deleteImgBtn" data-user-id="${photoAlbums.id }"></i></div>
+						<!-- 사진 삭제 -->
+					</div>
+					
+					<div style="width:700px; height:350px;">
+						<img src="#">
+					</div>
+					<hr>
+					<div>${photoAlbums.content }</div>
+				</c:forEach>
+				</div>	
 			</div>
-		
+			<!-- 사진첩 리스트 -->
+			
+			
 			<!-- 카테고리 -->
 			<div id="right-box">
 				<div class="side-box-border text-center text-white"><a href="/main/mini_home_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
@@ -108,11 +94,11 @@
 				<div class="side-box-border text-center mt-1 text-white"><a href="/post/setting_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
 			</div>
 			<!-- 카테고리 -->
+			
 		</section>
 	</div>
 	
 	<c:import url ="/WEB-INF/jsp/include/footer.jsp" />
-	
 	
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -122,10 +108,10 @@
 	      	<!-- 사진첩 작성 및 업로드 -->	
 		    <div class="modal-body justify-content-end">
 		   		<textarea class="form-control" rows="1" cols="3" placeholder="제목 작성" id="subjectInput"></textarea>
-			    <textarea class="form-control mt-1" rows="5" cols="3" placeholder="컨텐츠 작성" id="photoAlbumInput"></textarea>
+			    <textarea class="form-control mt-1" rows="5" cols="3" placeholder="컨텐츠 작성" id="contentInput"></textarea>
 			    <div class="d-flex justify-content-between mt-2">
 				    <input type="file" id="fileInput">
-				    <button type="button" class="btn btn-primary" data-user-id="${userId}" id="photoAlbumUploadBtn">확인</button>
+				    <button type="button" class="btn btn-primary" data-user-id="${userId}" id="photoAlbumBtn">확인</button>
 			    </div>
 		    </div>
 		    <!-- 사진첩 작성 및 업로드 --> 	
@@ -134,55 +120,112 @@
 	  </div>
 	</div>
 	<!-- Modal -->
-</body>	
+	
+</body>
+
 	<script>
 	
 		$(document).ready(function(){
 			
-			$("#photoAlbumUploadBtn").on("click", function() {
+			// 사진첩 작성
+			$("#photoAlbumBtn").on("click", function(){
 				
 				let subject = $("#subjectInput").val();
-				let content = $("#photoAlbumInput").val();
+				let content = $("#contentInput").val();
 				
 				if(subject == "" || subject == null){
 					alert("제목을 입력하세요.");
 					return;
 				}
-				
+
 				// 파일 유효성 검사
 				if($("#fileInput")[0].files.length == 0) {
+					alert("파일을 선택하세요");
 					return;
 				}
 			
 				var formData = new FormData();
-				formData.append("content", content);
 				formData.append("subject", subject);
+				formData.append("content", content);
 				formData.append("file", $("#fileInput")[0].files[0]);
 				
-			
+				
 				$.ajax({
 					type:"post",
-					url:"/post/photo_alubm/create",
+					url:"/post/photo_album/create",
 					data:formData,
 					enctype:"multipart/form-data", 
 					processData:false, 
 					contentType:false, 
 					success:function(data) {
-						if(data.result == "success") {
+						if(data.result == "success"){
 							location.reload();
 						}else {
-							alert("사진첩 업로드 실패");
+							alert("사진첩 작성 실패");
 						}
 					},
 					error:function() {
-						alert("사진첩 업로드 에러 발생");
+						alert("사진첩 작성 에러");
 					}
-					
+				});
+				
+	
+			
+			});
+			
+			// 사진첩 댓글 작성
+			$("#photoReviewBtn").on("click", function(){
+				
+				var content = $("#photoReviewInput").val(); // 입력한 일촌평
+				var userId = $(this).data("user-id");//현재 로그인한 미니홈피 주인
+		
+				if(content == null || content == ""){
+					alert("내용을 입력하세요.");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/post/photo_album_review/create",
+					data:{"content":content, "targetUserId":userId},
+					success:function(data) {
+						if(data.result == "success"){
+							location.reload();
+						}else {
+							alert("댓글 등록 실패");
+						}
+					},
+					error:function() {
+						alert("댓글 등록 에러");
+					}
 				});
 			});
 			
-		});
+			// 사진 삭제
+			$("#deleteImgBtn").on("click", function(){
+
+				var id = $(this).data("user-id");
+					
+				$.ajax({
+					type:"get",
+					url:"/post/photo_album/delete",
+					data:{"id":id},
+					success:function(data) {
+						if(data.result == "success"){
+							location.reload();
+						}else {
+							alert("사진 삭제 실패");
+						}
+					},
+					error:function() {
+						alert("사진 삭제 에러");
+					}
+						
+				});
+					
+			});
 	
+		});
 	
 	
 	</script>

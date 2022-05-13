@@ -1,6 +1,5 @@
 package com.somsom.cyworld.post.photoAlbum.bo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.somsom.cyworld.common.FileManagerService;
-import com.somsom.cyworld.post.photoAlbum.Review.bo.ReviewBO;
-import com.somsom.cyworld.post.photoAlbum.Review.model.PhotoAlbumReview;
+import com.somsom.cyworld.post.guestBook.model.GuestBook;
 import com.somsom.cyworld.post.photoAlbum.dao.PhotoAlbumDAO;
 import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
-import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbumDetail;
+
 
 @Service
 public class PhotoAlbumBO {
@@ -20,36 +18,31 @@ public class PhotoAlbumBO {
 	@Autowired
 	private PhotoAlbumDAO photoAlbumDAO;
 	
-	@Autowired
-	private ReviewBO reviewBO;
-	
-	
-	// 사진첩 업로드
+	// 사진첩 작성
 	public int addPhotoAlbum(int userId, String userName, String subject, String content, MultipartFile file) {
 		
 		String filePath = FileManagerService.saveFile(userId, file);
 		
-		return photoAlbumDAO.insertPhotoAlbum(userId, userName, subject, content, filePath);
+		return photoAlbumDAO.insertPhotoAlbum(userId, userName, subject, content, content);
 	}
 	
-	// 사진첩 리스트 가져오기
-	public List<PhotoAlbumDetail> getPhotoAlbumList(int userId) {
+	// 사진첩 리스트
+	public List<PhotoAlbum> getPhotoAlbumList(int userId){
+		return photoAlbumDAO.selectPhotoAlbum(userId);
+	}
 	
-		List<PhotoAlbum> photoAlbumList = photoAlbumDAO.selectPhotoAlbum();
+	// 사진첩 삭제
+	public int deletePhotoAlbum(int id, int userId) {
 		
-		List<PhotoAlbumDetail> photoAlbumDetailList = new ArrayList<>();
-		
-		for(PhotoAlbum photoAlbum:photoAlbumList) {
+		PhotoAlbum photoAlbum = photoAlbumDAO.selectPhotoAlbumDelete(id);
+
 			
-			List<PhotoAlbumReview> reviewList = reviewBO.getPhotoAlbumReviewList(photoAlbum.getId());
-		
-			PhotoAlbumDetail photoAlbumDetail = new PhotoAlbumDetail();
-			photoAlbumDetail.setPhotoAlbum(photoAlbum);
-			photoAlbumDetail.setReviewList(reviewList);
-			
-			photoAlbumDetailList.add(photoAlbumDetail);
+		if(photoAlbum.getUserId() != userId) {
+			return 0;
 		}
 		
-		return photoAlbumDetailList;
+		return photoAlbumDAO.deletePhotoAlbum(id);
+		}
+		
 	}
- }
+

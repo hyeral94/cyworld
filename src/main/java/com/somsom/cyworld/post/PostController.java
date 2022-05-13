@@ -17,7 +17,9 @@ import com.somsom.cyworld.post.diary.model.Diary;
 import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
 import com.somsom.cyworld.post.photoAlbum.bo.PhotoAlbumBO;
-import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbumDetail;
+import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
+import com.somsom.cyworld.post.photoAlbumReview.bo.PhotoAlbumReviewBO;
+import com.somsom.cyworld.post.photoAlbumReview.model.PhotoAlbumReview;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
 import com.somsom.cyworld.post.setting.model.Setting;
 import com.somsom.cyworld.post.setting.model.SettingProfileImage;
@@ -41,12 +43,11 @@ public class PostController {
 	
 	@Autowired
 	private PhotoAlbumBO photoAlbumBO;
-//	
-//	@Autowired
-//	private ReviewBO reviewBO;
 	
 	@Autowired
-	private PhotoAlbumDetail photoAlbumDetail;
+	private PhotoAlbumReviewBO photoAlbumReviewBO;
+	
+
 
 	// 방명록
 	@GetMapping("/guest_book_view")
@@ -86,6 +87,7 @@ public class PostController {
 		
 	}
 	
+	// 설정
 	@GetMapping("/setting_view")
 	public String settingView(
 			Model model,
@@ -127,29 +129,27 @@ public class PostController {
 	
 	// 사진첩
 	@GetMapping("/photo_album_create_view")
-	public String photoAlbumCreateView( 
+	public String photoAlbumCreateView(
 			Model model,
-			HttpServletRequest request,
-			@RequestParam("userId") int targetUserId){
+			HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
-		Setting setting = settingBO.getSetting(userId);
 		
-//		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbumList(userId);//사진첩 리스트
-//		List<PhotoAlbumReview> photoAlbumReview = reviewBO.getPhotoAlbumReviewList(targetUserId);//댓글 리스트
-		List<PhotoAlbumDetail> photoAlbumDetail = photoAlbumBO.getPhotoAlbumList(userId);
+		Setting setting = settingBO.getSetting(userId);		
 		
-		model.addAttribute("photoAlbumDetail", photoAlbumDetail);
+		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbumList(userId);
+//		List<PhotoAlbumReview> photoAlbumReview = photoAlbumReviewBO.getPhotoAlbumReviewList(targetUserId);
 		
-//		model.addAttribute("photoAlbum", photoAlbum);		
 		model.addAttribute("setting", setting);
+		model.addAttribute("userId", userId);
+		model.addAttribute("photoAlbum", photoAlbum);
 //		model.addAttribute("photoAlbumReview", photoAlbumReview);
-
-				
-		return "post/photoAlbum";	
+		
+		return "post/photoAlbum";
 		
 	}
 	
+
 
 }

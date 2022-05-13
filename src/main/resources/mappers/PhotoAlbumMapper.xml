@@ -29,8 +29,8 @@
  		)
  	</insert>
  	
- 	<!-- 사진첩 리스트 가져오기 -->
-	<select id="selectPhotoAlbum" parameterType="int" 
+ 	<!-- 사진첩 리스트  -->
+ 	<select id="selectPhotoAlbum" parameterType="int" 
  	resultType="com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum">
  		SELECT 
 			`id`
@@ -48,5 +48,30 @@
 		ORDER BY `id` DESC;	 	
  	</select>	
  	
- 
+ 	<!-- 사진 삭제 -->
+ 	<delete id="deletePhotoAlbum" parameterType="int">
+ 		DELETE FROM
+ 			`photoAlbum`
+ 		WHERE
+ 			`id` = #{id}	
+ 	</delete>
+ 	
+ 	<!-- 사진 삭제 -->
+ 	<select id="selectPhotoAlbumDelete" parameterType="int"
+ 	resultType="com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `subject`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`photoAlbum`
+		WHERE
+			`id` = #{id} 
+ 	</select>
+
  </mapper>

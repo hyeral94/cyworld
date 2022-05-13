@@ -21,6 +21,7 @@
 
 <body>
 	<div id="wrap" class="home-bg">
+	
 		<header id="header-box" class="d-flex">
 			<div id="left-header"></div>
 			<div id="center-header">

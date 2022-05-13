@@ -1,4 +1,4 @@
-package com.somsom.cyworld.post.photoAlbum.Review.model;
+package com.somsom.cyworld.post.photoAlbumReview.model;
 
 import java.util.Date;
 
@@ -8,8 +8,10 @@ public class PhotoAlbumReview {
 	private int userId;
 	private String userName;
 	private int targetUserId;
+	private String content;
 	private Date createdAt;
 	private Date updatedAt;
+	
 	
 	public int getId() {
 		return id;
@@ -35,6 +37,12 @@ public class PhotoAlbumReview {
 	public void setTargetUserId(int targetUserId) {
 		this.targetUserId = targetUserId;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -47,7 +55,6 @@ public class PhotoAlbumReview {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
 	
-
+	
 }

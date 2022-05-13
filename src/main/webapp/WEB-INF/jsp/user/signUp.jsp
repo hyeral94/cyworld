@@ -23,8 +23,9 @@
 		
 		<form id="signUpForm">
 			<section id="box" class="mt-5">
-				<input type="text" name="test" onkeyup="this.value=this.value.replace(/[^a-zA-Z]/g,'');" class="form-control" placeholder="사용자 이름" id="loginIdInput" />	
-				<div id="onlyEngInputMassage" class="d-none"><small class="text-dark">*영문 입력만 가능합니다.</small></div>
+				
+				<input type="text" name="test" onkeyup="this.value=this.value.replace(/[^a-z0-9@]/gi,'');" class="form-control" placeholder="사용자 이름" id="loginIdInput" />	
+				<div id="onlyEngInputMassage" class="d-none"><small class="text-dark">*이메일 형식으로 입력하세요. 한글 입력 불가능 합니다.</small></div>
 				<div id="duplicateId" class="d-none"><small class="text-danger">중복된 ID 입니다.</small></div>
 				<div id="noneDuplicateId" class="d-none"><small class="text-success">사용 가능한 ID 입니다.</small></div>
 						
@@ -49,6 +50,9 @@
 	
 		$(document).ready(function(){
 			
+
+	
+
 			$("#loginIdInput").on("input", function(){
 				
 				$("#onlyEngInputMassage").removeClass("d-none");
