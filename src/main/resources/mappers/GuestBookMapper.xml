@@ -54,7 +54,7 @@
  	<!-- 방명록 삭제 -->
  	<select id="selectGuestBookDelete" parameterType="int"
  	resultType="com.somsom.cyworld.post.guestBook.model.GuestBook">
- 			SELECT 
+ 		SELECT 
 			`id`
 			, `userId`
  			, `userName`

@@ -64,9 +64,10 @@
 				<div id="uploadNews">
 					<div class="text-primary">upload news</div>
 					<hr>
-					<div style="overflow:auto; width:750px; height:110px;">
-					<small>- [제주도 여행]3박 4일 제주도 여행 후기~~</small><br>
-					<small>- 코로나 재택치료 후기...ㅠㅠ</small>
+					<div style="overflow:auto; width:750px; height:75px;">
+						<c:forEach var="diarys" items="${diary }" >
+						<small><a href="/post/diary_create_view?userId=${diarys.userId }" style="text-decoration-line:none; color:inherit;">${diarys.subject }</a></small><br>
+						</c:forEach>
 					</div>
 				</div>
 				
@@ -107,11 +108,12 @@
 		
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<div class="side-box-border text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
-				<div class="side-box-border text-center mt-1"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
-				<div class="side-box-border text-center mt-1"><a href="/post/setting_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
+				<div class="side-box-border text-center bg-primary"><a href="/main/mini_home_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
+				<div class="side-box-border text-center mt-1 bg-primary text-white"><a href="/post/guest_book_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
+				<div class="side-box-border text-center mt-1 bg-primary text-white"><a href="/post/diary_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">다이어리</div></a></div>
+				<div class="side-box-border text-center mt-1 bg-primary text-white"><a href="/post/photo_album_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">사진첩</div></a></div>
+				<div class="side-box-border text-center mt-1 bg-primary text-white"><a href="/post/setting_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
 			</div>
-
 		</section>
 			
 	</div>

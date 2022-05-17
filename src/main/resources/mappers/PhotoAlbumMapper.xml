@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.somsom.cyworld.post.photoAlbum.dao.PhotoAlbumDAO">
+ 
+ 	<!-- 사진첩 작성 -->
+ 	<insert id="insertPhotoAlbum" parameterType="map">
+ 		INSERT INTO `photoAlbum`
+ 		(
+ 			`userId`
+ 			, `userName`
+ 			, `subject`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{userId}
+ 			, #{userName}
+ 			, #{subject}
+ 			, #{content}
+ 			, #{imagePath}
+ 			, now()
+ 			, now()
+ 		)
+ 	</insert>
+ 	
+ 	<!-- 사진첩 리스트  -->
+ 	<select id="selectPhotoAlbum" parameterType="int" 
+ 	resultType="com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `subject`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`photoAlbum`
+		WHERE
+			`userId` = #{userId} 
+		ORDER BY `id` DESC;	 	
+ 	</select>	
+ 	
+ 	<!-- 사진 삭제 -->
+ 	<delete id="deletePhotoAlbum" parameterType="int">
+ 		DELETE FROM
+ 			`photoAlbum`
+ 		WHERE
+ 			`id` = #{id}	
+ 	</delete>
+ 	
+ 	<!-- 사진 삭제 -->
+ 	<select id="selectPhotoAlbumDelete" parameterType="int"
+ 	resultType="com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum">
+ 		SELECT 
+			`id`
+			, `userId`
+ 			, `userName`
+ 			, `subject`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+		FROM
+			`photoAlbum`
+		WHERE
+			`id` = #{id} 
+ 	</select>
+
+ </mapper>

@@ -12,8 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.somsom.cyworld.post.diary.bo.DiaryBO;
+import com.somsom.cyworld.post.diary.model.Diary;
 import com.somsom.cyworld.post.guestBook.bo.GuestBookBO;
 import com.somsom.cyworld.post.guestBook.model.GuestBook;
+import com.somsom.cyworld.post.photoAlbum.bo.PhotoAlbumBO;
+import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
+import com.somsom.cyworld.post.photoAlbumReview.bo.PhotoAlbumReviewBO;
+import com.somsom.cyworld.post.photoAlbumReview.model.PhotoAlbumReview;
 import com.somsom.cyworld.post.setting.bo.SettingBO;
 import com.somsom.cyworld.post.setting.model.Setting;
 import com.somsom.cyworld.post.setting.model.SettingProfileImage;
@@ -32,6 +38,18 @@ public class PostController {
 	@Autowired
 	private VisitorNumberBO visitorNumberBO;
 	
+	@Autowired
+	private DiaryBO diaryBO;
+	
+	@Autowired
+	private PhotoAlbumBO photoAlbumBO;
+	
+	@Autowired
+	private PhotoAlbumReviewBO photoAlbumReviewBO;
+	
+
+
+	// 방명록
 	@GetMapping("/guest_book_view")
 	public String guestBookView(
 			@RequestParam("userId") int targetUserId,
@@ -69,6 +87,7 @@ public class PostController {
 		
 	}
 	
+	// 설정
 	@GetMapping("/setting_view")
 	public String settingView(
 			Model model,
@@ -88,7 +107,49 @@ public class PostController {
 		
 	}
 	
+	// 다이어리
+	@GetMapping("/diary_create_view")
+	public String diaryCreateView(
+			Model model,
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		Setting setting = settingBO.getSetting(userId);
+		
+		List<Diary> diary = diaryBO.getDiaryList(userId);
+		
+		model.addAttribute("userId", userId);
+		model.addAttribute("diary", diary);
+		model.addAttribute("setting", setting);
+		
+		
+		return "post/diary";
+	}
+	
+	// 사진첩
+	@GetMapping("/photo_album_create_view")
+	public String photoAlbumCreateView(
+			Model model,
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		
+		Setting setting = settingBO.getSetting(userId);		
+		
+		List<PhotoAlbum> photoAlbum = photoAlbumBO.getPhotoAlbumList(userId);
+//		List<PhotoAlbumReview> photoAlbumReview = photoAlbumReviewBO.getPhotoAlbumReviewList(targetUserId);
+		
+		model.addAttribute("setting", setting);
+		model.addAttribute("userId", userId);
+		model.addAttribute("photoAlbum", photoAlbum);
+//		model.addAttribute("photoAlbumReview", photoAlbumReview);
+		
+		return "post/photoAlbum";
+		
+	}
+	
 
-	
-	
+
 }

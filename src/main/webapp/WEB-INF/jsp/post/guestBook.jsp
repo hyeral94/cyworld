@@ -62,8 +62,9 @@
 			<div id="center-box" class="box-border">
 	
 			<!-- 방명록 쓰기 -->
-			<a class="text-dark" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-pencil-square" style="font-size: 30px;"></i></a>
-			
+			<div align="right" class="mr-4">
+				<a class="text-dark" href="#" data-toggle="modal" data-target="#exampleModalCenter"><i class="bi bi-pencil-square" style="font-size: 30px;"></i></a>
+			</div>
 
 			<!-- 방명록 입력 성공 시 d-none -->
 			<div id="guestListBox" class="mt-3" style="overflow:auto; width:750px; height:550px;">
@@ -98,9 +99,11 @@
 			
 			<!-- 카테고리 -->
 			<div id="right-box">
-				<div class="side-box-border text-center"><a href="/main/mini_home_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
-				<div class="side-box-border text-center mt-1"><a href="/post/guest_book_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
-				<div class="side-box-border text-center mt-1"><a href="/post/setting_view?userId=${targetUserId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
+				<div class="side-box-border text-center bg-primary text-white"><a href="/main/mini_home_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">홈</div></a></div>
+				<div class="side-box-border text-center mt-1 bg-primary"><a href="/post/guest_book_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">방명록</div></a></div>
+				<div class="side-box-border text-center mt-1 bg-primary text-white"><a href="/post/diary_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">다이어리</div></a></div>
+				<div class="side-box-border text-center mt-1 bg-primary text-white"><a href="/post/photo_album_create_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">사진첩</div></a></div>
+				<div class="side-box-border text-center mt-1 bg-primary text-white"><a href="/post/setting_view?userId=${userId}" style="text-decoration-line: none; color: inherit;"><div class="mt-1">설정</div></a></div>
 			</div>
 			<!-- 카테고리 -->
 			
