@@ -46,7 +46,11 @@
 				<div class="text-primary mt-3"><h4>MY DIARY</h4></div>
 				<hr>
 				<div id="diaryListBtn"><i class="bi bi-journal-text"></i>&nbsp;다이어리</div>
-				<div id="diarywritingBtn" class="bottomBox"><button type="button">다이어리 작성</button></div>
+
+				<div id="diarywritingBtn" style="position : absolute; clear : left; float : left; width : 300px; height : 300px; left : 8; bottom : 0px;">
+					<button type="button">다이어리 작성</button>
+				</div>
+					
 		
 			</div>
 			<!-- 다이어리 목록 -->
