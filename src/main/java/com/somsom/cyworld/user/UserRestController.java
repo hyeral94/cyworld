@@ -1,6 +1,7 @@
 package com.somsom.cyworld.user;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,7 +73,7 @@ public class UserRestController {
 		if(user != null) {
 			result.put("result", "success");
 			result.put("userId", user.getId());
-			
+		
 			HttpSession session = request.getSession();
 
 			session.setAttribute("userId", user.getId());
