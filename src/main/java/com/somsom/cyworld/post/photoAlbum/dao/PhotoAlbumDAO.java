@@ -23,4 +23,6 @@ public interface PhotoAlbumDAO {
 	public int deletePhotoAlbum(@Param("id") int id);
 		
 	public PhotoAlbum selectPhotoAlbumDelete(@Param("id") int id);
+	
+	
 }
