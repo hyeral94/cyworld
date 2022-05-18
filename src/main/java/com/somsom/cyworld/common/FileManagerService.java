@@ -17,7 +17,6 @@ public class FileManagerService {
 
 //	public final static String FILE_UPLOAD_PATH = "C:\\Users\\parkh\\Documents\\spring project\\upload\\image/";
 
-
 	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class);
 	
 	//파일저장
