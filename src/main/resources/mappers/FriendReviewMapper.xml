@@ -42,6 +42,7 @@
 			`friendReview`
 		WHERE
 			`targetUserId` = #{targetUserId}
+		ORDER BY `id` DESC;		
  	</select>				
  	
 	<!-- 일촌평 삭제 -->
