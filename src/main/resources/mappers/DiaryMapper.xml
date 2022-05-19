@@ -42,6 +42,7 @@
 			`diary`
 		WHERE
 			`userId` = #{userId}
+		ORDER BY `id` DESC;
  	</select>			
  	
  	<!-- 다이어리 삭제 -->
