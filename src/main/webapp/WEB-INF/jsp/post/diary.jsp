@@ -47,7 +47,7 @@
 				<hr>
 				<div id="diaryListBtn"><i class="bi bi-journal-text"></i>&nbsp;다이어리</div>
 
-				<div id="diarywritingBtn" style="position : absolute; clear : left; float : left; width : 300px; height : 300px; left : 8; bottom : 0px;">
+				<div id="diarywritingBtn" style="position : absolute; clear : left; bottom : 40px;">
 					<button type="button">다이어리 작성</button>
 				</div>
 					
