@@ -74,10 +74,10 @@
 						<!-- 사진 삭제 -->
 					</div>
 					
-					<div style="width:700px; height:350px;">
-						<img src="#">
-					</div>
+					<img height="350" width="700" src="${photoAlbums.imagePath }">
+					
 					<hr>
+					
 					<div>${photoAlbums.content }</div>
 				</c:forEach>
 				</div>	

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.somsom.cyworld.common.FileManagerService;
-import com.somsom.cyworld.post.guestBook.model.GuestBook;
 import com.somsom.cyworld.post.photoAlbum.dao.PhotoAlbumDAO;
 import com.somsom.cyworld.post.photoAlbum.model.PhotoAlbum;
 
@@ -20,10 +19,10 @@ public class PhotoAlbumBO {
 	
 	// 사진첩 작성
 	public int addPhotoAlbum(int userId, String userName, String subject, String content, MultipartFile file) {
-		
+
 		String filePath = FileManagerService.saveFile(userId, file);
 		
-		return photoAlbumDAO.insertPhotoAlbum(userId, userName, subject, content, content);
+		return photoAlbumDAO.insertPhotoAlbum(userId, userName, subject, content, filePath);
 	}
 	
 	// 사진첩 리스트
