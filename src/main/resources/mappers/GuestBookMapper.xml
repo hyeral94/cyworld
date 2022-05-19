@@ -41,6 +41,7 @@
 			`guestBook`
 		WHERE
 			`targetUserId` = #{targetUserId}
+		ORDER BY `id` DESC;	
  	</select>
  	
  	<!-- 방명록 삭제 -->
