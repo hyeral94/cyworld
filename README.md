@@ -28,6 +28,13 @@ https://ovenapp.io/project/CoxHuVEY47lNecM15zpdqXI0HSJFKABw#B6weK <br>
 ◽ 데이터 베이스, URL 설계 <br>
 https://docs.google.com/spreadsheets/d/1YrDons5yv4TPiurQ6F5QKXJ7l17ZOA7IWNZ6B5XWC1M/edit#gid=2003937629
 <br>
+
+<h4> 📂 폴더구조 <h4>
+  
+ <img src="https://user-images.githubusercontent.com/96058856/169525731-059075a9-2d66-4724-b5da-f30937db4c6c.png">
+ <img src="https://user-images.githubusercontent.com/96058856/169526301-7765a3b9-101d-475c-9651-1f53e40cb9c2.png">
+ <img src="https://user-images.githubusercontent.com/96058856/169525992-f275c3bf-a268-44ae-9e9d-19c6ab69568c.png">
+  
 <h4> ⭐ 주요기능 ⭐ </h4>
 📌 회원가입 <br>
 http://13.124.98.7:8080/user/signup_view <br>
@@ -42,20 +49,41 @@ http://13.124.98.7:8080/user/signin_view <br>
 http://13.124.98.7:8080/main/mini_home_view?userId=1 <br>
 ◽ 방문자 수 증가 <br>
 ◽ 오늘의 기분, 프로필 사진, 미니홈피 상단 소개말 노출, 일촌평 입력 및 삭제 <br>
-◽ 일촌평을 입력하 사용자 이름 클릭 시 해당 미니홈피로 이동 <br>
+◽ 일촌평 작성자 이름 클릭 시 해당 미니홈피로 이동 <br>
 <br>
 📌방명록 작성 <br>
 http://13.124.98.7:8080/post/guest_book_view?userId=1 <br>
 ◽ 방명록 입력 및 삭제 <br>
-◽ 방명록을 입력한 사용자 이름 클릭 시 해당 미니홈피로 이동 <br>
+◽ 방명록 작성자 이름 클릭 시 해당 미니홈피로 이동 <br>
 <br>
+📌 다이어리 <br>
+http://13.124.98.7:8080/post/diary_create_view?userId=1 <br>
+◽ 다이어리 작성 및 삭제 <br>
+◽ 작성 된 다이어리 메인화면 upload news에 노출, 클릭 시 해당 다이어리로 이동 <br>
+<br>
+📌 사진첩 <br>
+◽ 사진 업로드, 컨텐츠 작성  삭제 <br>
+http://13.124.98.7:8080/post/photo_album_create_view?userId=1 <br>
+<br> 
 📌 사용자 설정 <br>
 http://13.124.98.7:8080/post/setting_view?userId=1 <br>
 ◽ 오늘의 기분, 프로필 이미지 업로드, 프로필 컨텐츠 및 미니홈피 상단 컨텐츠 등록 <br>
 
 <h4> 👾 DEMO 👾 </h4>
 
+<h4> 🍒 회원가입 🍒 <h4>
+<img src="https://user-images.githubusercontent.com/96058856/169536117-9972e5c6-f4c0-401f-83c4-3d6f89b915fc.gif"> <  
+
+<h4> 🍒 로그인 🍒 <h4>  
+ 
+
+<h4> 🍒 일촌평 작성 및 삭제, upload news 다이어리 제목 클릭 시 해당 게시글로 이동 🍒 <h4>  
+
+<h4> 🍒 방명록 작성 및 삭제 🍒 <h4>
   
+<h4> 🍒 사진 업로드 및 게시글 작성, 삭제 🍒 <h4>
+  
+<h4> 🍒 프로필 사진 업로드, 오늘의 기분 선택 및 컨텐츠 작성, 미니홈피 상단 컨텐츠 등록 🍒 <h4>
   
 <h4> ⛵ 향후 계획 ⛵</h4>
   
