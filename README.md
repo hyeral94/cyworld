@@ -72,21 +72,32 @@ http://13.124.98.7:8080/post/setting_view?userId=1 <br>
 <h4> 👾 DEMO 👾 </h4>
 
 <h4> 🍒 회원가입 🍒 <h4>
-<img src="https://user-images.githubusercontent.com/96058856/169536117-9972e5c6-f4c0-401f-83c4-3d6f89b915fc.gif"> <  
+<img src="https://user-images.githubusercontent.com/96058856/169542734-7a3a876e-310a-4ed0-b89b-8c7ea9809231.gif"> <br>
 
 <h4> 🍒 로그인 🍒 <h4>  
- 
-
+<img src="https://user-images.githubusercontent.com/96058856/169537485-e22ac540-a29a-40e4-80ca-d32527e19854.gif"> <br>
+  
 <h4> 🍒 일촌평 작성 및 삭제, upload news 다이어리 제목 클릭 시 해당 게시글로 이동 🍒 <h4>  
-
+<img src="https://user-images.githubusercontent.com/96058856/169540808-b8de4b01-64c4-4a82-82a0-2f2795d8fc8e.gif"> <br>
+<img src="https://user-images.githubusercontent.com/96058856/169541131-b4977162-5b33-4a01-a6ec-7b562bb63a12.gif"> <br>
+  
 <h4> 🍒 방명록 작성 및 삭제 🍒 <h4>
+<img src="https://user-images.githubusercontent.com/96058856/169538385-9c97136d-67c3-4e11-8d41-0bc9cf96406a.gif"> <br>
+
+<h4> 🍒 다이어리 작성 및 삭제 🍒 <h4>  
+<img src="https://user-images.githubusercontent.com/96058856/169538810-d38f16ed-0286-4cfd-b1b9-d492898bcd61.gif"> <br>  
   
 <h4> 🍒 사진 업로드 및 게시글 작성, 삭제 🍒 <h4>
+<img src="https://user-images.githubusercontent.com/96058856/169539394-d18ae42d-43db-462d-b82b-073f6f781fd7.gif"> <br>  
+<img src="https://user-images.githubusercontent.com/96058856/169539877-037c1e85-4650-4b9d-abc5-90ef2c827738.gif"> <br>  
   
 <h4> 🍒 프로필 사진 업로드, 오늘의 기분 선택 및 컨텐츠 작성, 미니홈피 상단 컨텐츠 등록 🍒 <h4>
-  
+<img src="https://user-images.githubusercontent.com/96058856/169542131-27691ced-7e98-4a0d-9c05-d716cc75aba1.gif"> <br> 
+
 <h4> ⛵ 향후 계획 ⛵</h4>
-  
+◽ 사진첩 댓글 작성 및 삭제
+◽ 다이어리 작성, 사진 업로드, 사용자 설정 해당 미니홈피 사용자만 접근 가능하도록 제한
+◽ 일촌 친구 추가 기능
   
   
 
