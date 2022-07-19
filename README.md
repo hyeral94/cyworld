@@ -19,7 +19,7 @@
 - 기존의 cyworld 기능에서 프로필 이미지 등록, 방문자 수 표시, 일촌평 작성 및 방명록 작성, 다이어리 작성, 사진첩 업로드, 사용자 설정을 구현
 <br>
 <h4> 📃🔍 포트폴리오 </h4>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">포트폴리오</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/hyeral94/cyworld/blob/master/cyworld%20portfolio.pdf">포트폴리오</a>
 <br>
 
 <h4> 🔨 설계 🔨 </h4>
